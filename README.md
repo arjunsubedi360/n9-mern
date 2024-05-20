@@ -4,5 +4,5 @@
 # 4. Lhachhen Wanjyu Lama
 # 4. Mingtindu  Sherpa
 # 5. Sujan Magar
-
+# 6. Aayush Shrestha
 
