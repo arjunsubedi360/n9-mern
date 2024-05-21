@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Tutorial</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="table.css">
+</head>
+
+<body>
+    <main>
+        <!-- Navbar Starts Here -->
+        <section class="container">
+            <!-- Trying a Hover Effect with text -->
+            <h4>
+                <span class="no_hover">!!! A COOL PlACE TO RATE BIRDS !!!</span>
+                <span class="hover1">!!! SO YOU WANNA RATE BIRDS !!!</span>
+            </h4>
+            <ul class="navbar">
+                <li class="menu">Home</li>
+                <li class="menu">About us</li>
+                <li class="menu">Features</li>
+                <li class="menu">Contact</li>
+                <li class="menu menu_surprise"><a href="">SURPRISE!!</a></li>
+            </ul>
+        </section>
+        <!-- Table Starts here -->
+        <table>
+            <tr class="header_row">
+                <th class="header_title">Name</th>
+                <th class="header_title">Image Source</th>
+                <th class="header_title">Image</th>
+                <th class="header_title">Coolness Score</th>
+            </tr>
+            <br>
+            <tr class="item_row">
+                <td class="item_name">Bohemian Waxwing</td>
+                <td class="image_source">
+                    <a href="https://en.wikipedia.org/wiki/Bohemian_waxwing#/media/File:Bohemian_Waxwing.jpg">
+                        Wikipedia</a>
+                </td>
+                <td class="image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Bohemian_Waxwing.jpg/1024px-Bohemian_Waxwing.jpg"
+                        alt="Bohemian Waxwing">
+                </td>
+                <td>
+                    <input type="range" min="1" max="100" value="50" class="slider">
+                </td>
+            </tr>
+            <br>
+            <tr class="item_row">
+                <td class="item_name">Humming Bird</td>
+                <td class="image_source">
+                    <a
+                        href="https://www.southernliving.com/thmb/e0sowIE64z-xcfV5yAJQhIMk2yk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-507864088-2000-ab38cd7dc03c4ada98c3fc060f8cb47f.jpg">Humming
+                        Bird</a>
+                </td>
+                <td class="image">
+                    <img src="https://www.southernliving.com/thmb/e0sowIE64z-xcfV5yAJQhIMk2yk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-507864088-2000-ab38cd7dc03c4ada98c3fc060f8cb47f.jpg"
+                        alt="Humming Bird">
+                </td>
+                <td>
+                    <input type="range" min="1" max="100" value="50" class="slider">
+                </td>
+            </tr>
+            <br>
+            <tr class="item_row">
+                <td class="item_name">Prairie Falcon</td>
+                <td class="image_source">
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/2/2c/USGS_Prairie_Falcon.jpg">Prairie falcon
+                    </a>
+                </td>
+                <td class="image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/USGS_Prairie_Falcon.jpg"
+                        alt="Prairie falcon">
+                </td>
+                <td>
+                    <input type="range" min="1" max="100" value="50" class="slider">
+                </td>
+            </tr>
+        </table>
+    </main>
+</body>
+
+</html>

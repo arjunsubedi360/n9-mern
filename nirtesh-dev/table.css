@@ -1,0 +1,94 @@
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --base-color: #ada;
+    --base-color2: #cfa;
+}
+
+body {
+    background-color: var(--blue);
+}
+
+img {
+    width: 100%;
+    height: 100px;
+    width: 100px;
+}
+
+a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+a:hover {
+    color: pink;
+    text-decoration: none;
+}
+
+tr:last-child {
+    border-bottom: 3px solid #bd2f2f;
+}
+
+.slider {
+    height: 25px;
+    background: #d3d3d3;
+}
+
+.slider:hover {
+    opacity: 1;
+    background: pink;
+}
+
+/* Flexbox  Stuff Here */
+tr {
+    display: flex;
+    align-items: center;
+    border-top: 3px solid #bd2f2f;
+    border-right: 3px solid #bd2f2f;
+    /* border-bottom: 1px solid #bd2f2f; */
+}
+
+td {
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-right: dotted 3px var(--base-color);
+}
+
+/* Navbar Section */
+h4 {
+    background-color: var(--base-color2);
+    text-align: center;
+    font-weight: 600;
+}
+
+h4 .hover1 {
+    display: none;
+}
+
+h4:hover .no_hover {
+    display: none;
+}
+
+h4.hover .hover1 {
+    display: inline;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--base-color2);
+}
+
+.menu {
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu_surprise {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(255, 0, 0);
+    border: 1px solid rgb(255, 0, 0);
+    border-radius: 15px;
+    font-weight: bold;
+    /* text-decoration: none; */
+}
