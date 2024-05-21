@@ -7,6 +7,8 @@
 # 5. Sujan Magar
 # 6. Learning conflict in git 
 # 6. change
+# 7. Mern 
+# 8. himmat
 # 7. Mern
 # 8.Sanjiv
 
