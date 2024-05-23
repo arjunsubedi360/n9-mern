@@ -3,3 +3,4 @@
 2. Calculate the total price by adding the individual item prices.
 3. Apply a discount (10%) to the total price.
 4. Output the discounted total.
+
