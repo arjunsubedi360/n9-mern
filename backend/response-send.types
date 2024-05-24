@@ -1,0 +1,113 @@
+
+1. **`response.json()`**: Sends a JSON response. This method sets the `Content-Type` header to `application/json`.
+   ```javascript
+   app.get("/users", (request, response) => {
+     response.json(data);
+   });
+   ```
+
+2. **`response.status()`**: Sets the HTTP status code for the response. It can be combined with other methods like `json()` or `send()`.
+   ```javascript
+   app.get("/users", (request, response) => {
+     response.status(200).json(data);
+   });
+   ```
+   or
+   ```javascript
+   app.get("/users", (request, response) => {
+     response.status(200).send("OK");
+   });
+   ```
+
+3. **`response.send()`**: Sends the response body. This method can send a variety of types (strings, arrays, objects, or buffers) and sets the appropriate `Content-Type` header.
+   ```javascript
+   app.get("/users", (request, response) => {
+     response.send(data); // Will send the data in a format appropriate to its type
+   });
+   ```
+   For a string response:
+   ```javascript
+   app.get("/users", (request, response) => {
+     response.send("Here are the users");
+   });
+   ```
+
+4. **`response.sendFile()`**: Sends a file as an octet stream. This method is useful for sending files for download.
+   ```javascript
+   app.get("/download", (request, response) => {
+     const filePath = "/path/to/file";
+     response.sendFile(filePath);
+   });
+   ```
+
+5. **`response.render()`**: Renders a view template. This method is useful when you are using a template engine like Pug, EJS, etc.
+   ```javascript
+   app.get("/home", (request, response) => {
+     response.render("index", { title: "Home Page" });
+   });
+   ```
+
+6. **`response.redirect()`**: Redirects the request to another URL.
+   ```javascript
+   app.get("/old-route", (request, response) => {
+     response.redirect("/new-route");
+   });
+   ```
+
+7. **`response.end()`**: Ends the response process. You can use this if you need to end the response without any additional data.
+   ```javascript
+   app.get("/end", (request, response) => {
+     response.end();
+   });
+   ```
+
+### Examples with Explanations:
+
+1. **Sending JSON data with a status code:**
+   ```javascript
+   app.get("/users", (request, response) => {
+     response.status(200).json(data);
+   });
+   ```
+   This sends a JSON response with a 200 OK status.
+
+2. **Sending plain text:**
+   ```javascript
+   app.get("/text", (request, response) => {
+     response.send("Hello, World!");
+   });
+   ```
+   This sends a plain text response.
+
+3. **Sending an HTML file:**
+   ```javascript
+   app.get("/html", (request, response) => {
+     const filePath = __dirname + "/index.html";
+     response.sendFile(filePath);
+   });
+   ```
+   This sends an HTML file as the response.
+
+4. **Rendering a template:**
+   ```javascript
+   app.get("/profile", (request, response) => {
+     response.render("profile", { username: "JohnDoe" });
+   });
+   ```
+   This renders a template called `profile` with the given data.
+
+5. **Redirecting to another route:**
+   ```javascript
+   app.get("/old-route", (request, response) => {
+     response.redirect("/new-route");
+   });
+   ```
+   This redirects the client from `/old-route` to `/new-route`.
+
+6. **Ending the response:**
+   ```javascript
+   app.get("/end", (request, response) => {
+     response.status(204).end(); // 204 No Content
+   });
+   ```
+   This ends the response with a 204 No Content status code.
