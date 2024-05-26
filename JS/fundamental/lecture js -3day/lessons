@@ -1,0 +1,15 @@
+// const object = {
+//     name: "arjun", //key: value
+//     age:1
+// };
+
+// const obj2 = object;
+
+// obj2.isMarried  = true;
+// console.log(object)
+// // console.log(object)   
+
+
+// data types
+// object 
+// + operator how it works on string
