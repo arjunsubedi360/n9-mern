@@ -1,5 +1,5 @@
 export const HttpStatusEnum = {
-    OK: 200,
+    OK: 200, //Success response
     CREATED: 201,
     NO_CONTENT: 204,
     BAD_REQUEST: 400,
