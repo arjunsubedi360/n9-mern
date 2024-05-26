@@ -18,13 +18,14 @@
             name: 'Ram',
             email: 'ram@email.com',
             isMarried: false,
-            children: '',
-            age: 30
+            age: 30,
+            children: [1],
+            relatives: [{name: "arjun"}]
         };
+        console.log(person.children.length);
         //Check for Falsy String
-        console.log(`Check for falsy Empty String`)
-        if (!person.children) {
-            console.log(`${person.name}has children.`)
+        if (person.children.length > 0) { // array length 0 mathi hudaina then don't execure
+            console.log(`This is in truthy case.`)
         }
         else {
             console.log(`${person.name}is childless.`)
