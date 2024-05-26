@@ -15,30 +15,21 @@
         lastName: "Sharma",
         age: 24,
         email: "sanjiv0114@gmail.com",
-        ismarried: "flase",
+        ismarried: false,
         address: "gaurighat kathmandu",
+        job: null
       };
-      // empty object
-      // if (person.middleName) {
-      //   console.log("this is true value");
-      // } else {
-      //   console.log("this is false value");
-      // }
-      // undefined object
-      // console.log(person.id);
-      // if (person.id) {
-      //   console.log("this is true value");
-      // } else {
-      //   console.log("this is false value");
-      // }
-      // NAN object
-      const condition = "email" - "age";
-      console.log(condition);
+      // const condition = person.middleName;  //empty string
+      // const condition = "email" - "age"; // NaN
+      // const condition = person.id; //undefined
+      const condition = person.job; //null
+
       if (condition) {
-        console.log("this is truthy");
+        console.log("this is true value");
       } else {
-        console.log("this is falsy");
+        console.log("this is false value");
       }
+   
     </script>
   </body>
 </html>
