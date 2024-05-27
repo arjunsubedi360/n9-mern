@@ -1,6 +1,7 @@
 
 export const lang = {
-  CREATE: (msg) => `${msg || ''} created successfully.`
+  CREATE: (msg) => `${msg || ''} created successfully.`,
+  LIST: (msg) => `${msg || ''} list successfully.`
 }
 
   export function successResponseData({ data = null, message = '', response, statusCode = HttpStatusEnum.OK }) {
