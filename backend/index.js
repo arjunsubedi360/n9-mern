@@ -1,7 +1,7 @@
 import express from "express";
-import { data } from "./data.js";
-import { lang, successResponseData } from "./successResponseData.js";
 import { HttpStatusEnum } from "./status-enum.js";
+import { lang, successResponseData } from "./successResponseData.js";
+import { data } from "./data.js";
 
 const app = express();
 const port = 3001;
@@ -9,18 +9,12 @@ const port = 3001;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Read operation - Get all users
+/* 
+request: {},
+response: users <list of users>
+*/
 app.get("/users", (request, response) => {
-  console.log(request.query);
-  const { search } = request.query;
-
-  const users = data.filter((item) => item.name == search);
-  successResponseData({
-    response,
-    data: users,
-    statusCode: HttpStatusEnum.OK,
-    message: lang.CREATE("User"),
-  });
+  successResponseData({ message: lang.LIST("Users"), data, response, statusCode: HttpStatusEnum.OK });
 });
 
 // Read operation - Get a single user by ID
@@ -29,7 +23,6 @@ app.get("/users/:id", (request, response) => {
   const user = data.filter((item) => item.id == id);
   console.log(user);
   if (!user.length > 0) {
-    //(user.length > 0) value cha   || (!user.length > 0) value chaina
     response.status(404).json({ message: "User not found" });
   } else {
     response
@@ -40,17 +33,8 @@ app.get("/users/:id", (request, response) => {
 
 // Create operation - Add a new user
 app.post("/users", (request, response) => {
-  const newUser = request.body;
-  console.log(request);
-  console.log("newUser", newUser);
-
-  // Assuming request body contains user data
-  // Generating a unique ID for the new user (you can use a database for this in a real application)
-  newUser.id = data.length + 1;
-  data.push(newUser);
-  response
-    .status(201)
-    .json({ message: "User created successfully", data: newUser });
+  data.push(request.body);
+  response.status(201).json(data);
 });
 
 // Update operation - Update an existing user
@@ -78,6 +62,7 @@ app.delete("/users/:id", (request, response) => {
   }
 });
 
+/* DRY = Donot Repeat Yourself */
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
