@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>comparison operators</h1>
+    <script>
+      //test of phone number
+      const phoneNumber = "1234567890";
+      console.log(phoneNumber);
+      const validPhone = phoneNumber.length == 10;
+      if (validPhone) {
+        console.log("phone number is valid");
+      } else {
+        console.log("phone number is invalid");
+      }
+      //email check
+      const email1 = "sanjiv0114@gmail.com";
+      const email2 = "sanjivgmail.com";
+      const email3 = "sanjiv@gmail.om";
+      const validEmail = email1.includes("@gmail.com");
+      const validEmail2 = email2.includes("@gmail.com");
+      const validEmail3 = email3.includes("@gmail.com");
+      //first email
+      if (validEmail) {
+        console.log("email is vlaid");
+      } else {
+        console.log("email is invalid");
+      }
+      //second email
+      if (validEmail2) {
+        console.log("email is vlaid");
+      } else {
+        console.log("email is invalid");
+      }
+      // third email
+      if (validEmail3) {
+        console.log("email is vlaid");
+      } else {
+        console.log("email is invalid");
+      }
+    </script>
+  </body>
+</html>
