@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>reply</h1>
+    <script>
+      const phoneNum = "9813949168";
+      const email = "himmatbnet@1gmail.com";
+      const phoneCheck = phoneNum.length === 10;
+      const emailCheck = email.includes("@");
+
+      console.log("phoneCheck", phoneCheck);
+      console.log("emailCheck", emailCheck);
+      // && || !  Logical Operator
+      if (!phoneCheck || !emailCheck) {
+        console.log("Please enter a valid phone/email");
+      } else {
+        console.log("User is verified");
+      }
+    </script>
+  </body>
+</html>
