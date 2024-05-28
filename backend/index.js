@@ -20,12 +20,7 @@ request: {},
 response: users <list of users>
 */
 app.get("/users", (request, response) => {
-  successResponseData({
-    message: lang.LIST("Users"),
-    data: users,
-    response,
-    statusCode: HttpStatusEnum.OK,
-  });
+  response.status(200).json(users);
 });
 
 // Read operation - Get a single user by ID
@@ -44,8 +39,8 @@ app.get("/users/:id", (request, response) => {
 
 // Create operation - Add a new user
 app.post("/users", (request, response) => {
-  data.push(request.body);
-  response.status(201).json(data);
+  users.push(request.body);
+  response.status(201).json(users);
 });
 
 // Update operation - Update an existing user
