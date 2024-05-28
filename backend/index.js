@@ -6,7 +6,7 @@ import { users } from "./users.js";
 // import { errorHandlerMiddleware } from "./error-handle.js";
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -44,8 +44,8 @@ app.get("/users/:id", (request, response) => {
 
 // Create operation - Add a new user
 app.post("/users", (request, response) => {
-  data.push(request.body);
-  response.status(201).json(data);
+  users.push(request.body);
+  response.status(201).json(users);
 });
 
 // Update operation - Update an existing user
