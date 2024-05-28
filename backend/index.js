@@ -2,6 +2,8 @@ import express from "express";
 import { HttpStatusEnum } from "./status-enum.js";
 import { lang, successResponseData } from "./successResponseData.js";
 import { data } from "./data.js";
+import { notFound } from "./notFound.js";
+import { errorHandlerMiddleware } from "./error-handle.js";
 
 const app = express();
 const port = 3001;
@@ -9,12 +11,21 @@ const port = 3001;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+//Not found route
+app.use(notFound);
+
+app.use(errorHandlerMiddleware);
 /* 
 request: {},
 response: users <list of users>
 */
 app.get("/users", (request, response) => {
-  successResponseData({ message: lang.LIST("Users"), data, response, statusCode: HttpStatusEnum.OK });
+  successResponseData({
+    message: lang.LIST("Users"),
+    data,
+    response,
+    statusCode: HttpStatusEnum.OK,
+  });
 });
 
 // Read operation - Get a single user by ID
