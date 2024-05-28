@@ -22,8 +22,8 @@
     // } else{
     //     console.log("Enter correct number");
     // }
-    const a = 2;
-    const b =3;
+    const a = 6;
+    const b =8;
     const c =5;
 
    if(a > b && a > c) {
@@ -33,6 +33,17 @@
    } else {
     console.log("C is largest")
    }
+
+
+    if ( !(a>b) || !(a>c)){
+        if (!(b>c)){
+            console.log("The largest number is:", c);
+         } else{
+            console.log("the largest number is",b);        }
+    } else{
+        console.log("The largest number is:",a);
+    }
+    
 </script>    
 </body>
 </html>
