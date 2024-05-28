@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javaScript</title>
+  </head>
+  <body>
+    <h1>javaScript truthy and falsy lecture</h1>
+
+    <script>
+      const person = {
+        firstName: "sanjiv",
+        middleName: "",
+        lastName: "Sharma",
+        age: 22,
+        email: "sanjiv0114@gmail.com",
+        ismarried: false,
+        address: "gaurighat kathmandu",
+        job: null,
+        friends: ["balkrishna", "kshitiz", "bivaan"],
+      };
+
+      // const condition = person.middleName;  //empty string
+      // const condition = "email" - "age"; // NaN
+      // const condition = person.id; //undefined
+      const condition = person.job; //null
+
+      if (condition) {
+        console.log("this is true value");
+      } else {
+        console.log("this is false value");
+      }
+    </script>
+  </body>
+</html>
