@@ -1,7 +1,7 @@
 import express from "express";
 import { HttpStatusEnum } from "./status-enum.js";
 import { lang, successResponseData } from "./successResponseData.js";
-import { data } from "./data.js";
+import { users } from "./users.js";
 import { notFound } from "./notFound.js";
 import { errorHandlerMiddleware } from "./error-handle.js";
 
@@ -22,7 +22,7 @@ response: users <list of users>
 app.get("/users", (request, response) => {
   successResponseData({
     message: lang.LIST("Users"),
-    data,
+    data: users,
     response,
     statusCode: HttpStatusEnum.OK,
   });
@@ -31,7 +31,7 @@ app.get("/users", (request, response) => {
 // Read operation - Get a single user by ID
 app.get("/users/:id", (request, response) => {
   const id = request.params.id;
-  const user = data.filter((item) => item.id == id);
+  const user = users.filter((item) => item.id == id);
   console.log(user);
   if (!user.length > 0) {
     response.status(404).json({ message: "User not found" });
@@ -56,8 +56,8 @@ app.put("/users/:id", (request, response) => {
   if (index == -1) {
     response.status(404).json({ message: "User not found" });
   } else {
-    data[index] = { ...data[index], ...updatedUser };
-    response.json({ message: "User updated successfully", data: data[index] });
+    users[index] = { ...users[index], ...updatedUser };
+    response.json({ message: "User updated successfully", data: users[index] });
   }
 });
 
@@ -68,7 +68,7 @@ app.delete("/users/:id", (request, response) => {
   if (index == -1) {
     response.status(404).json({ message: "User not found" });
   } else {
-    const deletedUser = data.splice(index, 1);
+    const deletedUser = users.splice(index, 1);
     response.json({ message: "User deleted successfully", data: deletedUser });
   }
 });
