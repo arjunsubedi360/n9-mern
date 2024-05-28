@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.json());
 
-const port = 3000;
+const port = 3001;
 // Dummy data for users
 let users = [
   { id: 1, name: 'John Doe', age: 30 },

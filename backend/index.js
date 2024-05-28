@@ -1,7 +1,9 @@
-import express from 'express';
-import { data } from './data.js';
-import { successResponseData } from './successResponseData.js';
-import { HttpStatusEnum } from './status-enum.js';
+import express from "express";
+import { HttpStatusEnum } from "./status-enum.js";
+import { lang, successResponseData } from "./successResponseData.js";
+import { users } from "./users.js";
+// import { notFound } from "./notFound.js";
+// import { errorHandlerMiddleware } from "./error-handle.js";
 
 const app = express();
 const port = 3001;
@@ -9,36 +11,64 @@ const port = 3001;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-app.get('/users', (request, response) => {
-  response.json(data);
+// //Not found route
+// app.use(notFound);
+
+// app.use(errorHandlerMiddleware);
+/* 
+request: {},
+response: users <list of users>
+*/
+app.get("/users", (request, response) => {
+  response.status(200).json(users);
 });
 
-app.get('/users/:id', (request, response) => {
+// Read operation - Get a single user by ID
+app.get("/users/:id", (request, response) => {
+  const id = request.params.id;
+  const user = users.filter((item) => item.id == id);
+  console.log(user);
+  if (!user.length > 0) {
+    response.status(404).json({ message: "User not found" });
+  } else {
+    response
+      .status(200)
+      .json({ message: "User fetched successfully", data: user });
+  }
+});
+
+// Create operation - Add a new user
+app.post("/users", (request, response) => {
+  users.push(request.body);
+  response.status(201).json(users);
+});
+
+// Update operation - Update an existing user
+app.put("/users/:id", (request, response) => {
   const userId = request.params.id;
-  const user = data.filter((item) => item.id == userId);
-  response.json({ message: 'Users fetched successfully', data: user });
+  const updatedUser = request.body; // Assuming request body contains updated user data
+  const index = data.findIndex((user) => user.id == userId);
+  if (index == -1) {
+    response.status(404).json({ message: "User not found" });
+  } else {
+    users[index] = { ...users[index], ...updatedUser };
+    response.json({ message: "User updated successfully", data: users[index] });
+  }
 });
 
-app.get('/old-route', (req, res) => {
-  res.redirect('/new-route');
+// Delete operation - Delete a user by ID
+app.delete("/users/:id", (request, response) => {
+  const userId = parseInt(request.params.id);
+  const index = data.findIndex((user) => user.id === userId);
+  if (index == -1) {
+    response.status(404).json({ message: "User not found" });
+  } else {
+    const deletedUser = users.splice(index, 1);
+    response.json({ message: "User deleted successfully", data: deletedUser });
+  }
 });
 
-app.get('/new-route', (req, res) => {
-  res.send({ message: 'I am new route' });
-});
-
-app.post('/users', (req, res) => {
-  console.log('Request Body:', req.body);
-  const payload = req.body;
-  
-  successResponseData({
-    data: payload,
-    message: 'User created successfully',
-    res,
-    statusCode: HttpStatusEnum.CREATED,
-  });
-});
-
+/* DRY = Donot Repeat Yourself */
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

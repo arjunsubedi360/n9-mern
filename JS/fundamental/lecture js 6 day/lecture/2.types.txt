@@ -1,0 +1,109 @@
+### Primitive Data Types
+Primitive data types represent simple values and are immutable, meaning they cannot be changed once created.
+
+1. **String**
+   - A string is a sequence of characters, used for text data.
+   - Example:
+     ```javascript
+     const greeting = "Hello, world!";
+     const name = 'John Doe';
+     ```
+   - Strings can be enclosed in single quotes (`'`), double quotes (`"`), or backticks (`` ` `` for template literals).
+
+2. **Number**
+   - A number represents numeric values, including integers and floating-point numbers.
+   - Example:
+     ```javascript
+     const age = 30; // Integer
+     const height = 1.75; // Floating-point number
+     ```
+   - In JavaScript, numbers don't differentiate between integers and floating-point; they use a single data type.
+
+3. **Boolean**
+   - Boolean represents true or false values.
+   - Example:
+     ```javascript
+     const isAdult = true;
+     const hasLicense = false;
+     ```
+   - Used primarily in logical conditions and control structures.
+
+4. **Undefined**
+   - Undefined means a variable has been declared but has not been assigned a value.
+   - Example:
+     ```javascript
+     let notInitialized;
+     console.log(notInitialized); // Outputs: undefined
+     ```
+   - Often used to indicate a variable is uninitialized.
+
+5. **Null**
+   - Null represents a deliberate absence of value.
+   - Example:
+     ```javascript
+     const empty = null;
+     console.log(empty); // Outputs: null
+     ```
+   - It is distinct from undefined, indicating an intentional lack of value.
+
+6. **Symbol**
+   - Symbol is a unique and immutable data type used to create unique identifiers.
+   - Example:
+     ```javascript
+     const sym1 = Symbol('uniqueIdentifier');
+     const sym2 = Symbol('uniqueIdentifier');
+     console.log(sym1 === sym2); // Outputs: false
+     ```
+   - Often used in object property keys to avoid name collisions.
+
+7. **BigInt**
+   - BigInt represents arbitrarily large integers.
+   - Example:
+     ```javascript
+     const largeNumber = BigInt('12345678901234567890');
+     console.log(largeNumber); // Outputs: 12345678901234567890n
+     ```
+   - Useful for calculations that require more precision than typical numbers.
+
+### Non-Primitive Data Types
+Non-primitive data types are more complex structures and can hold multiple values or properties.
+
+1. **Array**
+   - An array is a list of elements, which can be of any data type.
+   - Example:
+     ```javascript
+     const numbers = [1, 2, 3, 4, 5];
+     const mixed = [1, 'Hello', true];
+     ```
+   - Arrays can be manipulated with various methods like `push`, `pop`, `slice`, `splice`, etc.
+
+2. **Object**
+   - Objects are collections of key-value pairs.
+   - Example:
+     ```javascript
+     const person = {
+       name: 'John Doe',
+       age: 30,
+       isEmployed: true,
+     };
+     ```
+   - Objects can have nested objects and can be dynamically modified.
+
+### Checking Data Types with `typeof`
+The `typeof` operator allows you to check the data type of a variable.
+
+- Example:
+  ```javascript
+  console.log(typeof 'Hello'); // Outputs: string
+  console.log(typeof 42); // Outputs: number
+  console.log(typeof true); // Outputs: boolean
+  console.log(typeof []); // Outputs: object (arrays are objects in JavaScript)
+  console.log(typeof {}); // Outputs: object
+  ```
+
+While `typeof` is useful for primitive types, it can be ambiguous with non-primitive types. For example, arrays are a type of object, so `typeof` returns `'object'`. To check if an object is an array, you can use `Array.isArray()`:
+
+- Example:
+  ```javascript
+  console.log(Array.isArray([])); // Outputs: true
+  ```
