@@ -6,7 +6,7 @@ import { users } from "../nabin/users.js";
 // import { errorHandlerMiddleware } from "./error-handle.js";
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
