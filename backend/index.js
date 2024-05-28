@@ -20,12 +20,7 @@ request: {},
 response: users <list of users>
 */
 app.get("/users", (request, response) => {
-  successResponseData({
-    message: lang.LIST("Users"),
-    data: users,
-    response,
-    statusCode: HttpStatusEnum.OK,
-  });
+  response.status(200).json(users);
 });
 
 // Read operation - Get a single user by ID
