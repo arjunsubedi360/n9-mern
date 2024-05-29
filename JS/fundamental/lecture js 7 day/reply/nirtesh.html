@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: solid 1px red;
+            width: 30%;
+        }
+
+        tr:nth-child(even) {
+            background-color: aqua;
+        }
+
+        td {
+            display: inline;
+            text-align: center;
+            border-collapse: collapse;
+
+        }
+
+        caption {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <title> Dynamic Multiplication Table</title>
+    <script>
+        let table = " ";
+        const rows = 10;
+        const number = prompt("Please Enter a Whole Number");
+        table += "<caption>" + "Multiplication Table of: " + number + "</caption>";
+        // document.write("<h1>" + "Multiplication Table of: " + number + "</h1>")
+        for (let i = 1; i <= rows; i++) {
+            table += "<tr>";
+            table += "<td>" + number;
+            table += "<td>" + "X";
+            table += "<td>" + i;
+            table += "<td>" + "=";
+            table += "<td>" + number * i;
+        }
+        document.write("<table>" + table + "</table>");
+    </script>
+</body>
+
+</html>
