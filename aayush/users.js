@@ -5,10 +5,10 @@ export const users = [
   },
   {
     id: 2,
-    name: "Arjun"
+    name: "Syjan"
   },
   {
     id: 3,
-    name: "Arjun"
+    name: "Ayush"
   }
 ]
