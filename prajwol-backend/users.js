@@ -1,14 +1,14 @@
 export const users = [
   {
     id: 1,
-    name: "Arjun"
+    name: "Arjun",
   },
   {
     id: 2,
-    name: "Syjan"
+    name: "Arjun",
   },
   {
     id: 3,
-    name: "Ayush"
-  }
-]
+    name: "Arjun",
+  },
+];
