@@ -10,6 +10,11 @@ app.get("/posts",(request, response) => {
     response.status(200).json({post});
 })
 
+app.get("/users/:id/posts",(request, response) => {
+    userID = request.params.id;
+    
+})
+
 app.post("/posts",(request, response) => {
     post.push(request.body);
     response.status(201).json(post);
