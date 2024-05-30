@@ -7,16 +7,19 @@ const port = 8000;
 
 app.use(express.json());
 
-//--------ALL POST ROUTES------------
-//--Post add--
+/**
+ * req: {}
+ * res: posts:{Post}<Posts list>
+ */
 app.post('/posts', (req, res) => {
     post.push(req.body);
     console.log(post);
     res.status(200).json({ message: "Successfully added Post" });
 });
 
-//--------ALL GET ROUTES------------
-//--Get all posts--
+/**
+ * req: {}
+ */
 app.get('/posts', (req, res) => {
     res.status(200).json(post);
 });
