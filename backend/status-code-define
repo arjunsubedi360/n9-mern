@@ -1,0 +1,118 @@
+1. **200 OK**
+   - **Meaning**: The request was successful.
+   - **Example**:
+     ```javascript
+     app.get('/success', (req, res) => {
+       res.status(200).send('Success');
+     });
+     ```
+
+2. **201 Created**
+   - **Meaning**: The request was successful, and a resource was created.
+   - **Example**:
+     ```javascript
+     app.post('/users', (req, res) => {
+       const newUser = { id: 1, name: 'John Doe' };
+       res.status(201).json(newUser);
+     });
+     ```
+
+3. **204 No Content**
+   - **Meaning**: The request was successful, but there is no content to send in the response.
+   - **Example**:
+     ```javascript
+     app.delete('/users/:id', (req, res) => {
+       res.status(204).end();
+     });
+     ```
+
+4. **400 Bad Request**
+   - **Meaning**: The server could not understand the request due to invalid syntax.
+   - **Example**:
+     ```javascript
+     app.post('/users', (req, res) => {
+       if (!req.body.name) {
+         res.status(400).json({ error: 'Name is required' });
+       } else {
+         res.status(201).json({ id: 1, name: req.body.name });
+       }
+     });
+     ```
+
+5. **401 Unauthorized**
+   - **Meaning**: The client must authenticate itself to get the requested response.
+   - **Example**:
+     ```javascript
+     app.get('/private', (req, res) => {
+       if (!req.headers.authorization) {
+         res.status(401).json({ error: 'Unauthorized' });
+       } else {
+         res.status(200).send('Welcome to the private area');
+       }
+     });
+     ```
+
+6. **403 Forbidden**
+   - **Meaning**: The client does not have access rights to the content.
+   - **Example**:
+     ```javascript
+     app.get('/admin', (req, res) => {
+       if (!req.user.isAdmin) {
+         res.status(403).json({ error: 'Forbidden' });
+       } else {
+         res.status(200).send('Welcome Admin');
+       }
+     });
+     ```
+
+7. **404 Not Found**
+   - **Meaning**: The server can not find the requested resource.
+   - **Example**:
+     ```javascript
+     app.get('/unknown', (req, res) => {
+       res.status(404).json({ error: 'Not Found' });
+     });
+     ```
+
+8. **500 Internal Server Error**
+   - **Meaning**: The server has encountered a situation it doesn't know how to handle.
+   - **Example**:
+     ```javascript
+     app.get('/error', (req, res) => {
+       res.status(500).json({ error: 'Internal Server Error' });
+     });
+     ```
+
+9. **502 Bad Gateway**
+   - **Meaning**: The server, while acting as a gateway or proxy, received an invalid response from the upstream server.
+   - **Example**:
+     ```javascript
+     app.get('/gateway', (req, res) => {
+       res.status(502).json({ error: 'Bad Gateway' });
+     });
+     ```
+
+10. **503 Service Unavailable**
+    - **Meaning**: The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded.
+    - **Example**:
+      ```javascript
+      app.get('/maintenance', (req, res) => {
+        res.status(503).json({ error: 'Service Unavailable' });
+      });
+      ```
+
+### Summary Table:
+
+| Status Code | Meaning                             | Example Usage                              |
+|-------------|-------------------------------------|--------------------------------------------|
+| 200         | OK                                  | `res.status(200).send('Success');`         |
+| 201         | Created                             | `res.status(201).json(newUser);`           |
+| 204         | No Content                          | `res.status(204).end();`                   |
+| 400         | Bad Request                         | `res.status(400).json({ error: 'Bad Request' });` |
+| 401         | Unauthorized                        | `res.status(401).json({ error: 'Unauthorized' });` |
+| 403         | Forbidden                           | `res.status(403).json({ error: 'Forbidden' });` |
+| 404         | Not Found                           | `res.status(404).json({ error: 'Not Found' });` |
+| 500         | Internal Server Error               | `res.status(500).json({ error: 'Internal Server Error' });` |
+| 502         | Bad Gateway                         | `res.status(502).json({ error: 'Bad Gateway' });` |
+| 503         | Service Unavailable                 | `res.status(503).json({ error: 'Service Unavailable' });` |
+

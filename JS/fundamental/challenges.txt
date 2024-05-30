@@ -4,3 +4,15 @@
 3. Apply a discount (10%) to the total price.
 4. Output the discounted total.
 
+**Task**:
+1. Create variables for a phone number and an email address entered by a user.
+2. Check if the phone number contains 10 digits.
+3. Check if the email address contains an "@" symbol.
+4. If either validation fails, output an appropriate message. Otherwise, print "Login information is valid."
+
+**Task**:
+1. Create variables for three numbers.
+2. Use comparison operators to determine which number is the largest.
+3. Output the largest number.
+
+
