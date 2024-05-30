@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture-3</title>
+  </head>
+  <body>
+    <h1>javaScript object and array</h1>
+
+    <script>
+      //object to define person details
+      const employee = {
+        fullName: "krishna paudel",
+        age: "34",
+        qualification: "Bachelor completed",
+        experience: "8-year in accounting",
+        email: "pkrishna123@gmail.com",
+        adress: "jayabageshwori kathmandu",
+        isMarried: "true",
+        children: ["sagar, [age=5]", "kshitiz, [age= 8]"],
+
+        //function under object to
+        tax() {
+          const salary = 50000;
+          console.log(salary);
+          console.log("tax rate is 5%");
+        },
+      };
+
+      // array to provide information on fruits
+      const fruits = [
+        "mango [price: 300/kg, remain: 5kg]",
+        "mango [price: 300/kg, remain: 5kg]",
+        "mango [price: 300/kg, remain: 5kg]",
+        "apple [price: 400/kg , remain: 10kg]",
+        "banana [price: 150 per 12dozen, remain: 300 dozen]",
+        "orange [price:200/kg, remain: not available]",
+      ];
+
+      console.log(fruits);
+    </script>
+  </body>
+</html>

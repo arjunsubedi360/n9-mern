@@ -1,0 +1,54 @@
+Task
+<!-- 1. Create an object and provide details about a person.
+2. Create an array and provide information about fruits. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Create an Array of Fruits.</h2>
+    <h2>Create an Object of Person.</h2>
+    <script>
+        const fruits = ['Apple', 'Orange', 'Banana', 'Mango'];
+        // console.log(`List of Fruits`)
+        // console.log(fruits);
+        const person = {
+            name: "Ram",
+            surName: 'Bahadur Thapa',
+            Age: 30,
+            isVip: false,
+            hobbies: ['sleeping', 'coding']
+        };
+        person.academia = {
+            recentDegree: 'Msc',
+            recentPercentage: 79,
+            allDegrees: ['SEE', 'Bachelors', 'MSc'],
+            isQualified: true
+        };
+        const values = Object.values(person)
+        console.log(values);
+        console.log(values[5]);
+        // console.log(`Details about Ram: a Person Object`)
+        // console.log(person)
+        // console.log(`Change Last degree of Ram from MSc to MBA and add Watching Movies and Singing Songs as another Hobby`)
+        person.academia.recentDegree = 'MBA'
+        person.academia.allDegrees[2] = 'MBA';
+        person.hobbies[2] = 'Watching Movies';
+        person.hobbies[3] = 'Singing Songs';
+        //question: How to add two items in an array?
+        //Answer use Spread Operator.
+        //person.hobbies.push('Singing Songs');
+        // console.log(person)
+        //Try adding recentDegree in the last item of allDegree array.
+        //Inside same Object.
+
+
+    </script>
+</body>
+
+</html>
