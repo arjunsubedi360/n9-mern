@@ -1,0 +1,83 @@
+EXAMPLES
+
+Conditional statements are powerful tools in JavaScript that allow you to make decisions and control the flow of your code based on certain conditions. They are commonly used in various scenarios such as handling user input, validating data, and controlling program flow based on specific conditions. It's important to understand their syntax and usage in order to write efficient and effective JavaScript code.
+
+1. if():
+   The if statement is used to execute a block of code if a condition is true.
+
+Example:
+
+```javascript
+let age = 18;
+
+if (age >= 18) {
+  console.log("You are an adult.");
+}
+```
+
+2. if else:
+   The if else statement is used to execute one block of code if a condition is true and another block of code if the condition is false.
+
+Use case1: Displaying different messages based on the weather condition.
+Example:
+
+```javascript
+let weather = "sunny";
+
+if (weather === "sunny") {
+  console.log("It's a nice day outside.");
+} else {
+  console.log("It's not sunny today.");
+}
+
+Use case2: Checking if a person is an adult based on their age.
+let age = 18;
+if (age >= 18) {
+  console.log("You are eligible to vote!");
+} else {
+  console.log("You are not eligible to vote yet.");
+}
+```
+
+3. if else if:
+   The if elseif statement, also known as else if, is used to check multiple conditions in a sequence and execute different blocks of code based on the first true condition.
+
+Example:
+
+```javascript
+let time = 14;
+
+if (time < 12) {
+  console.log("Good morning!");
+} else if (time >= 12 && time < 18) {
+  console.log("Good afternoon!");
+} else {
+  console.log("Good evening!");
+}
+```
+
+Use case: Greeting users with different messages based on the time of day.
+
+4. switch (when):
+   The switch statement, also known as when, is used to evaluate an expression and execute different blocks of code based on the value of the expression.
+
+Use case: Displaying different messages based on the day of the week.
+Example:
+
+```javascript
+let day = "Monday";
+let keyword = "Monday";
+
+switch (day) {
+  case "Monday":
+    console.log("It's the start of the week.");
+    break;
+  case "Tuesday":
+    console.log("It's the second day of the week.");
+    break;
+  default:
+    console.log("It's not Monday or Tuesday.");
+    break;
+}
+```
+

@@ -1,0 +1,212 @@
+
+Challenge 1: Checking if a number is positive, negative, or zero
+
+```javascript
+let num = -5; // Change this to test different numbers
+
+if (num > 0) {
+  console.log("The number is positive.");
+} else if (num < 0) {
+  console.log("The number is negative.");
+} else {
+  console.log("The number is zero.");
+}
+```
+
+Challenge 2: Checking if a user is logged in and displaying a welcome message or login prompt
+
+```javascript
+let isLoggedIn = true; // Change this to test different scenarios
+
+if (isLoggedIn) {
+  console.log("Welcome! You are logged in.");
+} else {
+  console.log("Please log in to continue.");
+}
+```
+
+Challenge 3: Checking if a given year is a leap year and displaying a message accordingly
+
+```javascript
+let year = 2020; // Change this to test different years
+
+if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+  console.log(year + " is a leap year.");
+} else {
+  console.log(year + " is not a leap year.");
+}
+```
+Other challenges ans
+1. Odd or Even:
+```javascript
+let num = prompt("Enter a number:");
+if (num % 2 === 0) {
+  console.log("The number is even.");
+} else {
+  console.log("The number is odd.");
+}
+```
+
+2. Grade Calculator:
+```javascript
+let grade = prompt("Enter your numerical grade:");
+if (grade >= 90) {
+  console.log("Your letter grade is A.");
+} else if (grade >= 80) {
+  console.log("Your letter grade is B.");
+} else if (grade >= 70) {
+  console.log("Your letter grade is C.");
+} else if (grade >= 60) {
+  console.log("Your letter grade is D.");
+} else {
+  console.log("Your letter grade is F.");
+}
+```
+
+3. Leap Year Checker:
+```javascript
+let year = prompt("Enter a year:");
+if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+  console.log(year + " is a leap year.");
+} else {
+  console.log(year + " is not a leap year.");
+}
+```
+
+4. Temperature Converter:
+```javascript
+let temp = prompt("Enter a temperature:");
+let unit = prompt("Enter the unit (F for Fahrenheit, C for Celsius):");
+if (unit === 'F') {
+  let celsius = (temp - 32) * 5/9;
+  console.log(temp + "°F is equivalent to " + celsius + "°C.");
+} else if (unit === 'C') {
+  let fahrenheit = (temp * 9/5) + 32;
+  console.log(temp + "°C is equivalent to " + fahrenheit + "°F.");
+} else {
+  console.log("Invalid unit. Please enter F for Fahrenheit or C for Celsius.");
+}
+```
+
+5. Max and Min Finder:
+```javascript
+let numbers = [12, 45, 67, 89, 23, 56, 78];
+let max = numbers[0];
+let min = numbers[0];
+
+for (let i = 1; i < numbers.length; i++) {
+  if (numbers[i] > max) {
+    max = numbers[i];
+  }
+  if (numbers[i] < min) {
+    min = numbers[i];
+  }
+}
+
+console.log("Maximum number: " + max);
+console.log("Minimum number: " + min);
+```
+
+6. Positive or Negative Number:
+```javascript
+let num = prompt("Enter a number:");
+if (num > 0) {
+  console.log("The number is positive.");
+} else if (num < 0) {
+  console.log("The number is negative.");
+} else {
+  console.log("The number is zero.");
+}
+```
+
+7. Palindrome Checker:
+```javascript
+let word = prompt("Enter a word or phrase:");
+let cleanedWord = word.toLowerCase().replace(/[^a-z0-9]/g, '');
+let reversedWord = cleanedWord.split('').reverse().join('');
+
+if (cleanedWord === reversedWord) {
+  console.log(word + " is a palindrome.");
+} else {
+  console.log(word + " is not a palindrome.");
+}
+```
+
+8. Voting Eligibility:
+```javascript
+let age = prompt("Enter your age:");
+if (age >= 18) {
+  console.log("You are eligible to vote.");
+} else {
+  console.log("You are not eligible to vote.");
+}
+```
+
+9. BMI Calculator:
+
+```javascript
+// BMI Calculator
+function calculateBMI(weight, height) {
+  // Convert height to meters
+  height = height / 100;
+  
+  // Calculate BMI
+  let bmi = weight / (height * height);
+  
+  // Determine BMI category
+  let category;
+  if (bmi < 18.5) {
+    category = "Underweight";
+  } else if (bmi >= 18.5 && bmi < 24.9) {
+    category = "Normal weight";
+  } else if (bmi >= 25 && bmi < 29.9) {
+    category = "Overweight";
+  } else {
+    category = "Obese";
+  }
+  
+  return category;
+}
+
+// Test example usage
+let weight = 70; // kg
+let height = 170; // cm
+let bmiCategory = calculateBMI(weight, height);
+console.log("BMI Category: " + bmiCategory);
+```
+
+10. Password Validator:
+
+```javascript
+// Password Validator
+function validatePassword(password) {
+  // Check minimum length
+  if (password.length < 8) {
+    return "Password must be at least 8 characters long";
+  }
+  
+  // Check for presence of special characters
+  let specialChar = /[!@#$%^&*(),.?":{}|<>]/;
+  if (!specialChar.test(password)) {
+    return "Password must contain at least one special character";
+  }
+  
+  // Check for combination of uppercase and lowercase letters
+  let uppercaseChar = /[A-Z]/;
+  let lowercaseChar = /[a-z]/;
+  if (!uppercaseChar.test(password) || !lowercaseChar.test(password)) {
+    return "Password must contain a combination of uppercase and lowercase letters";
+  }
+  
+  return "Password is valid";
+}
+
+// Test example usage
+let password1 = "Abcd1234!";
+let password2 = "password";
+let password3 = "PASSWORD123";
+console.log(validatePassword(password1)); // Output: Password is valid
+console.log(validatePassword(password2)); // Output: Password must be at least 8 characters long
+console.log(validatePassword(password3)); // Output: Password must contain at least one special character
+```
+
