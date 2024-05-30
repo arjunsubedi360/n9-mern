@@ -9,8 +9,6 @@ const port = 5000;
 app.use(express.json());
 
 
-// for users CRUD
-
 app.get("/users",(request, response)=>{
   response.status(200).json(users)
 })
