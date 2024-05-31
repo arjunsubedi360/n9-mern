@@ -1,17 +1,17 @@
-// let day = "saturday";
-// switch (day) {
-//   case "sunday":
-//     console.log("this is day 1");
-//     break;
-//   case "monday":
-//     console.log("this is day 2");
-//     break;
-//   case "tuesday":
-//     console.log("this is 3rd day");
-//     break;
-//   default:
-//     console.log("i am only trying to practise");
-// }
+let day = "saturday";
+switch (day) {
+  case "sunday":
+    console.log("this is day 1");
+    break;
+  case "monday":
+    console.log("this is day 2");
+    break;
+  case "tuesday":
+    console.log("this is 3rd day");
+    break;
+  default:
+    console.log("i am only trying to practise");
+}
 
 let today = new Date();
 console.log(today);
@@ -28,6 +28,7 @@ switch (time) {
   case time < 17:
     console.log("good afternoon");
     break;
+
   case time < 19:
     console.log("good evening");
     break;
