@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Nirtesh Sir reply</h1>
+  <p>Line 1: Using String</p>
+  <p>Line 2: Using Template Literal</p>
+  <p>Line 3: Using Arrays</p>
+  <script>
+    //       **Task**:
+    // 1. Create variables for the prices of three items.
+    // 2. Calculate the total price by adding the individual item prices.
+    // 3. Apply a discount (10%) to the total price.
+    // 4. Output the discounted total.
+    /* Write answer here */
+    const item1Price = 30;
+    const item2Price = 40;
+    const item3Price = 50;
+    // item1Price = 45;
+    const totalPrice = item1Price + item2Price + item3Price;
+    const discountedPrice = totalPrice - 0.1 * totalPrice;
+    console.log("Total Price is " + totalPrice + ". And after 10% Discount total Payable amount is: " + discountedPrice + ". Thank You")
+    // Using template Literal
+    console.log(`Total Price is: ${item1Price + item2Price + item3Price}. And after 10% Discount, total Payable amount is: ${totalPrice - 0.1 * totalPrice} Thank You!`);
+    // Using JS Array Methods
+    const itemPrices = [30, 40, 50];
+    let discountedPriceArray = 0;
+    let totalPriceArray = 0;
+    //if "    let discountedPriceArray = 0;" Uncaught TypeError: Assignment to constant variable.
+    for (let i = 0; i < itemPrices.length; i++) {
+      totalPriceArray += itemPrices[i];
+      discountedPriceArray += itemPrices[i] - 0.1 * itemPrices[i];
+    }
+    console.log(`Total Price is: ${totalPriceArray}. And after 10% Discount, total Payable amount is: ${discountedPriceArray}. Thank You!`);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+Create a object with different keys such as 
+name, email, isMarried, empty string 
+and put falsy values on condtion to replicate the 
+falsy condition.
