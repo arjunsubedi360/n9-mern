@@ -31,12 +31,9 @@ while (j < 5) {
   j++;
 }
 
-let text = "";
 let i = 0;
 do {
-  text = text + i
-console.log(text);
-  i++;
+ console.log(i)
 }
 while (i < 5);
 ```
