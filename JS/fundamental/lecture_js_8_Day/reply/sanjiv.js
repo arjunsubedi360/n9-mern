@@ -19,7 +19,7 @@ let time = today.getHours();
 console.log(time);
 
 switch (time) {
-  case time < 6:
+  case TimeRanges:
     console.log("good morning, this is class time");
     break;
   case time < 12:
