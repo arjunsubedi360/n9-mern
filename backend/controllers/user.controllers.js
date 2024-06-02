@@ -1,5 +1,5 @@
-import { userCreateService } from "../services/index.js";
+import { getSingleUser } from "../services/index.js";
 
-export const get = (request, response) => {
-    response.send(userCreateService());
+export const getUser = (request, response) => {
+    response.send(getSingleUser());
 };
