@@ -60,4 +60,7 @@ Find the maximum sum of any subarray in a given array.
 
 - **Example**: For `[−2, 1, −3, 4, −1, 2, 1, −5, 4]`, the maximum subarray sum is `6` (`[4, −1, 2, 1]`).
 
-These challenges cover a wide range of skills, including iteration, sorting, optimization, searching, and mathematical operations. Would you like more details on a specific problem or a solution to one of these challenges?
+
+Array methods
+### 13. Create a array with some falsy values [null, undefined,1,4].
+Return only truthy values.
