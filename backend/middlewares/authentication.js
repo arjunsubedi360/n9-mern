@@ -1,4 +1,3 @@
-import { request, response } from "express";
 
 export const authentication = (request, response, next) => {
   const id = 1;
