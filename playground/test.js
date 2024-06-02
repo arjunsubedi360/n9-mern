@@ -129,7 +129,66 @@ If you have no decimal datatype available, an alternative is to work with intege
 //     console.log("Chill maro");
 // }
 
-
-// 1-12 am //  Good morning 
+// 1-12 am //  Good morning
 // 12-6 pm // Good Afternoon
 // 6-12 pm // Good night
+
+/* 
+
+Why function : set of program that helps to run code
+*/
+
+function sum(a, b) {
+  // params
+  return a + b;
+  //    return  result;// declaration/ statement
+}
+
+// const result = sum(1,3) // argument
+console.log(sum(1, 3));
+
+// function simple defination
+// Array of methods
+// filter, map, forEach, reduce
+
+const users = [
+  { id: 1, age: 17, name: "Arjun" },
+  { id: 1, age: 22, name: "Sudip" },
+  { id: 1, age: 45, name: "Sanjiv" },
+  { id: 1, age: 17, name: "Himmat" },
+  { id: 1, age: 20, name: "Nirtesh" },
+  { id: 1, name: "Nirtesh" },
+];
+
+//Map is used to manipulate elements data and will return a new array
+
+// const usersWithVotingAge = users.map(function (user) {
+//   if (user.age >= 18) {
+//     user.canVote = true;
+//   } else {
+//     user.canVote = false;
+//   }
+//   return user;
+// });
+
+// console.log(usersWithVotingAge);
+
+
+// const usersWithVotingAge = users.filter(function (user) {
+//  if(user.age >= 18) {
+//     return user
+//  }
+// });
+
+
+// console.log(usersWithVotingAge)
+
+let updatedUser = []
+users.forEach(function (user, index) {
+    console.log(user, index)
+    if(user.age <= 18) {
+        updatedUser.push(user)
+    }
+})
+
+console.log(updatedUser);

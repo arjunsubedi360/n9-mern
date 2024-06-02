@@ -1,0 +1,132 @@
+Arrays are fundamental data structures in programming, and many languages provide a variety of built-in methods to manipulate them. Below is a list of commonly used array methods across different programming languages, with examples given in JavaScript to illustrate their common uses:
+
+### 1. **push()**
+Adds one or more elements to the end of an array.
+
+```javascript
+let arr = [1, 2, 3];
+arr.push(4); // [1, 2, 3, 4]
+```
+
+### 2. **pop()**
+Removes the last element from an array.
+
+```javascript
+let arr = [1, 2, 3];
+arr.pop(); // [1, 2]
+```
+
+### 3. **shift()**
+Removes the first element from an array.
+
+```javascript
+let arr = [1, 2, 3];
+arr.shift(); // [2, 3]
+```
+
+### 4. **unshift()**
+Adds one or more elements to the beginning of an array.
+
+```javascript
+let arr = [1, 2, 3];
+arr.unshift(0); // [0, 1, 2, 3]
+```
+
+### 5. **slice()**
+Returns a shallow copy of a portion of an array.
+
+```javascript
+let arr = [1, 2, 3, 4, 5];
+let newArr = arr.slice(1, 4); // [2, 3, 4]
+```
+
+### 6. **splice()**
+Changes the content of an array by removing or replacing existing elements.
+
+```javascript
+let arr = [1, 2, 3, 4];
+arr.splice(1, 2, 'a', 'b'); // [1, 'a', 'b', 4]
+```
+
+### 7. **forEach()**
+Executes a provided function once for each array element.
+
+```javascript
+let arr = [1, 2, 3];
+arr.forEach(item => console.log(item)); // Output: 1 2 3
+```
+
+### 8. **map()**
+Creates a new array with the results of calling a function for every array element.
+
+```javascript
+let arr = [1, 2, 3];
+let newArr = arr.map(x => x * 2); // [2, 4, 6]
+```
+
+### 9. **filter()**
+Creates a new array with all elements that pass a test.
+
+```javascript
+let arr = [1, 2, 3, 4, 5];
+let evenArr = arr.filter(x => x % 2 === 0); // [2, 4]
+```
+
+### 10. **reduce()**
+Applies a function against an accumulator and each element to reduce it to a single value.
+
+```javascript
+let arr = [1, 2, 3, 4];
+let sum = arr.reduce((acc, val) => acc + val, 0); // 10
+```
+
+### 11. **find()**
+Returns the first element that satisfies a condition.
+
+```javascript
+let arr = [1, 2, 3, 4, 5];
+let result = arr.find(x => x > 3); // 4
+```
+
+### 12. **sort()**
+Sorts the elements of an array in place.
+
+```javascript
+let arr = [5, 2, 3, 1, 4];
+arr.sort(); // [1, 2, 3, 4, 5]
+```
+
+### 13. **concat()**
+Returns a new array that combines two or more arrays.
+
+```javascript
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5];
+let combined = arr1.concat(arr2); // [1, 2, 3, 4, 5]
+```
+
+### 14. **includes()**
+Determines whether an array contains a specific value.
+
+```javascript
+let arr = [1, 2, 3];
+let contains = arr.includes(2); // true
+```
+
+### 15. **join()**
+Joins all elements into a string.
+
+```javascript
+let arr = [1, 2, 3];
+let joined = arr.join('-'); // '1-2-3'
+```
+
+### 16. **indexOf()**
+Returns the first index of a specified element.
+
+```javascript
+let arr = [1, 2, 3];
+let index = arr.indexOf(2); // 1
+```
+
+These are some of the most common array methods in programming, with examples given in JavaScript. Each method has its unique use cases and can be incredibly useful in various programming scenarios.
