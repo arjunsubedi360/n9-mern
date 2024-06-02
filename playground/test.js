@@ -173,22 +173,20 @@ const users = [
 
 // console.log(usersWithVotingAge);
 
-
 // const usersWithVotingAge = users.filter(function (user) {
 //  if(user.age >= 18) {
 //     return user
 //  }
 // });
 
-
 // console.log(usersWithVotingAge)
 
-let updatedUser = []
+let updatedUser = [];
 users.forEach(function (user, index) {
-    console.log(user, index)
-    if(user.age <= 18) {
-        updatedUser.push(user)
-    }
-})
+  console.log(user, index);
+  if (user.age <= 18) {
+    updatedUser.push(user);
+  }
+});
 
 console.log(updatedUser);
