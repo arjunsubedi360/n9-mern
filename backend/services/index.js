@@ -1,1 +1,2 @@
-export * from './users.service.js'
+export * from './user.services.js';
+export * from './post.services.js'

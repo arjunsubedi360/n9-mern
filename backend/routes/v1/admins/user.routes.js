@@ -1,0 +1,8 @@
+import { Router } from "express";
+import { get } from "../../../controllers/index.js"; // Importing from the index.js of controllers
+
+const router = Router();
+
+router.get("/users", get);
+
+export default router;

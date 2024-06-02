@@ -1,5 +1,5 @@
 import { userCreateService } from "../services/index.js";
 
-export const userControllerGet = (request, response) => {
+export const get = (request, response) => {
     response.send(userCreateService());
 };
