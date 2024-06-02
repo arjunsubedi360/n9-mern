@@ -1,0 +1,34 @@
+### Arrays
+An array is an ordered collection of elements, typically indexed by integers. Elements in an array can be of any data type, and arrays are useful for storing sequences of values.
+
+#### Examples
+1. **Creating an Array**: 
+   ```javascript
+   const fruits = ['Apple', 'Banana', 'Cherry'];
+   ```
+
+2. **Accessing Array Elements**:
+   ```javascript
+   console.log(fruits[0]); // Outputs: 'Apple'
+   console.log(fruits[1]); // Outputs: 'Banana'
+   ```
+
+3. **Array Operations**:
+   ```javascript
+   fruits.push('Dragonfruit'); // Adds an element to the end
+   fruits.pop(); // Removes the last element
+   ```
+
+4. **Array Iteration**:
+   ```javascript
+   fruits.forEach((fruit) => {
+       console.log(fruit);
+   });
+   ```
+
+5. **Mapping and Filtering**:
+   ```javascript
+   const lengths = fruits.map((fruit) => fruit.length); // Gets lengths of each fruit
+   const filtered = fruits.filter((fruit) => fruit.startsWith('B')); // Filters fruits starting with 'B'
+   ```
+
