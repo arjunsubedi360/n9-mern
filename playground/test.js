@@ -138,27 +138,27 @@ If you have no decimal datatype available, an alternative is to work with intege
 Why function : set of program that helps to run code
 */
 
-function sum(a, b) {
-  // params
-  return a + b;
-  //    return  result;// declaration/ statement
-}
+// function sum(a, b) {
+//   // params
+//   return a + b;
+//   //    return  result;// declaration/ statement
+// }
 
-// const result = sum(1,3) // argument
-console.log(sum(1, 3));
+// // const result = sum(1,3) // argument
+// console.log(sum(1, 3));
 
 // function simple defination
 // Array of methods
 // filter, map, forEach, reduce
 
-const users = [
-  { id: 1, age: 17, name: "Arjun" },
-  { id: 1, age: 22, name: "Sudip" },
-  { id: 1, age: 45, name: "Sanjiv" },
-  { id: 1, age: 17, name: "Himmat" },
-  { id: 1, age: 20, name: "Nirtesh" },
-  { id: 1, name: "Nirtesh" },
-];
+// const users = [
+//   { id: 1, age: 17, name: "Arjun" },
+//   { id: 1, age: 22, name: "Sudip" },
+//   { id: 1, age: 45, name: "Sanjiv" },
+//   { id: 1, age: 17, name: "Himmat" },
+//   { id: 1, age: 20, name: "Nirtesh" },
+//   { id: 1, name: "Nirtesh" },
+// ];
 
 //Map is used to manipulate elements data and will return a new array
 
@@ -181,12 +181,60 @@ const users = [
 
 // console.log(usersWithVotingAge)
 
-let updatedUser = [];
-users.forEach(function (user, index) {
-  console.log(user, index);
-  if (user.age <= 18) {
-    updatedUser.push(user);
-  }
-});
+// let updatedUser = [];
+// users.forEach(function (user, index) {
+//   console.log(user, index);
+//   if (user.age <= 18) {
+//     updatedUser.push(user);
+//   }
+// });
 
-console.log(updatedUser);
+// // console.log(updatedUser);
+// console.log(sum())
+// function sum() {
+// return 1 + 3;
+// };
+
+// function sum() {
+//   return 3 + 5;
+// }
+// const user = {
+//   name: "arjun",
+//   role: "user"
+// };
+
+// const admin = {
+//   id: 1,
+//   name: "admin",
+//   role: "admin"
+// }
+
+// let userRole = "";
+
+// if(user.id) {
+//   userRole = "User"
+// } else if(admin.id) {
+//   userRole = "Admin"
+// } else {
+//   userRole = "default"
+// }
+
+// console.log("userRole", userRole)
+
+// Pure function
+// Function expression
+//Imedietly invoke function
+// (function () {
+//   console.log(1 + 3);
+// })();
+
+
+//Declare // invoke/Call // return;
+
+
+
+
+
+
+
+
