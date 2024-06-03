@@ -17,10 +17,10 @@
       // });
       // console.log(withEvenNumber);
 
-      let arrayValue = [null, undefined, 1, 4, "", "sanjiv"];
-      console.log(arrayValue);
-      let truthyValue = arrayValue.filter((Boolean)).filter(Number);
-      console.log(truthyValue);
+      let arrayValue = [null, undefined, 1, 4, " ", "sanjiv"];
+      console.log("original array:", arrayValue);
+      let truthyValue = arrayValue.filter(Boolean);
+      console.log("Array after removing falsy values :", truthyValue);
     </script>
   </body>
 </html>
