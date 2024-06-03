@@ -232,7 +232,10 @@ Why function : set of program that helps to run code
 //Declare // invoke/Call // return;
 
 
-
+let arrayValue = [null, undefined, 1, 4, "", "sanjiv"];
+console.log(arrayValue);
+let truthyValue = arrayValue.filter(Boolean);
+console.log(truthyValue);
 
 
 
