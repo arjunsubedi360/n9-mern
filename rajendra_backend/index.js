@@ -1,12 +1,12 @@
 
-import express, { request } from 'express';
+import express, { request,response } from 'express';
 import { HttpStatusEnum } from "./status-enum.js";
 import { lang, successResponseData } from "./successResponseData.js";
 import { posts } from './posts.js';
 import { users } from "./users.js";
 
 const app = express();
-const port = 5000;
+const port = 3000;
 
 app.use(express.json())
 
