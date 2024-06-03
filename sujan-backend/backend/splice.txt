@@ -1,0 +1,33 @@
+### Adding Elements:
+
+```javascript
+let array = [1, 2, 3, 4, 5];
+
+// Add a single element at index 2
+array.splice(2, 0, 6); // Inserts 6 at index 2
+// Result: [1, 2, 6, 3, 4, 5]
+
+// Add multiple elements at index 3
+array.splice(3, 0, 7, 8); // Inserts 7 and 8 at index 3
+// Result: [1, 2, 6, 7, 8, 3, 4, 5]
+```
+
+### Deleting Elements:
+
+```javascript
+let array = [1, 2, 3, 4, 5];
+
+// Remove a single element at index 2
+array.splice(2, 1); // Removes element at index 2
+// Result: [1, 2, 4, 5]
+
+// Remove multiple elements starting from index 1
+array.splice(1, 2); // Removes 2 elements starting from index 1
+// Result: [1, 5]
+```
+
+In both examples:
+
+- The first parameter (`start`) indicates the index at which the operation should start.
+- For adding elements, the second parameter (`deleteCount`) is set to `0` because no elements are being removed.
+- For deleting elements, the second parameter (`deleteCount`) specifies the number of elements to remove. If it's `0`, no elements are removed, and if omitted, all elements from the `start` index to the end of the array will be removed.
