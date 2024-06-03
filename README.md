@@ -4,9 +4,14 @@
 # 4. Lhachhen Wanjyu Lama
 # 4. Mingtindu  Sherpa
 # 5. Sujan Magar
-# 6. Learning conflict in git 
 # 6. change
+<<<<<<< HEAD
 # 7. aayush is a good mistake
 # 8. test
 # 9. aYUSH IS HANDSOME GUY 
 
+=======
+# 7. Sujan is a good boy
+# 8. He drinks milk every day.
+# 9. Just for understanding 
+>>>>>>> ff8f841cf367713f87f7b9050c235e340c58326e
