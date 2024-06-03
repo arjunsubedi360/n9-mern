@@ -228,16 +228,29 @@ Why function : set of program that helps to run code
 //   console.log(1 + 3);
 // })();
 
-
 //Declare // invoke/Call // return;
 
+// let arrayValue = [null, undefined, 1, 4, "", "sanjiv"];
+// console.log(arrayValue);
+// let truthyValue = arrayValue.filter(Boolean);
+// console.log(truthyValue);
 
-let arrayValue = [null, undefined, 1, 4, "", "sanjiv"];
-console.log(arrayValue);
-let truthyValue = arrayValue.filter(Boolean);
-console.log(truthyValue);
+// function greet(firstName, lastName) {
+//   return firstName + " " + lastName;
+// };
+// console.log(greet("Arjun", "Subedi"))
 
+function square(x) {
+  return x * x;
+};
 
-
-
-
+function jpt() { //Higher order function
+  return function square(x) {
+    return x * x;
+  };
+}
+// Using the higher-order function
+const result = jpt()(5); //first argumnet square func // 2nd num
+console.log(result)
+// const data = result(5);
+// console.log(data); // Output: 25
