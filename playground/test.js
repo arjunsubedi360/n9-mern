@@ -129,7 +129,128 @@ If you have no decimal datatype available, an alternative is to work with intege
 //     console.log("Chill maro");
 // }
 
-
-// 1-12 am //  Good morning 
+// 1-12 am //  Good morning
 // 12-6 pm // Good Afternoon
 // 6-12 pm // Good night
+
+/* 
+
+Why function : set of program that helps to run code
+*/
+
+// function sum(a, b) {
+//   // params
+//   return a + b;
+//   //    return  result;// declaration/ statement
+// }
+
+// // const result = sum(1,3) // argument
+// console.log(sum(1, 3));
+
+// function simple defination
+// Array of methods
+// filter, map, forEach, reduce
+
+// const users = [
+//   { id: 1, age: 17, name: "Arjun" },
+//   { id: 1, age: 22, name: "Sudip" },
+//   { id: 1, age: 45, name: "Sanjiv" },
+//   { id: 1, age: 17, name: "Himmat" },
+//   { id: 1, age: 20, name: "Nirtesh" },
+//   { id: 1, name: "Nirtesh" },
+// ];
+
+//Map is used to manipulate elements data and will return a new array
+
+// const usersWithVotingAge = users.map(function (user) {
+//   if (user.age >= 18) {
+//     user.canVote = true;
+//   } else {
+//     user.canVote = false;
+//   }
+//   return user;
+// });
+
+// console.log(usersWithVotingAge);
+
+// const usersWithVotingAge = users.filter(function (user) {
+//  if(user.age >= 18) {
+//     return user
+//  }
+// });
+
+// console.log(usersWithVotingAge)
+
+// let updatedUser = [];
+// users.forEach(function (user, index) {
+//   console.log(user, index);
+//   if (user.age <= 18) {
+//     updatedUser.push(user);
+//   }
+// });
+
+// // console.log(updatedUser);
+// console.log(sum())
+// function sum() {
+// return 1 + 3;
+// };
+
+// function sum() {
+//   return 3 + 5;
+// }
+// const user = {
+//   name: "arjun",
+//   role: "user"
+// };
+
+// const admin = {
+//   id: 1,
+//   name: "admin",
+//   role: "admin"
+// }
+
+// let userRole = "";
+
+// if(user.id) {
+//   userRole = "User"
+// } else if(admin.id) {
+//   userRole = "Admin"
+// } else {
+//   userRole = "default"
+// }
+
+// console.log("userRole", userRole)
+
+// Pure function
+// Function expression
+//Imedietly invoke function
+// (function () {
+//   console.log(1 + 3);
+// })();
+
+//Declare // invoke/Call // return;
+
+// let arrayValue = [null, undefined, 1, 4, "", "sanjiv"];
+// console.log(arrayValue);
+// let truthyValue = arrayValue.filter(Boolean);
+// console.log(truthyValue);
+
+// function greet(firstName, lastName) {
+//   return firstName + " " + lastName;
+// };
+// console.log(greet("Arjun", "Subedi"))
+
+function square(x) {
+  return x * x;
+};
+
+function jpt() { //Higher order function
+  return function square(x) {
+    return x * x;
+  };
+}
+// Using the higher-order function
+const result = jpt()(5); //first argumnet square func // 2nd num
+console.log(result)
+// const data = result(5);
+// console.log(data); // Output: 25
