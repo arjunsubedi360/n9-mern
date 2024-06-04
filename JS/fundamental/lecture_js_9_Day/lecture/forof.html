@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Employees</h2>
+<p>Displaying employee names and job titles using for-of loop:</p>
+
+<ul id="employeeList">
+  <li></li>
+</ul>
+
+<script>
+// An array of employee objects
+const employees = [
+  {name: "John Doe", jobTitle: "Software Developer"},
+  {name: "Jane Smith", jobTitle: "UI/UX Designer"},
+  {name: "Michael Johnson", jobTitle: "Data Scientist"},
+  {name: "Samantha Brown", jobTitle: "Project Manager"}
+];
+
+// Get the unordered list element from the DOM
+const ul = document.getElementById("employeeList");
+
+// Iterate through the array of employees using for-of loop
+for (let employee of employees) {
+  // Create a new list item element
+  const li = document.createElement("li");
+  
+  // Get the name and jobTitle properties of the current employee
+  const name = employee.name;
+  const jobTitle = employee.jobTitle;
+  
+  // Set the text content of the list item to the employee name and job title
+  li.textContent = `${name} - ${jobTitle}`;
+  
+  // Append the list item to the unordered list
+  ul.appendChild(li);
+}
+</script>
+
+</body>
+</html>

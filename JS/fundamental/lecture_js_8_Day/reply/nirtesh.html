@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Times of Our Life!!!!!</h1>
+    <script>
+        const date = new Date();
+        const timeNow = date.getHours();
+        // let timeNow = 23;
+        switch (true) {
+            case (timeNow <= 10 && timeNow >= 0):
+                console.log('Good Morning');
+                document.write("<h1>" + "Gooooood Morninggggg Kathmandu!! &#x1F611" + "</h1>");
+                break;
+            case (timeNow > 10 && timeNow <= 17):
+                document.write("<h1>" + "Office Time Now &#x1F615" + "</h1>");
+                break;
+            case (timeNow > 17 && timeNow <= 22):
+                document.write("<h1>" + "Party Time &#128514" + "</h1>");
+                break;
+            case (timeNow > 22 && timeNow <= 23):
+                document.write("<h1>" + "Sleepy Sleepy &#x1F62A" + "</h1>");
+                break;
+            default:
+                console.log('Something is wrong');
+                document.write("<h1>" + "Something is Wrong" + "</h1>");
+                break;
+        };
+        console.log(typeof timeNow)
+    </script>
+</body>
+
+</html>

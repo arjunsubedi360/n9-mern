@@ -1,31 +1,17 @@
 import express from "express";
-
-import posts from "./posts.js";
+import { AdminRouter } from "./routes/v1/admins/index.js";
+import { notFound } from "./middlewares/notFound.js";
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
+// Middleware to parse JSON bodies
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("This is the home page");
-});
-app.get("/posts", (req, res) => {
-  res.json(posts);
-});
+app.use("/api/v1/admins", AdminRouter);
 
-app.post("/posts", (req, res) => {
-  //   const { id, title, content, createdBy } = req.body;
-  //   posts.id = id;
-  //   posts.title = title;
-  //   posts.content = content;
-  //   posts.createdBy = createdBy;
-  //   console.log(posts);
-  posts.push(req.body);
-  console.log(posts);
-  res.send("Data added successfully");
-});
+app.use(notFound);
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Example app listening on port ${port}`);
 });

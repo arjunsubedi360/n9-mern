@@ -1,0 +1,104 @@
+### Examples
+
+#### Example 1: Nested For Loop
+Print a multiplication table:
+
+```javascript
+for (let i = 1; i <= 5; i++) {  // Outer loop
+    let row = '';
+    for (let j = 1; j <= 5; j++) {  // Inner loop
+        row += (i * j) + '\t';  // Multiplication of i and j
+    }
+    console.log(row);  // Print each row
+}
+```
+
+#### Example 2: Nested For Loop with If-Else
+Print a pattern of stars and dashes:
+
+```javascript
+const n = 5;
+for (let i = 0; i < n; i++) {  // Outer loop
+    let row = '';
+    for (let j = 0; j < n; j++) {  // Inner loop
+        if ((i + j) % 2 === 0) {  // Condition to print star or dash
+            row += '* ';
+        } else {
+            row += '- ';
+        }
+    }
+    console.log(row);  // Print each row
+}
+```
+
+### Challenges
+
+#### Challenge 1: Sum of Multiples
+Write a nested loop to find the sum of all multiples of 3 or 5 below 100.
+
+```javascript
+let totalSum = 0;
+for (let i = 1; i < 100; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+        totalSum += i;
+    }
+}
+console.log("Sum of multiples of 3 or 5 below 100:", totalSum);
+```
+
+#### Challenge 2: Prime Number Grid
+Write a nested loop to print a grid where each cell contains a 'P' if the number is prime and '.' otherwise, for numbers from 1 to 25.
+
+```javascript
+function isPrime(num) {
+    if (num < 2) return false;
+    for (let k = 2; k <= Math.sqrt(num); k++) {
+        if (num % k === 0) return false;
+    }
+    return true;
+}
+
+const size = 5;
+for (let i = 1; i <= size; i++) {
+    let row = '';
+    for (let j = 1; j <= size; j++) {
+        let num = (i - 1) * size + j;
+        if (isPrime(num)) {
+            row += 'P ';
+        } else {
+            row += '. ';
+        }
+    }
+    console.log(row);
+}
+```
+
+#### Challenge 3: Pascal's Triangle
+Generate the first 5 rows of Pascal's Triangle using nested loops.
+
+```javascript
+const rows = 5;
+let triangle = [];
+
+for (let i = 0; i < rows; i++) {
+    let row = Array(i + 1).fill(1);  // Initialize a row with 1's
+    for (let j = 1; j < i; j++) {  // Update the inner values
+        row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+    }
+    triangle.push(row);
+}
+
+for (let row of triangle) {
+    console.log(row);
+}
+```
+
+### Explanation
+
+- **Example 1** uses nested loops to create a multiplication table.
+- **Example 2** uses nested loops with an if-else statement to print a pattern of stars and dashes.
+- **Challenge 1** calculates the sum of multiples of 3 or 5 below 100.
+- **Challenge 2** prints a grid of prime indicators ('P' for prime, '.' otherwise) for numbers 1 to 25.
+- **Challenge 3** generates Pascal's Triangle up to the 5th row.
+
+These examples and challenges should give you a good understanding of how to use nested loops and if-else statements in JavaScript.
