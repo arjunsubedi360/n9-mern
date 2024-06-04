@@ -192,17 +192,17 @@ app.delete("/posts/:id", (request, response) => {
 
 //users/id/posts CRUD
 
-app.get("/posts/:id/users", (request, response) => {
+app.get("/users/:id/posts", (request, response) => {
   const id = request.params.id;
   const user = users.filter((index) => index.id == id);
-  response.json({ posts: user });
+  response.json({ users: user });
 });
 
-app.delete("/posts/:id/users", (request, response) => {
+app.delete("/users/:id/posts", (request, response) => {
   const id = request.params.id;
   const index = users.findIndex((user) => user.id == id);
   users.splice(index, 1);
-  response.status(200).json({ data: users });
+  response.status(200).json({ users: users });
 });
 
 app.listen(port, () => {
