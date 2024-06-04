@@ -240,17 +240,105 @@ Why function : set of program that helps to run code
 // };
 // console.log(greet("Arjun", "Subedi"))
 
-function square(x) {
-  return x * x;
-};
+// function square(x) {
+//   return x * x;
+// };
 
-function jpt() { //Higher order function
-  return function square(x) {
-    return x * x;
-  };
-}
-// Using the higher-order function
-const result = jpt()(5); //first argumnet square func // 2nd num
-console.log(result)
+// function jpt() { //Higher order function
+//   return function square(x) {
+//     return x * x;
+//   };
+// }
+// // Using the higher-order function
+// const result = jpt()(5); //first argumnet square func // 2nd num
+// console.log(result)
 // const data = result(5);
 // console.log(data); // Output: 25
+
+//Function statement/declaration
+
+// function sum(a,b = 0) {  //params (variables of functions) //pure function
+//   console.log(a);
+//   console.log(b);
+//   const result = a + b;
+//   return result;
+// }
+
+// console.log(sum(7,8));
+
+// memory block | Code execution
+
+//Name function
+
+// function sum() {
+
+// }
+
+// // Function Expression
+// const sum = function (a,b) { //parameter
+//   const result = a + b;
+//   return result;
+// }
+
+// console.log(sum(2,4)); //argument
+
+// (
+//   function () {
+//     console.log("Hi there! I woke up")
+//     }
+// )()
+
+// const sum  = (a,b) => a + b; // arrow function /short hand function
+// console.log(sum(4,5)); // argument values
+
+// function square(x) {
+//   return x * x;
+// }
+
+// function jpt() {
+//  return function square(x) {
+//     return x * x;
+//   }
+// }
+
+// const result = jpt();
+
+// console.log(result(9));
+
+//function variable, argument, function return
+
+//Spread Operator
+
+// const { id, name } = { id: 1, name: "Arjun", age: 16 };
+
+// console.log(id, name);
+
+// function print(a, b,...rest) {
+//     console.log(a);
+//     console.log(b);
+
+//     console.log(...rest);
+//     // console.log(a, rest);
+// };
+
+// print(1,2,3,4,5,6)
+
+// const {
+//   id: userId,
+//   name,
+//   occupation: { job },
+// } = {
+//   id: 1,
+//   name: "Arjun",
+//   age: 16,
+//   occupation: { job: "developer" },
+// };
+
+// console.log(userId, name, job);
+
+// const a = 8,b = 9,c =9;
+
+// console.log(a,b,c);
+
+
+
