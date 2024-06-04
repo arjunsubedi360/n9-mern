@@ -8,7 +8,7 @@ const port = 3001;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-app.use("/api/v1", AdminRouter);
+app.use("/api/v1/admins", AdminRouter);
 
 app.use(notFound);
 

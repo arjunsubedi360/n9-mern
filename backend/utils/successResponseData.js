@@ -1,11 +1,10 @@
 
 export const lang = {
-  CREATE: (msg) => `${msg || ''} created successfully.`,
-  LIST: (msg) => `${msg || ''} list successfully.`
+  CREATE: (title) => `${title || ''} created successfully.`,
+  LIST: (title) => `${title || ''} list successfully.`
 }
 
   export function successResponseData({ data = null, message = '', response, statusCode = HttpStatusEnum.OK }) {
-    console.log("data", data);
     response.status(statusCode).json({
       success: true,
       message,
