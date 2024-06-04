@@ -3,6 +3,8 @@ import { getUsersList, createSingleUser } from "../services/index.js";
 import { lang, successResponseData } from "../utils/successResponseData.js";
 
 export const getUsers = (request, response) => {
+  const userId = request.params.id;
+  console.log(userId);
   const data = getUsersList();
 
   successResponseData({

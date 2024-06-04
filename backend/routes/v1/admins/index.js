@@ -1,9 +1,12 @@
+import { Router } from "express";
 import UserRouter from "./user.routes.js";
 import PostRouter from "./post.routes.js";
+import TableRouter from './table.routes.js';
 
-const AdminRouter = [
-  UserRouter,
-  PostRouter
-];
+const router = Router();
 
-export { AdminRouter };
+router.use("/users", UserRouter);
+router.use("/posts", PostRouter);
+router.use("/tables", TableRouter);
+
+export default router;
