@@ -1,3 +1,5 @@
+Thanks for the clarification. Let's focus solely on JavaScript concepts. Here's an explanation of each sub-topic specifically for JavaScript.
+
 ### 2.1 Functions
 Functions in JavaScript allow you to encapsulate code logic and use it in a modular and reusable way.
 

@@ -1,0 +1,67 @@
+Challenge 1: Extracting Specific Properties
+
+Scenario: You have an object containing information about a book. Use destructuring to extract specific properties and create separate variables for them.
+
+Object:
+
+JavaScript
+const book = {
+  title: "The Hitchhiker's Guide to the Galaxy",
+  author: "Douglas Adams",
+  yearPublished: 1979,
+  genre: "Science Fiction"
+};
+Use code with caution.
+content_copy
+Challenge:
+
+Destructure the title and author properties from the book object.
+Optionally, destructure the genre property with a default value of "Unknown" if it's not present in the object.
+Solution:
+
+JavaScript
+const { title, author } = book;
+
+const { genre = "Unknown" } = book; // Optional
+Use code with caution.
+content_copy
+Explanation:
+
+Curly braces {} define the destructuring pattern.
+title and author are directly assigned to variables of the same name, extracting them from the book object.
+The optional chaining operator (?.) with genre ensures safe access. If genre doesn't exist, the default value of "Unknown" is assigned.
+Challenge 2: Merging Objects
+
+Scenario: You have two objects containing information about a person (address and hobbies). Use spread syntax to create a new object that combines both sets of information.
+
+Object 1:
+
+JavaScript
+const personInfo = {
+  name: "Alice Smith",
+  age: 30
+};
+Use code with caution.
+content_copy
+Object 2:
+
+JavaScript
+const address = {
+  city: "New York",
+  street: "123 Main St"
+};
+Use code with caution.
+content_copy
+Challenge:
+
+Create a new object called fullPerson that merges the properties of personInfo and address using spread syntax.
+Solution:
+
+JavaScript
+const fullPerson = { ...personInfo, ...address };
+Use code with caution.
+content_copy
+Explanation:
+
+The spread operator (...) expands both personInfo and address objects, placing their properties within the curly braces.
+Since object properties are key-value pairs, duplicate keys (like name from both objects) will be overridden by the latter object (address in this case).
