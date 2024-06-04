@@ -3,6 +3,6 @@ import { getPost } from "../../../controllers/index.js"; // Importing from the i
 
 const router = Router();
 
-router.get("/posts", getPost);
+router.get("/", getPost);
 
 export default router;

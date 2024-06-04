@@ -3,7 +3,7 @@ import { getUsers, createUser } from "../../../controllers/index.js"; // Importi
 
 const router = Router();
 
-router.get("/:id", getUsers);
+router.get("/", getUsers);
 router.post("/", createUser);
 
 
