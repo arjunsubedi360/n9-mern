@@ -1,27 +1,15 @@
 export const users = [
     {
         id: 1,
-        name: "Arjun Subedi",
-        address: "Kathmandu"
+        name: 'Sujan Magar'
     },
     {
         id: 2,
-        name: "Nabin Lama",
-        address: "Jhapa"
+        name: 'Nabin Lama'
     },
+
     {
         id: 3,
-        name: "Sujan Magar",
-        address: "Khotang"
-    },
-    {
-        id: 4,
-        name: "Ayush Shrestha",
-        address: "Bhaktapur"
-    },
-    {
-        id: 5,
-        name: "Nigma Tendi Sherpa",
-        address: "Mustang"
+        name: 'Ayush Shrestha'
     }
 ]
