@@ -1,7 +1,6 @@
 import express, { request, response } from "express";
-//const express = require('express');
-import { HttpStatusEnum } from "./status-enum.js";
-import { lang, sucessResponseData } from "./successResponse.js";
+import { HttpStatusEnum } from './status-enum.js';
+import { lang, sucessResponseData, fail } from "./successResponse.js";
 const app = express();
 const port = 3000;
 

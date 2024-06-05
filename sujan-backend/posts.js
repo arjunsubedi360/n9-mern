@@ -17,5 +17,5 @@ export const posts = [
         title: "maRapper",
         content: "loldadadadsadad",
         createdBy: 2,
-      },
-]
+      }
+];
