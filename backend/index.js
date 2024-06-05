@@ -1,6 +1,7 @@
 import express from "express";
 import AdminRouter from "./routes/v1/admins/index.js";
 import { notFound } from "./middlewares/notFound.js";
+import { connectDb } from "./db/index.js";
 
 const app = express();
 const port = 3001;
@@ -12,6 +13,12 @@ app.use("/api/v1/admins", AdminRouter);
 
 app.use(notFound);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+function startServer() {
+  connectDb()
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+  });
+}
+
+
+startServer()

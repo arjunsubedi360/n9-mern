@@ -1,10 +1,9 @@
 import { Router } from "express";
-import { getUsers, createUser } from "../../../controllers/index.js"; // Importing from the index.js of controllers
+import { createTable } from "../../../controllers/index.js"; // Importing from the index.js of controllers
 
 const router = Router();
 
-router.get("/", getUsers);
-router.post("/", createUser);
+router.post("/", createTable);
 
 
 export default router;
