@@ -1,0 +1,22 @@
+{
+  "name": "n9-mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arjunsubedi360/n9-mern.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arjunsubedi360/n9-mern/issues"
+  },
+  "homepage": "https://github.com/arjunsubedi360/n9-mern#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}
