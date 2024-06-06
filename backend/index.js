@@ -1,15 +1,21 @@
 import express from "express";
-import AdminRouter from "./routes/v1/admins/index.js";
-import { notFound } from "./middlewares/notFound.js";
+import { dbCluster, dbName } from "./config/index.js";
 import { connectDb } from "./db/index.js";
+import { notFound } from "./middlewares/notFound.js";
+import AdminRouter from "./routes/v1/admins/index.js";
 
 const app = express();
 const port = 3001;
 
+console.log(dbName)
+console.log(dbCluster)
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-app.use("/api/v1/admins", AdminRouter);
+// this.app.use("/auth/public/v1", ProxyRouterPublic.map());
+// this.app.use("/auth/api/v1", ProxyRouterUser.map());
+// this.app.use("/auth/admin/v1", ProxyRouterAdmin.map());
+app.use("/auth/admin/v1", AdminRouter);
 
 app.use(notFound);
 

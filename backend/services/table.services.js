@@ -1,7 +1,9 @@
 import Table from "../models/Table.js";
-// Table resturant 
-// create, update, delete, updateMany, createMany, deleteMany, 
-export const createSingleTable = async (request, response) => {
-  const data = await Table.create({ slug: "new-slug" });
-  return data;
+// create, createMany, updateOne, updateMany, deleteOne, deleteMany, findOne, find()
+export const createSingleTable = async (payload) => {
+  console.log({ payload });
+  const { slug } = payload;
+  const data = await Table.create({ slug });
+  console.log(data);
+  return Table.findOne({ _id: data._id });
 };
