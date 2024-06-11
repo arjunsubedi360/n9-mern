@@ -1,4 +1,4 @@
-console.log(" I am running");
+// console.log(" I am running");
 /* 
 spread
 rest
@@ -58,12 +58,107 @@ ternary operator
 // console.log(array2.flat());
 
 //destructure in array
-const array = [1,3,5,6,7,8,9];
-const [a,,c] = array;
-console.log(a,c)
+// const array = [1,3,5,6,7,8,9];
+// const [a,,c] = array;
+// console.log(a,c)
 
-//spread in array
-const array1  =[1,3,[3,5]];
-const array2 = [5,6];
-const array3 = [...array1, ...array2];
-console.log(array3)
+// //spread in array
+// const array1  =[1,3,[3,5]];
+// const array2 = [5,6];
+// const array3 = [...array1, ...array2];
+// console.log(array3)
+
+
+
+// console.log("Hello I on first line")
+// function delayedGreet(name) {
+//     setTimeout(function() {
+//         console.log("Hello, World");
+//         // callback();
+//     }, 2000);
+// }
+// delayedGreet();
+// console.log("Hello I on  last line");
+// function sayGoodbye() {
+//     console.log("Goodbye!");
+// }
+
+
+// new Promise((resolve, reject)=> {
+//     const user  = "";
+//     if(!user) {
+//        reject("User not found")
+//     };
+//     resolve({id: 1, name: "Arjun"})
+// }).then((value)=> { //this part is executes when success
+//     console.log("success",value);
+// }).catch((error)=> {
+//     console.log("err",error ) //this part is executed when error comes
+// })
+
+
+
+const cart = [{ id: 1 }];
+// Create Cart Promise
+const createCart = () => {
+  return new Promise((resolve, reject) => {
+    // Simulate creating a shopping cart
+    setTimeout(() => {
+ 
+      resolve(cart);
+      // If an error occurs, reject the Promise
+      // reject("Error creating cart");
+    }, 1000);
+  });
+};
+
+// // Fetch Order Details Promise
+const fetchOrderDetails = (cart) => {
+  return new Promise((resolve, reject) => {
+    // Simulate fetching order details
+    setTimeout(() => {
+      const orderDetails = { ...cart, items: ['item1', 'item2'] };
+      resolve(orderDetails);
+      // reject("Error fetching order details");
+    }, 1000);
+  });
+};
+
+
+const cartDetail = createCart().then(fetchOrderDetails())
+// // Save Payment Info Promise
+// const savePaymentInfo = (orderDetails) => {
+//   return new Promise((resolve, reject) => {
+//     // Simulate saving payment information
+//     setTimeout(() => {
+//       const paymentInfo = { ...orderDetails, paymentMethod: 'Credit Card' };
+//       resolve(paymentInfo);
+//       // reject("Error saving payment info");
+//     }, 1000);
+//   });
+// };
+
+// // Update User Promise
+// const updateUser = (paymentInfo) => {
+//   return new Promise((resolve, reject) => {
+//     // Simulate updating user information
+//     setTimeout(() => {
+//       // Update user info...
+//       resolve();
+//       // reject("Error updating user");
+//     }, 1000);
+//   });
+// };
+
+// Using Promises to Handle Shopping Cart Operations
+// createCart()
+//   .then(fetchOrderDetails)
+//   .then(savePaymentInfo)
+//   .then(updateUser)
+//   .then(() => {
+//     console.log("Order placed successfully!");
+//   })
+//   .catch((error) => {
+//     console.error("Error:", error);
+//   });
+// ```
