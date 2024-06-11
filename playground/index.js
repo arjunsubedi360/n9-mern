@@ -98,34 +98,34 @@ ternary operator
 
 
 
-const cart = [{ id: 1 }];
-// Create Cart Promise
-const createCart = () => {
-  return new Promise((resolve, reject) => {
-    // Simulate creating a shopping cart
-    setTimeout(() => {
+// const cart = [{ id: 1 }];
+// // Create Cart Promise
+// const createCart = () => {
+//   return new Promise((resolve, reject) => {
+//     // Simulate creating a shopping cart
+//     setTimeout(() => {
  
-      resolve(cart);
-      // If an error occurs, reject the Promise
-      // reject("Error creating cart");
-    }, 1000);
-  });
-};
+//       resolve(cart);
+//       // If an error occurs, reject the Promise
+//       // reject("Error creating cart");
+//     }, 1000);
+//   });
+// };
 
-// // Fetch Order Details Promise
-const fetchOrderDetails = (cart) => {
-  return new Promise((resolve, reject) => {
-    // Simulate fetching order details
-    setTimeout(() => {
-      const orderDetails = { ...cart, items: ['item1', 'item2'] };
-      resolve(orderDetails);
-      // reject("Error fetching order details");
-    }, 1000);
-  });
-};
+// // // Fetch Order Details Promise
+// const fetchOrderDetails = (cart) => {
+//   return new Promise((resolve, reject) => {
+//     // Simulate fetching order details
+//     setTimeout(() => {
+//       const orderDetails = { ...cart, items: ['item1', 'item2'] };
+//       resolve(orderDetails);
+//       // reject("Error fetching order details");
+//     }, 1000);
+//   });
+// };
 
 
-const cartDetail = createCart().then(fetchOrderDetails())
+// const cartDetail = createCart().then(fetchOrderDetails())
 // // Save Payment Info Promise
 // const savePaymentInfo = (orderDetails) => {
 //   return new Promise((resolve, reject) => {
@@ -162,3 +162,10 @@ const cartDetail = createCart().then(fetchOrderDetails())
 //     console.error("Error:", error);
 //   });
 // ```
+
+const fetch = require('node-fetch');
+const url  = "https://api.github.com/users/arjunsubedi360";
+
+const getUser =  function( ) {
+  fetch()
+} 
