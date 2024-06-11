@@ -1,0 +1,4 @@
+1. GET = findOne({key: "values"});
+2. CREATE = create({});
+2. UPDATEONE = updateOne({_id: id}, {slug: "update"});
+3. DELETE = deleteOne({_id: id})

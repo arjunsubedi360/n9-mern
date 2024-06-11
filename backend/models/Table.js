@@ -2,7 +2,15 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 const tableSchema = new Schema(
   {
-    slug: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    slug: {
+      type: String,
+      unique: true,
+      required: true,
+    },
   },
   {
     timestamps: true,
