@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>creating an array and object</h1>
+    <script>
+      const obj = {
+        fullName: "himmat basnet",
+        age: 23,
+        address: "itahari",
+        contact: 9813949168,
+        qualifications: "bachelor completed",
+        isMarried: false,
+      };
+      const obj2 = obj;
+      obj2.experience = "1 year";
+
+      // //array containing fruit information
+      // const fruit = [
+      //   { name: "mango", season: "summer" },
+      //   { name: "apple", season: "all" },
+      // ];
+
+      /* 
+      While passing array or object to object literal
+       we should first convert  this to JSON.stringify()
+      */
+      console.log(`the person detail is ${JSON.stringify(fruit)}`);
+      console.log(fruit);
+    </script>
+  </body>
+</html>

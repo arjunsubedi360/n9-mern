@@ -1,0 +1,32 @@
+Examples of using `while` and `do-while` loops in JavaScript:
+
+`while` loop example:
+
+```
+let count = 1;
+
+while (count <= 10) {
+  console.log(count);
+  count++;
+}
+```
+
+In this example, we're using a `while` loop to print the numbers 1 to 10 to the console. The loop starts with a `count` variable set to 1, and the condition is that `count` is less than or equal to 10. The block of code inside the loop logs the current value of `count` to the console, and then increments `count` by 1 using the `count++` shorthand.
+
+The loop continues executing as long as the condition is true, which means that the numbers 1 to 10 are printed to the console.
+
+`do-while` loop example:
+
+```
+let input;
+
+do {
+  input = prompt("Please enter a number greater than 10");
+} while (input <= 10);
+
+console.log("You entered: " + input);
+```
+
+In this example, we're using a `do-while` loop to prompt the user to enter a number greater than 10. The loop starts with a `do` statement that prompts the user for input and assigns the result to the `input` variable. Then, the `while` statement checks whether the `input` variable is less than or equal to 10. If it is, the loop continues executing, and the user is prompted again for input. This process repeats until the user enters a number greater than 10.
+
+Once the loop condition is false, meaning the user has entered a number greater than 10, the loop ends, and the final statement logs a message to the console with the user's input value.

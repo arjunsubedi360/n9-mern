@@ -1,0 +1,80 @@
+
+### Lexical Scope:
+Example:
+```javascript
+function outer() {
+    const outerVar = 'I am outer';
+    
+    function inner() {
+        console.log(outerVar); // Accessing outerVar from lexical scope
+    }
+    
+    inner();
+}
+
+outer(); // Output: I am outer
+```
+Challenge:
+Write a function that defines a variable `name` inside another function and returns a function that logs `Hello, {name}!` when invoked.
+
+### Global Scope:
+Example:
+```javascript
+const globalVar = 'I am global';
+
+function accessGlobal() {
+    console.log(globalVar);
+}
+
+accessGlobal(); // Output: I am global
+```
+Challenge:
+Create a variable `counter` in the global scope. Write functions `increment` and `decrement` that increase and decrease the value of `counter` respectively when invoked.
+
+### Local Scope:
+Example:
+```javascript
+function outer() {
+    const outerVar = 'I am outer';
+    console.log(outerVar); // Accessible only inside outer function
+}
+
+outer(); // Output: I am outer
+console.log(outerVar); // Error: outerVar is not defined
+```
+Challenge:
+Write a function that takes two parameters `a` and `b` and returns the sum of `a` and `b`.
+
+### Closure Concept:
+Example:
+```javascript
+function outer() {
+    const outerVar = 'I am outer';
+    
+    function inner() {
+        console.log(outerVar); // Accessing outerVar from closure
+    }
+    
+    return inner;
+}
+
+const innerFunc = outer();
+innerFunc(); // Output: I am outer
+```
+Challenge:
+Create a function `counter` that returns a function. The returned function should maintain a count that increases by one each time it is invoked.
+
+### Practical Uses of Closures:
+Example:
+```javascript
+function generateMultiplier(factor) {
+    return function(x) {
+        return factor * x;
+    }
+}
+
+const double = generateMultiplier(2);
+console.log(double(5)); // Output: 10
+```
+Challenge:
+Write a function `createCounter` that returns an object with methods `increment`, `decrement`, and `getValue`. These methods should manipulate and retrieve the value of a private counter variable using closures.

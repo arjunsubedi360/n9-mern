@@ -1,0 +1,125 @@
+Operators in JavaScript allow you to perform operations on variables and values. They are the building blocks for creating expressions, comparing values, and implementing logic. Let's dive into the different types of operators with definitions and examples.
+
+### Arithmetic Operators
+Arithmetic operators are used to perform mathematical calculations.
+
+1. **Addition (`+`)**
+   - Combines two numbers or concatenates two strings.
+   - Example:
+     ```javascript
+     const sum = 5 + 3; // Outputs: 8
+     const greeting = 'Hello, ' + 'world!'; // Outputs: "Hello, world!"
+     ```
+
+2. **Subtraction (`-`)**
+   - Subtracts the second operand from the first.
+   - Example:
+     ```javascript
+     const difference = 10 - 3; // Outputs: 7
+     ```
+
+3. **Multiplication (`*`)**
+   - Multiplies two numbers.
+   - Example:
+     ```javascript
+     const product = 4 * 2; // Outputs: 8
+     ```
+
+4. **Division (`/`)**
+   - Divides the first operand by the second.
+   - Example:
+     ```javascript
+     const quotient = 20 / 4; // Outputs: 5
+     ```
+
+5. **Remainder/Modulus (`%`)**
+   - Returns the remainder after division.
+   - Example:
+     ```javascript
+     const remainder = 10 % 3; // Outputs: 1
+     ```
+
+### Comparison Operators
+Comparison operators allow you to compare values and return a boolean result (`true` or `false`).
+
+1. **Equal (`==`)**
+   - Checks if two values are equivalent (type coercion applied).
+   - Example:
+     ```javascript
+     console.log(5 == '5'); // Outputs: true
+     ```
+
+2. **Strictly Equal (`===`)**
+   - Checks if two values are equivalent and of the same type.
+   - Example:
+     ```javascript
+     console.log(5 === '5'); // Outputs: false
+     ```
+
+3. **Not Equal (`!=`)**
+   - Checks if two values are not equivalent (type coercion applied).
+   - Example:
+     ```javascript
+     console.log(5 != '5'); // Outputs: false
+     ```
+
+4. **Strictly Not Equal (`!==`)**
+   - Checks if two values are not equivalent or not of the same type.
+   - Example:
+     ```javascript
+     console.log(5 !== '5'); // Outputs: true
+     ```
+
+5. **Greater Than (`>`)**
+   - Checks if the first operand is greater than the second.
+   - Example:
+     ```javascript
+     console.log(7 > 5); // Outputs: true
+     ```
+
+6. **Less Than (`<`)**
+   - Checks if the first operand is less than the second.
+   - Example:
+     ```javascript
+     console.log(3 < 5); // Outputs: true
+     ```
+
+7. **Greater Than or Equal To (`>=`)**
+   - Checks if the first operand is greater than or equal to the second.
+   - Example:
+     ```javascript
+     console.log(5 >= 5); // Outputs: true
+     ```
+
+8. **Less Than or Equal To (`<=`)**
+   - Checks if the first operand is less than or equal to the second.
+   - Example:
+     ```javascript
+     console.log(4 <= 5); // Outputs: true
+     ```
+
+### Logical Operators
+Logical operators are used to combine or invert boolean values.
+
+1. **Logical AND (`&&`)**
+   - Returns `true` if both operands are true.
+   - Example:
+     ```javascript
+     console.log(true && true); // Outputs: true
+     console.log(true && false); // Outputs: false
+     ```
+
+2. **Logical OR (`||`)**
+   - Returns `true` if at least one of the operands is true.
+   - Example:
+     ```javascript
+     console.log(true || false); // Outputs: true
+     ```
+
+3. **Logical NOT (`!`)**
+   - Returns `true` if the operand is false and `false` if the operand is true.
+   - Example:
+     ```javascript
+     console.log(!true); // Outputs: false
+     console.log(!false); // Outputs: true
+     ```

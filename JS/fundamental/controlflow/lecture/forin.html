@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Books</h2>
+<p>Displaying book titles using for-in loop:</p>
+
+<ul id="bookList"></ul>
+
+<script>
+// An object representing a list of books
+const bookList = {
+  book1: {title: "The Great Gatsby", author: "F. Scott Fitzgerald"},
+  book2: {title: "To Kill a Mockingbird", author: "Harper Lee"},
+  book3: {title: "1984", author: "George Orwell"},
+  book4: {title: "The Catcher in the Rye", author: "J.D. Salinger"}
+};
+
+// Get the unordered list element from the DOM
+const ul = document.getElementById("bookList");
+
+// Iterate through the properties of the bookList object using for-in loop
+for (let bookId in bookList) {
+  // Create a new list item element
+  const li = document.createElement("li");
+  
+  // Get the title property of the current book
+  const title = bookList[bookId].title;
+  
+  // Set the text content of the list item to the book title
+  li.textContent = title;
+  
+  // Append the list item to the unordered list
+  ul.appendChild(li);
+}
+</script>
+
+</body>
+</html>

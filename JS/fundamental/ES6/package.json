@@ -1,0 +1,17 @@
+{
+  "name": "node-es6",
+  "version": "1.0.0",
+  "description": "This is class to explore about es6",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "es6"
+  ],
+  "author": "Arjun Subedi",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.3"
+  }
+}

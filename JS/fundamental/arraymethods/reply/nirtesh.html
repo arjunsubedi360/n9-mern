@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Challenge 1: Define a function called greet that takes a name as an argument and returns a greeting message.
+        function greet(name) {
+            console.log(`Greeting Challenge: Namaste ${name}`);
+        }
+        greet('Class');
+        // Challenge 2: Define a function called addNumbers that takes two numbers as arguments and returns the sum of the numbers.
+        function addNumbers(a, b) {
+            return a + b;
+        }
+        let total = addNumbers(3, 4);
+        console.log(`Sum Challenge: Sum of  30 & 40 is ${addNumbers(30, 40)}`);
+        // Challenge 3: Define a function called multiply that takes an array of numbers as an argument and returns the product of all the numbers in the array.
+        const a = [1, 2, 3, 4, 5];
+        function multiply(numArray = [...x]) {
+            let product = 1;
+            for (let i = 0; i < numArray.length; i++) {
+                product = product * numArray[i];
+            }
+            return product;
+        }
+        let productOfNumbers = multiply(a);
+        console.log(`Product of array elements Challenge: ${productOfNumbers}`)
+        // Parameters and Arguments in Functions
+        // Challenge 1: Write a function called fullName that takes two parameters, firstName and lastName, and returns the full name as a string.
+        function fullName(fN, lN) {
+            return fN + ' ' + lN;
+        }
+        let name = fullName('Hari', 'Shrestha');
+        console.log(`Full Name from First and Second Name Challenge: ${name}`);
+        let fullName1 = (fN, lN) => {
+            return fN + ' ' + lN;
+        }
+        console.log(`Full Name from First and Second Name using arrow function Challenge: ${fullName1('Ram', 'Prasad')}`);
+        // Challenge 2: Write a function called calculateArea that takes two parameters, width and height, and returns the area of a rectangle.
+        let calculateArea = (w, h) => {
+            return w * h;
+        }
+        console.log(`Area of rectangle Challenge ${calculateArea(3, 4)}`)
+        // Challenge 3: Write a function called greetAll that takes an array of names as an argument and returns a greeting message for each name in the array. -->
+        const arrayNames = ['Ram', 'Shyam', 'Hari'];
+        console.log('Greet all names from array Challenge:')
+        arrayNames.forEach(element => {
+            console.log(`Hello ${element}`);
+        });
+        //Challenge 4: Find product of each elements of an array
+        // Using same array a as declared above, answer should be 120
+        let Product = 1;
+        a.forEach(element => {
+            Product = Product * element;
+            console.log(`Step ${element}: ${Product}`);
+        });
+        console.log(`Product of Array elements using forEach array Method ${Product}`);
+    </script>
+</body>
+
+</html>

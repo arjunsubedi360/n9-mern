@@ -1,0 +1,38 @@
+// falsy  
+/* 
+1. null
+2. undefined
+3. 0
+4. false // treats as 0
+5. NaN // Not a Number When we try to implement condition 
+6. ''
+from string values and number E.g ("arjun" - 0)
+
+ */
+
+
+/* Truthy  */
+
+/* 
+if values is present then it will be treated as truthy
+*/
+<!-- 
+
+    truthy cases 
+    1. true
+    2. "user"
+    3. 1
+ -->
+
+/* truthy and falsy
+challenges
+type conversion */
+
+const condition = {email: ""};
+
+console.log(condition);
+if(condition.email) {
+    console.log("I am in truthy condition")
+} else {
+    console.log("I am in falsy part")
+}

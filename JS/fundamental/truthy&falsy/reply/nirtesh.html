@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truthy Falsy Class</title>
+</head>
+
+<body>
+    <h1>Truthy Or Falsy</h1>
+    <script>
+        // Create a object with different keys such as 
+        // name, email, isMarried, empty string 
+        // and put falsy values on condtion to replicate the 
+        // falsy condition.
+        const person = {
+            name: 'Ram',
+            email: 'ram@email.com',
+            isMarried: false,
+            age: 30,
+            children: [1],
+            relatives: [{name: "arjun"}]
+        };
+        console.log(person.children.length);
+        //Check for Falsy String
+        if (person.children.length > 0) { // array length 0 mathi hudaina then don't execure
+            console.log(`This is in truthy case.`)
+        }
+        else {
+            console.log(`${person.name}is childless.`)
+
+        }
+        //Check for Falsy Number.
+        // console.log(`Check for falsy Number`)
+        // person.age = person.age - 30;
+        // if (!person.age) {
+        //     console.log(`${person.age} is valid age for ${person.name}`)
+        // }
+        // else {
+        //     console.log(`${person.age} is invalid age for ${person.name}`)
+        // }
+        //Check for rest of Falsy terms (Nan, Null, undefined, 0, false)
+        // console.log(`Check for falsy TERMS`)
+        // term = Null;
+        // if (!term) {
+        //     console.log(`${term} for ${term}`)
+        // }
+        // else {
+        //     console.log(`${term} is a falsy Term`)
+        // }
+
+    </script>
+</body>
+
+</html>
