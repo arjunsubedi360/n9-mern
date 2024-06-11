@@ -336,9 +336,9 @@ Why function : set of program that helps to run code
 
 // console.log(userId, name, job);
 
-// const a = 8,b = 9,c =9;
+const a = 8,b = 9,c =9;
 
-// console.log(a,b,c);
+console.log(a,b,c);
 
 
 
