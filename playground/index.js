@@ -163,9 +163,26 @@ ternary operator
 //   });
 // ```
 
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
+
 const url  = "https://api.github.com/users/arjunsubedi360";
 
 const getUser =  function( ) {
-  fetch()
-} 
+ return fetch(url)
+};
+
+
+async function fetchRepoData() {
+  try {
+      const repo = await getUser();
+      return repo.json();
+  }
+  catch (e) {
+      console.log("Error found", e.message);
+      throw e;
+  }
+}
+
+
+console.log(fetchRepoData());
+
