@@ -11,9 +11,23 @@ export const createSingleTable = async (payload) => {
   }
 };
 
-export const getSingleTable = async (slug) => {
+export const getSingleTable = async ({ slug }) => {
   try {
     const data = await Table.findOne({ slug });
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const updateSingleTable = async (slug, input) => {
+  try {
+    const { name, slug: inputSlug } = input;
+    console.log(slug, input);
+    const data = await Table.updateOne(
+      { slug: slug },
+      { name: name, slug: inputSlug, updatedAt: new Date() }
+    );
     return data;
   } catch (error) {
     return error;
