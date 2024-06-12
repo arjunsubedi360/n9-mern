@@ -1,4 +1,5 @@
 npm init => (to initialize node)
-npm install (npm i) => npm package install
+npm install <packagename> (npm i) => npm package install
+EG. npm install -g nodemon
 node -v (node version) => find node version
 npm uninstall => remove node package
