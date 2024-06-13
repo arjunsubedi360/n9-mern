@@ -38,3 +38,5 @@ fetchData()
     console.error("An error occurred:", error);
   });
 ```
+
+

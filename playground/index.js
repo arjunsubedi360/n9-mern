@@ -48,8 +48,6 @@ ternary operator
 // const canLogin = user ? "You can login": "Unauthorize";
 // console.log(canLogin)
 
-
-
 // const array = [1,3,5,6,7,8,9];
 // const array1 = [10,11];
 // const [a,b,c, ...rest] = array;
@@ -68,8 +66,6 @@ ternary operator
 // const array3 = [...array1, ...array2];
 // console.log(array3)
 
-
-
 // console.log("Hello I on first line")
 // function delayedGreet(name) {
 //     setTimeout(function() {
@@ -83,7 +79,6 @@ ternary operator
 //     console.log("Goodbye!");
 // }
 
-
 // new Promise((resolve, reject)=> {
 //     const user  = "";
 //     if(!user) {
@@ -96,15 +91,13 @@ ternary operator
 //     console.log("err",error ) //this part is executed when error comes
 // })
 
-
-
 // const cart = [{ id: 1 }];
 // // Create Cart Promise
 // const createCart = () => {
 //   return new Promise((resolve, reject) => {
 //     // Simulate creating a shopping cart
 //     setTimeout(() => {
- 
+
 //       resolve(cart);
 //       // If an error occurs, reject the Promise
 //       // reject("Error creating cart");
@@ -123,7 +116,6 @@ ternary operator
 //     }, 1000);
 //   });
 // };
-
 
 // const cartDetail = createCart().then(fetchOrderDetails())
 // // Save Payment Info Promise
@@ -163,13 +155,26 @@ ternary operator
 //   });
 // ```
 
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
-const url  = "https://api.github.com/users/arjunsubedi360";
+// const url  = "https://api.github.com/users/arjunsubedi360";
 
-const getUser =  function( ) {
- return fetch(url)
-};
+// const getUser =  function( ) {
+//  return fetch(url)
+// };
+
+// async function fetchRepoData() {
+//   try {
+//       const repo = await getUser();
+//       return repo.json();
+//   }
+//   catch (e) {
+//       console.log("Error found", e.message);
+//       throw e;
+//   }
+// }
+
+// console.log(fetchRepoData());
 
 async function fetchRepoData() {
   try {
@@ -180,8 +185,120 @@ async function fetchRepoData() {
       console.log("Error found", e.message);
       throw e;
   }
+
+// console.log("Pizza");  // order pizza => prepare => return => pizza
+// setTimeout(()=> console.log("Here is you pizza"), 2000) // 2sec
+// console.log("Chawmin"); // order Chawmin => prepare => return => Chawmin
+// console.log("Momo");
+
+//resuturant 
+
+// pending
+// fullfilled
+// reject
+
+
+
+// function fetchUser() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve({ id: 1, name: "John" }), 2000);
+//     // reject("User doesn't exist")
+//   });
+// }
+
+
+// function fetchPosts(userId) {
+//   return new Promise((resolve, reject) => {
+//     // setTimeout(() => resolve(["Post 1", "Post 2", userId]), 1000);
+//     reject("Error occured");
+//   });
+// }
+
+// fetchUser()
+//   .then((user) => {
+//     console.log("User:", user);
+//     return fetchPosts(user.id);
+//   })
+//   .then((posts) => {
+//     console.log("Posts:", posts);
+//   })
+//   .catch((error) => {
+//     console.error("Error:", error);
+//   }).finally(()=> {
+//     console.log("Thi is called finanly")
+//   })
+
+// const getUser = async() => {
+//   setTimeout(() => console.log({ id: 1, name: "Arjun" }), 2000);
+// };
+
+async function getUserData() {
+  return new Promise((resolve, reject) => {
+    // Asynchronous operation, e.g., fetching data from an API
+    setTimeout(() => {
+      const data = { id: 1, name: "John" };
+      resolve(data); // Resolve the Promise with the fetched data
+    }, 2000);
+  });
 }
 
+async function fetchPosts(userId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(["Post 1", "Post 2", userId]), 1000);
+    // resolve("Error occured");
+  });
+}
 
-console.log(fetchRepoData());
+//async and await
+async function getData() {
+ const [user, post] =await Promise.all([getUserData(), fetchPosts()])
+ console.log(user, post)
+}
 
+getData()
+// async function getData() {
+//   const [user, post] = await Promise.all([getUserData(), fetchPosts()]);
+//   console.log(user); //5
+//   console.log(post);// 3 //8
+// }
+// // Consuming the Async function using Await
+// async function getData() {
+//   try {
+//     const user = await getUserData();
+//     console.log(user); // Data fetched successfully
+//     const posts = await fetchPosts(user.id);
+//     console.log(posts);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// getData();
+
+
+
+// // Real example 
+// const GIT_HUB_API = "https://api.github.com/users/ngimatendi";
+
+// fetch(GIT_HUB_API)
+//   .then((response) => {
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok");
+//     }
+//     return response.json();
+//   })
+//   .then((data) => {
+//     const userImage = document.createElement("img");
+//     const userName = document.createElement("h2"); // Assuming the user's name is displayed as a heading
+    
+//     userImage.src = data.avatar_url;
+//     userImage.alt = "User Image";
+    
+//     userName.textContent = data.name || "Name not provided"; // Display the user's name or a default message if it's not provided
+    
+//     document.body.appendChild(userName);
+//     document.body.appendChild(userImage);
+//   })
+//   .catch((error) => {
+//     console.error("Error fetching data:", error);
+//   });
