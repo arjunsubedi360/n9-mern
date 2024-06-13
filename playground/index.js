@@ -176,6 +176,15 @@ ternary operator
 
 // console.log(fetchRepoData());
 
+async function fetchRepoData() {
+  try {
+      const repo = await getUser();
+      return repo.json();
+  }
+  catch (e) {
+      console.log("Error found", e.message);
+      throw e;
+  }
 
 // console.log("Pizza");  // order pizza => prepare => return => pizza
 // setTimeout(()=> console.log("Here is you pizza"), 2000) // 2sec

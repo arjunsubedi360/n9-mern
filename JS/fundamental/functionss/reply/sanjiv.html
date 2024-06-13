@@ -8,15 +8,22 @@
   <body>
     <h1>javScript array method</h1>
     <script>
-      function name(firstName, lastName) {
-        return firstName + " " + lastName;
-      }
-      console.log(name("sanjiv", "sharma"));
+      // function name(firstName, lastName) {
+      //   return firstName + " " + lastName;
+      // }
+      // console.log(name("sanjiv", "sharma"));
 
-      function calculateArea(width, height) {
-        return width * height;
-      }
-      console.log(calculateArea(10, 20));
+      // function calculateArea(width, height) {
+      //   return width * height;
+      // }
+      // console.log(calculateArea(10, 20));
+      users = ["sanjiv", "himmat", "balkrishna"];
+      const greating = (users) => {
+        for (let name of users) {
+          console.log(`Namaste, ${name}`);
+        }
+      };
+      greating(users);
     </script>
   </body>
 </html>
