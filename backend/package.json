@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "",
+  "author": "Arjun Subedi",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
