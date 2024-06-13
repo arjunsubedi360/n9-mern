@@ -223,30 +223,30 @@ ternary operator
 //   setTimeout(() => console.log({ id: 1, name: "Arjun" }), 2000);
 // };
 
-async function getUserData() {
-  return new Promise((resolve, reject) => {
-    // Asynchronous operation, e.g., fetching data from an API
-    setTimeout(() => {
-      const data = { id: 1, name: "John" };
-      resolve(data); // Resolve the Promise with the fetched data
-    }, 2000);
-  });
-}
+// async function getUserData() {
+//   return new Promise((resolve, reject) => {
+//     // Asynchronous operation, e.g., fetching data from an API
+//     setTimeout(() => {
+//       const data = { id: 1, name: "John" };
+//       resolve(data); // Resolve the Promise with the fetched data
+//     }, 2000);
+//   });
+// }
 
-async function fetchPosts(userId) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(["Post 1", "Post 2", userId]), 1000);
-    // resolve("Error occured");
-  });
-}
+// async function fetchPosts(userId) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(["Post 1", "Post 2", userId]), 1000);
+//     // resolve("Error occured");
+//   });
+// }
 
-//async and await
-async function getData() {
- const [user, post] =await Promise.all([getUserData(), fetchPosts()])
- console.log(user, post)
-}
+// //async and await
+// async function getData() {
+//  const [user, post] =await Promise.all([getUserData(), fetchPosts()])
+//  console.log(user, post)
+// }
 
-getData()
+// getData()
 // async function getData() {
 //   const [user, post] = await Promise.all([getUserData(), fetchPosts()]);
 //   console.log(user); //5
@@ -293,3 +293,29 @@ getData()
 //   .catch((error) => {
 //     console.error("Error fetching data:", error);
 //   });
+
+
+const a = 5;
+const b =6;
+function sum() {
+  const a = 5;
+  const b = 6;
+  const sum = a + b;
+  return sum;
+}
+
+
+sum()
+
+
+/* 
+
+function sum() {
+  const a = 5;
+  const b = 6;
+  const sum = a + b;
+  return sum;
+}
+
+*/
+

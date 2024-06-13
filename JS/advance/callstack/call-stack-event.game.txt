@@ -1,0 +1,28 @@
+**Game Overview:**
+- Players: 5-7
+- Objective: To simulate the call stack and event loop concepts in a fun and interactive way using a pizza parlor scenario.
+- Materials Needed: Pizza boxes (or index cards), markers, and a timer.
+
+**Setup:**
+1. Designate one player as the "Pizza Chef" and the rest as "Pizza Toppings Specialists."
+2. Give each Pizza Toppings Specialist a pizza box (or index card) and a marker.
+3. Set up a pizza parlor area (a table or a designated space) to represent the programming environment.
+
+**Gameplay:**
+1. The Pizza Chef starts by calling out a pizza order (e.g., "Pepperoni Pizza").
+2. Each Pizza Toppings Specialist writes the name of the pizza order on their pizza box and adds it to the "Oven Stack" (a designated area on the table) by stacking them.
+3. The Pizza Chef assigns tasks to each Pizza Toppings Specialist related to the pizza order (e.g., "Add pepperoni," "Add cheese," etc.).
+4. Each Pizza Toppings Specialist performs their task and announces when they're done.
+5. When a Pizza Toppings Specialist completes their task, they remove their pizza box (function) from the top of the stack (Oven Stack) and hand it to the Pizza Chef.
+6. The Pizza Chef collects the completed pizzas (boxes) and proceeds with the next step in the order.
+7. Meanwhile, if a Pizza Toppings Specialist encounters a task that requires waiting (e.g., waiting for the oven to preheat), they enter the "Pizza Party Loop" by temporarily stepping aside and doing a quick dance or silly pizza-themed activity.
+8. When the waiting task is completed, the Pizza Toppings Specialist returns to the main task lineup.
+
+**Game End:**
+- The game continues until all pizza orders are completed or until a "stack overflow" occurs (e.g., if the Oven Stack becomes too high).
+- Players can keep track of their completion time with a timer for added competition.
+
+**Discussion:**
+- After playing the game, have a hilarious discussion about how it relates to programming concepts.
+- Talk about how the Oven Stack resembles the stack of pizza boxes and how the Pizza Party Loop represents the fun and spontaneous nature of programming.
+- Discuss how managing pizza orders efficiently (similar to managing tasks in programming) is crucial to avoid chaos and errors.
