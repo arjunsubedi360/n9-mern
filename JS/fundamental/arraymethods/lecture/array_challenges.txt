@@ -1,0 +1,66 @@
+Arrays are versatile and widely used in programming. However, working with them presents a range of challenges that require creative problem-solving and a solid understanding of algorithms. Here are some common array-related challenges, along with brief explanations:
+
+### 1. **Finding Duplicates**
+Identify if an array contains duplicate values, and if so, return them.
+
+- **Example**: Given an array `[1, 2, 3, 4, 2, 5]`, return the duplicates (`[2]`).
+
+### 2. **Finding Missing Numbers**
+Given an array containing unique integers within a certain range, find the missing numbers.
+
+- **Example**: If the array is `[1, 2, 4, 5, 6]`, identify the missing number (`[3]`).
+
+### 3. **Rotating an Array**
+Rotate an array by `k` positions to the left or right.
+
+- **Example**: For the array `[1, 2, 3, 4, 5]` and `k = 2`, rotating right results in `[4, 5, 1, 2, 3]`.
+
+### 4. **Finding the Maximum Product of Three Numbers**
+Identify the three numbers in an array that yield the maximum product when multiplied together.
+
+- **Example**: Given `[1, 10, 2, 6, 5, 3]`, the maximum product of three numbers is `300` (`10 * 6 * 5`).
+
+### 5. **Merging Sorted Arrays**
+Given two sorted arrays, merge them into a single sorted array.
+
+- **Example**: For `[1, 3, 5]` and `[2, 4, 6]`, the result is `[1, 2, 3, 4, 5, 6]`.
+
+### 6. **Finding the Longest Increasing Subsequence**
+Identify the longest increasing subsequence in an array.
+
+- **Example**: Given `[10, 22, 9, 33, 21, 50, 41, 60, 80]`, the longest increasing subsequence is `[10, 22, 33, 50, 60, 80]`.
+
+### 7. **Subarray with Given Sum**
+Find a subarray with a given sum in an array.
+
+- **Example**: In the array `[1, 2, 3, 7, 5]`, find the subarray that sums to `12` (resulting in `[2, 3, 7]`).
+
+### 8. **Finding the Median**
+Determine the median of an unsorted array.
+
+- **Example**: For the array `[3, 2, 1, 5, 4]`, the median is `3`.
+
+### 9. **Array Partitioning**
+Partition an array into two halves such that the sum of the elements in both halves is as equal as possible.
+
+- **Example**: Given `[1, 2, 3, 4, 5]`, partition to `[1, 2, 3]` and `[4, 5]`.
+
+### 10. **Next Permutation**
+Generate the next lexicographically larger permutation of an array of numbers.
+
+- **Example**: The next permutation of `[1, 2, 3]` is `[1, 3, 2]`.
+
+### 11. **Spiral Order Traversal**
+Traverse a 2D array in spiral order.
+
+- **Example**: Given `[[1, 2, 3], [4, 5, 6], [7, 8, 9]]`, the spiral order traversal is `[1, 2, 3, 6, 9, 8, 7, 4, 5]`.
+
+### 12. **Maximum Subarray Sum**
+Find the maximum sum of any subarray in a given array.
+
+- **Example**: For `[−2, 1, −3, 4, −1, 2, 1, −5, 4]`, the maximum subarray sum is `6` (`[4, −1, 2, 1]`).
+
+
+Array methods
+### 13. Create a array with some falsy values [null, undefined,1,4].
+Return only truthy values.

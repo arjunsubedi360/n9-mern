@@ -1,0 +1,8 @@
+Parameters and Arguments in Functions
+Challenge 1: Write a function called fullName that takes two parameters, firstName and lastName, and returns the full name as a string.
+
+Challenge 2: Write a function called calculateArea that takes two parameters, width and height, and returns the area of a rectangle.
+
+Challenge 3: Write a function called greet and return "Namaste" and string passed to greet. Create this using Higher Order Function.
+
+Challenge 3: Write a function called greetAll that takes an array of names as an argument and returns a greeting message for each name in the array.

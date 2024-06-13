@@ -1,0 +1,102 @@
+
+### Example 1: Simple Callback
+```javascript
+function greet(name, callback) {
+    console.log("Hello, " + name + "!");
+    callback();
+}
+
+function sayGoodbye() {
+    console.log("Goodbye!");
+}
+
+greet("Alice", sayGoodbye);
+```
+Output:
+```
+Hello, Alice!
+Goodbye!
+```
+
+### Example 2: Asynchronous Callback (setTimeout)
+```javascript
+function delayedGreet(name, callback) {
+    setTimeout(function() {
+        console.log("Hello, " + name + "!");
+        callback();
+    }, 2000);
+}
+
+function sayGoodbye() {
+    console.log("Goodbye!");
+}
+
+delayedGreet("Bob", sayGoodbye);
+```
+Output (after 2 seconds):
+```
+Hello, Bob!
+Goodbye!
+```
+
+### Example 3: Callback with Parameters
+```javascript
+function add(a, b, callback) {
+    const result = a + b;
+    callback(result);
+}
+
+function printResult(result) {
+    console.log("The result is: " + result);
+}
+
+add(3, 5, printResult);
+```
+Output:
+```
+The result is: 8
+```
+
+### Example 4: Callback Hell (Nested Callbacks)
+```javascript
+function stepOne(callback) {
+    setTimeout(function() {
+        console.log("Step One completed.");
+        callback();
+    }, 1000);
+}
+
+function stepTwo(callback) {
+    setTimeout(function() {
+        console.log("Step Two completed.");
+        callback();
+    }, 1000);
+}
+
+function stepThree() {
+    setTimeout(function() {
+        console.log("Step Three completed.");
+    }, 1000);
+}
+
+stepOne(function() {
+    stepTwo(function() {
+        stepThree();
+    });
+});
+```
+Output (after approximately 3 seconds):
+```
+Step One completed.
+Step Two completed.
+Step Three completed.
+```
+
+### Challenges:
+1. **Timer Callback**: Write a function `waitAndRun` that accepts a time (in milliseconds) and a callback function. The function should wait for the specified time and then execute the callback.
+
+2. **Filter Callback**: Write a function `filter` that takes an array and a callback function. The function should return a new array containing only the elements for which the callback returns true.
+
+3. **Map Callback**: Write a function `map` that takes an array and a callback function. The function should return a new array where each element is the result of applying the callback function to the corresponding element of the original array.
+
+4. **Reduce Callback**: Write a function `reduce` that takes an array, a callback function, and an initial value. The function should return a single value obtained by applying the callback function to each element of the array, starting with the initial value.
