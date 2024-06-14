@@ -1,0 +1,83 @@
+1. **`git init`**: Initializes a new Git repository in the current directory.
+   ```sh
+   git init
+   ```
+
+2. **`git clone`**: Clones an existing repository from a remote server to your local machine.
+   ```sh
+   git clone <repository-url>
+   ```
+
+3. **`git add`**: Adds changes in the working directory to the staging area.
+   ```sh
+   git add <file>
+   git add .
+   ```
+
+4. **`git commit`**: Records changes to the repository with a descriptive message.
+   ```sh
+   git commit -m "commit message"
+   ```
+
+5. **`git status`**: Displays the state of the working directory and the staging area.
+   ```sh
+   git status
+   ```
+
+6. **`git push`**: Uploads local repository content to a remote repository.
+   ```sh
+   git push <remote> <branch>
+   ```
+
+7. **`git pull`**: Fetches and merges changes from a remote repository to the local branch.
+   ```sh
+   git pull <remote> <branch>
+   ```
+
+8. **`git fetch`**: Downloads objects and refs from another repository.
+   ```sh
+   git fetch <remote>
+   ```
+
+9. **`git merge`**: Joins two or more development histories together.
+   ```sh
+   git merge <branch>
+   ```
+
+10. **`git branch`**: Lists, creates, or deletes branches.
+    ```sh
+    git branch
+    git branch <branch-name>
+    git branch -d <branch-name>
+    ```
+
+11. **`git checkout`**: Switches branches or restores working tree files.
+    ```sh
+    git checkout <branch-name>
+    git checkout -b <new-branch-name>
+    ```
+
+12. **`git log`**: Shows the commit logs.
+    ```sh
+    git log
+    ```
+
+13. **`git diff`**: Shows changes between commits, commit and working tree, etc.
+    ```sh
+    git diff
+    ```
+
+14. **`git reset`**: Resets current HEAD to the specified state.
+    ```sh
+    git reset <commit>
+    ```
+
+15. **`git rm`**: Removes files from the working directory and from the index.
+    ```sh
+    git rm <file>
+    ```
+
+16. **`git stash`**: Stashes the changes in a dirty working directory away.
+    ```sh
+    git stash
+    ```
