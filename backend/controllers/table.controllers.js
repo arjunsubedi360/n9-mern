@@ -8,7 +8,7 @@ export const createTable = async (request, response) => {
   try {
     const input = request.body;
 
-    //slug helps to make value unique (not using package for small task)
+    //slug helps to make value unique (not using package for small task) Table 1 table-1
     const slug = slugify(input.name);
 
     const tableExists = await getSingleTable(slug);
