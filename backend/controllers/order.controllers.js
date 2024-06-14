@@ -12,10 +12,10 @@ export const getOrder = async (request, response) => {
   });
 };
 
-export const createOrder = (request, response) => {
-  const order = request.body;
+export const createOrder = async (request, response) => {
+  const input = request.body;
 
-  const data = createSingleOrder({ order: order });
+  const data = await createSingleOrder(input)
 
   responseData({
     data: data,

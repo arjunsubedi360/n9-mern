@@ -3,7 +3,7 @@ import { getOrder, createOrder } from "../../../controllers/index.js";
 
 const route = Router();
 
-route.post("/create", createOrder);
+route.post("/", createOrder);
 route.get("/get", getOrder);
 route.put("/:id", getOrder);
 
