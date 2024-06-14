@@ -4,6 +4,7 @@ const username = encodeURIComponent("arjunsubedi360");
 const password = encodeURIComponent("wJMciPh2X7SOZYW4");
 const dbName = "mero-order";
 
+
  export const connectDb = () => {
   try {
     console.log("Connected DB!")
