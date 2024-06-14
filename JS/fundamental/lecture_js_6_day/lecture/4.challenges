@@ -1,0 +1,133 @@
+### Challenge 1: Calculate Total Price
+**Objective**: Use arithmetic operators to calculate the total price of items in a shopping cart.
+
+**Task**:
+1. Create variables for the prices of three items.
+2. Calculate the total price by adding the individual item prices.
+3. Apply a discount (10%) to the total price.
+4. Output the discounted total.
+
+**Example Solution**:
+```javascript
+const item1 = 15.99;
+const item2 = 23.49;
+const item3 = 9.99;
+
+const totalPrice = item1 + item2 + item3;
+const discount = totalPrice * 0.10; // 10% discount
+const discountedTotal = totalPrice - discount;
+
+console.log("Total price:", totalPrice);
+console.log("Discounted price:", discountedTotal);
+```
+
+### Challenge 2: Validate Login Input
+**Objective**: Use comparison and logical operators to validate login information.
+
+**Task**:
+1. Create variables for a phone number and an email address entered by a user.
+2. Check if the phone number contains 10 digits.
+3. Check if the email address contains an "@" symbol.
+4. If either validation fails, output an appropriate message. Otherwise, print "Login information is valid."
+
+**Example Solution**:
+```javascript
+const phone = "1234567890";
+const email = "user@example.com";
+
+const isPhoneValid = phone.length === 10;
+const isEmailValid = email.includes("@");
+
+if (!isPhoneValid) {
+  console.log("Invalid phone number. It should have 10 digits.");
+}
+
+if (!isEmailValid) {
+  console.log("Invalid email address. It should contain '@'.");
+}
+
+if (isPhoneValid && isEmailValid) {
+  console.log("Login information is valid.");
+}
+```
+
+### Challenge 3: Find the Largest Number
+**Objective**: Use comparison operators to find the largest number among three values.
+
+**Task**:
+1. Create variables for three numbers.
+2. Use comparison operators to determine which number is the largest.
+3. Output the largest number.
+
+**Example Solution**:
+```javascript
+const num1 = 42;
+const num2 = 67;
+const num3 = 29;
+
+let largest;
+
+if (num1 >= num2 && num1 >= num3) {
+  largest = num1;
+} else if (num2 >= num1 && num2 >= num3) {
+  largest = num2;
+} else {
+  largest = num3;
+}
+
+console.log("Largest number is:", largest);
+```
+
+### Challenge 4: Calculate Grades
+**Objective**: Use arithmetic and comparison operators to calculate grades and determine pass or fail.
+
+**Task**:
+1. Create variables for scores in three subjects.
+2. Calculate the average score.
+3. Determine if the average is above a passing threshold (e.g., 50).
+4. Output whether the student passed or failed.
+
+**Example Solution**:
+```javascript
+const subject1 = 60;
+const subject2 = 55;
+const subject3 = 48;
+
+const averageScore = (subject1 + subject2 + subject3) / 3;
+const passingScore = 50;
+
+if (averageScore >= passingScore) {
+  console.log("Student passed with an average of:", averageScore);
+} else {
+  console.log("Student failed with an average of:", averageScore);
+}
+```
+
+### Challenge 5: Determine Discount
+**Objective**: Use comparison operators to determine the discount based on the total purchase amount.
+
+**Task**:
+1. Create a variable for the total purchase amount.
+2. If the purchase is over $100, apply a 20% discount.
+3. If the purchase is between $50 and $100, apply a 10% discount.
+4. Otherwise, no discount is applied.
+5. Output the final price after applying any discounts.
+
+**Example Solution**:
+```javascript
+const totalPurchase = 120;
+
+let discount;
+
+if (totalPurchase > 100) {
+  discount = totalPurchase * 0.20; // 20% discount
+} else if (totalPurchase >= 50) {
+  discount = totalPurchase * 0.10; // 10% discount
+} else {
+  discount = 0; // No discount
+}
+
+const finalPrice = totalPurchase - discount;
+
+console.log("Final price after discount:", finalPrice);
+```
