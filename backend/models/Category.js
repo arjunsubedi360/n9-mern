@@ -9,7 +9,7 @@ const categorySchema = new Schema(
     }
   },
   {
-    timestamps: true,
+    timestamps: true, //createdAt, updatedAt
   }
 );
 
