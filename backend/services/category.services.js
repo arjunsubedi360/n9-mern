@@ -11,8 +11,12 @@ export const createSingleCategory = async (payload) => {
   }
 };
 
-export const getSingleCategory = async (id) => {
-  const data = await Category.findOne({ _id: id });
-  console.log(data);
-  return data;
+export const getSingleCategory = async ({ name }) => {
+  try {
+    const data = await Category.findOne({ name });
+    console.log(data);
+    return data;
+  } catch (error) {
+    return error;
+  }
 };
