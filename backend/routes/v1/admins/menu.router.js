@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createSingleMenu } from "../../../services/menu.service";
+import { createSingleMenu } from "../../../services/menu.service.js";
 
 
 const router = Router();
