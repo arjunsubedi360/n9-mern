@@ -3,7 +3,7 @@ import { createCategory, getCategory } from "../../../controllers/index.js"; // 
 
 const router = Router();
 
+router.post("/", createCategory);
 router.get("/:id", getCategory);
-router.post("/", createCategory)
 
 export default router;
