@@ -5,7 +5,12 @@ import { HttpStatusEnum } from "../enums/status-enum.js";
 export const getCategory = async (request, response) => {
   const id = request.params.id;
   const data = await getSingleCategory({ id });
-  response.json(data);
+  responseData({
+    data,
+    message: lang.GET("Category"),
+    statusCode: HttpStatusEnum.OK,
+    response,
+  })
 };
 
 export const createCategory = async (request, response) => {
