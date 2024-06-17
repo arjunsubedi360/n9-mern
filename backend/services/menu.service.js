@@ -1,17 +1,12 @@
-import { ObjectId } from 'mongoose';
-import Menu from "../models/menu.js";
-
+import { ObjectId } from "mongoose";
+import Menu from "../models/Menu.js";
 
 export const getSingleMenu = async (id) => {
-  try {
-    const data = await Menu.findOne({ _id: id });
-    return data;
-  } catch (error) {
-    console.log(error)
-  }
-}
+  const data = await Menu.findOne({ _id: id });
+  return data;
+};
 
 export const createSingleMenu = async (input) => {
   const data = await Menu.create(input);
   return data;
-}
+};
