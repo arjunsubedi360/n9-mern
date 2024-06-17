@@ -1,11 +1,17 @@
-import menu from "../models/menu.js";
+import { ObjectId } from 'mongoose';
+import Menu from "../models/menu.js";
+
+
+export const getSingleMenu = async (id) => {
+  try {
+    const data = await Menu.findOne({ _id: id });
+    return data;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const createSingleMenu = async (input) => {
-    try {
-        const data = await menu.create(input);
-        return data;
-    } catch (error) {
-        console.error("An error occurred while creating a single menu item:", error);
-    
-        throw error; 
-    }
-};
+  const data = await Menu.create(input);
+  return data;
+}

@@ -1,8 +1,11 @@
+import { HttpStatusEnum } from "../enums/status-enum.js";
+
 export const lang = {
   CREATE: (title) => `${title || ""} created successfully.`,
   GET: (title) => `${title || ""} fetched successfully.`,
   UPDATE: (title) => `${title || ""} updated successfully.`,
   LIST: (title) => `${title || ""} list successfully.`,
+  ERROR: "Something went wrong"
 };
 
 export function responseData({

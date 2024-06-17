@@ -1,15 +1,15 @@
-import { mongoose } from "mongoose";
-const { Schema } = mongoose;
-const menuSchema = new Schema(
-  {
-    name: {
-      type: String,
-      require: true,
-    }
-  },
-  {
-    timestamps: false
-  }
-);
+import mongoose from "mongoose";
+const {Schema} = mongoose;
 
-export default mongoose.model("menu", menuSchema);
+const MenuSchema = new Schema(
+    {
+        name: {
+            type: String,
+            required: true
+        }
+    },
+    {
+        timestamps: true,
+    }
+);
+export default mongoose.model("Menu", MenuSchema);

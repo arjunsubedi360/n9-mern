@@ -1,9 +1,11 @@
 import { Router } from "express";
-import { createSingleMenu } from "../../../services/menu.service.js";
+import { createMenu, getMenu } from "../../../controllers/index.js";
+
 
 
 const router = Router();
 
-router.post("/", createSingleMenu);
+router.get("/:id", getMenu);
+router.post("/", createMenu);
 
 export default router;
