@@ -1,5 +1,10 @@
 import Category from "../models/Category.js";
 
+export const createSingleCategory = async (input) => {
+  const data = await Category.create(input);
+  return data;
+};
+
 export const createSingleCategory = async (payload) => {
   try {
     console.log({ payload });
