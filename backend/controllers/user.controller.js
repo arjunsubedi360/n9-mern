@@ -1,12 +1,9 @@
 import { HttpStatusEnum } from "../enums/status-enum.js";
-import { getUsersList, createSingleUser } from "../services/index.js";
+import { create,get } from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
 
-export const getUsers = (request, response) => {
-  const userId = request.params.id;
-  console.log(userId);
-  const data = getUsersList();
-
+ const getUsers = async(request, response) => {
+  const data = await get();
   responseData({
     data: data,
     message: lang.LIST("Users"),
@@ -15,10 +12,10 @@ export const getUsers = (request, response) => {
   });
 };
 
-export const createUser = (request, response) => {
+ const createUser =async (request, response) => {
   const user = request.body;
 
-  const data = createSingleUser({ user: user });
+  const data =await create(user);
 
   responseData({
     data: data,
@@ -27,3 +24,6 @@ export const createUser = (request, response) => {
     statusCode: HttpStatusEnum.CREATED,
   });
 };
+
+
+export {createUser,getUsers}
