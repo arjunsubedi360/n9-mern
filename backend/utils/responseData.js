@@ -3,6 +3,7 @@ export const lang = {
   GET: (title) => `${title || ""} fetched successfully.`,
   UPDATE: (title) => `${title || ""} updated successfully.`,
   LIST: (title) => `${title || ""} list successfully.`,
+  DELETE: (title) => `${title || ""} deleted successfully.`,
 };
 
 export function responseData({
