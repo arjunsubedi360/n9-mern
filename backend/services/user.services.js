@@ -1,15 +1,15 @@
 import User from "../models/user.model.js";
 async function create(data) {
-    const { name, email, password, role } = data;
-
-    if (!name || !email || !password || !role) {
-        throw new Error('Name, email, password, and role are required.');
-    }
-    const newUser = new User({ name, email, password, role });
+    const { name, email, role } = data;
     try {
-        await newUser.save();
-        console.log('Users created with ID:', newUser._id);
-        return newUser._id;
+        const saveUser = User.create({
+            name,
+            email,
+            role
+        })
+       if(saveUser){
+        return saveUser
+       }
     } catch (error) {
         console.error('Error creating Users:', error.message);
         throw error;
@@ -31,5 +31,21 @@ async function get() {
         throw error;
     }
 }
+async function update(id,data) {
+    try {
+        const usrdata = data
+        return await User.updateOne({ _id: id }, data);
+    } catch (error) {
+        throw error;
+    }
+}
+async function dlt(id) {
+    try {
+       const usrid = id
+       return await User.deleteOne({id});
+    } catch (error) {
+        throw error;
+    }
+}
 
-export { create, get };
+export { create, get ,update ,dlt };
