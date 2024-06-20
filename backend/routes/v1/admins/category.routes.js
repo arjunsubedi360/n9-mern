@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   createCategory,
-  deleteCategory,
+  // deleteCategory,
   getCategory,
   updateCategory,
 } from "../../../controllers/index.js"; // Importing from the index.js of controllers
@@ -13,7 +13,7 @@ const router = Router();
 router.post("/", validate(categorySchema), createCategory);
 router.get("/:id", getCategory);
 router.put("/:id", updateCategory);
-router.delete("/:id", deleteCategory);
+// router.delete("/:id", deleteCategory);
 
 
 export default router;
