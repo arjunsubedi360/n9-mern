@@ -1,12 +1,10 @@
 import {
   createSingleCategory,
-  deleteSingleCategory,
   getSingleCategory,
   updateSingleCategory,
 } from "../services/index.js";
 import { lang, responseData } from "../utils/responseData.js";
 import { HttpStatusEnum } from "../enums/status-enum.js";
-import { categorySchema } from "../validations/category.validation.js";
 
 export const getCategory = async (request, response) => {
   const id = request.params.id;
@@ -23,9 +21,6 @@ export const createCategory = async (request, response) => {
   try {
     const input = request.body;
 
-    if (error) {
-      throw new Error(error);
-    }
     const data = await createSingleCategory(input);
     responseData({
       data,
@@ -45,44 +40,35 @@ export const createCategory = async (request, response) => {
 
 export const updateCategory = async (request, response) => {
   try {
-    let data;
     const id = request.params.id;
     const input = request.body;
+    console.log(id, input);
 
-    const categoryExists = await getSingleCategory({ id });
+    const payload = { ...input };
+    console.log(payload);
 
-    if (!categoryExists) {
-      throw new Error("Category does not exist.");
+    const tableExists = await getSingleCategory({ _id: id });
+    if (!tableExists) {
+      throw new Error("Table does not exists.");
     }
-    data = await updateSingleCategory({ id, input });
+    const updatedData = await updateSingleCategory(id, payload);
 
-    if (data.modifiedCount === 1) {
-      data = await getSingleCategory({ id });
+    if (updatedData.modifiedCount === 1) {
+      data = await getSingleCategory({ slug: payload.slug });
     }
 
     responseData({
-      data,
-      message: lang.UPDATE("Category"),
-      statusCode: HttpStatusEnum.CREATED,
+      data: data,
+      message: lang.UPDATE("Table"),
       response,
+      statusCode: HttpStatusEnum.OK,
     });
   } catch (error) {
     responseData({
       acknowledge: false,
-      message: error.message,
       response,
+      message: error.message,
       statusCode: HttpStatusEnum.BAD_REQUEST,
     });
   }
-};
-
-export const deleteCategory = async (request, response) => {
-  const id = request.params.id;
-  const data = await deleteSingleCategory(id);
-  responseData({
-    data,
-    message: lang.DELETE("Category"),
-    statusCode: HttpStatusEnum.OK,
-    response,
-  });
 };
