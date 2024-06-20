@@ -1,50 +1,68 @@
 import express from "express";
+import path from "path";
 import { users } from "./models/users.js";
-
 const app = express();
 const port = 4000;
 
-
 app.use(express.json());
+
+
+app.get('/users', function(req, res) {
+  res.json(users);
+});
 
 app.get("/users/:id", (request, response) => {
   const { id } = request.params;
-  console.log("id", id);
-  console.log("request.query ==> ", request.query);
   const { username, limit, sort } = request.query;
   console.log(username, limit, sort);
-  // { username: 'arjunsbedi', limit: '10', sort: '1', sortOrder: 'name' }
   response.json(users);
 });
 
-// app.get("/users/:username", (request, response) => {
-//   try {
-//     const username = request.params.username; // req.params
-//     // console.log("id", id)
-//     // const queryUserName = request.query.username; //req.query localhost:4000/users?username="arjunsubedi360"
-//     // console.log("queryUserName", username);
-//     const input = request.body;
-//     console.log(input);
-//     const user = users.filter((user) => user.login == username);
+app.get("/users/:username", (request, response) => {
+  try {
+    const username = request.params.username; // req.params
+    const input = request.body;
+    console.log(input);
+    const user = users.filter((user) => user.login == username);
 
-//     if (user.length === 0) {
-//       throw new Error("No user found");
-//     }
-//     response.json(user);
-//   } catch (error) {
-//     console.log(error);
-//     response.status(400).json({ message: error.message });
-//   }
-// });
+    if (user.length === 0) {
+      throw new Error("No user found");
+    }
+    response.json(user);
+  } catch (error) {
+    console.log(error);
+    response.status(400).json({ message: error.message });
+  }
+});
 
-app.post("/users", (req, res) => {
+app.post("/users", (req, res)=> {
+    users.push(req.body);
+    res.status(201).json(users);
+})
+
+
+app.put("/users/:id", (req, res)=> {
+  const { id } = req.params;
   const input = req.body;
-  console.log("input", input);
-  res.json(input)
+
+  const user = users.find((user)=> user.login == id);
+
+  const updateUser = {
+    ...user,
+    ...input
+  };
+
+  res.status(201).json(updateUser);
 });
 
 
+app.delete("/users/:id", (req, res)=> {
+  const { id } = req.params;
 
+  const user = users.filter((user)=> user.login !== id);
+
+  res.status(201).json(user);
+});
 app.listen(port, function () {
   console.log(`I am running at port ${port}`);
 });
@@ -58,7 +76,6 @@ Http method
 5. Get (all data)  /users 
 6. Patch           /users/:id   status: active 
 */
-
 
 // params = "users/:userId/posts/:postId"
 
