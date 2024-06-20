@@ -1,9 +1,35 @@
 import Table from "../models/Table.js";
 // create, createMany, updateOne, updateMany, deleteOne, deleteMany, findOne, find()
 export const createSingleTable = async (payload) => {
-  console.log({ payload });
-  const { slug } = payload;
-  const data = await Table.create({ slug });
-  console.log(data);
-  return Table.findOne({ _id: data._id });
+  try {
+    console.log({ payload });
+
+    const data = await Table.create(payload);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getSingleTable = async ({ slug }) => {
+  try {
+    const data = await Table.findOne({ slug });
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const updateSingleTable = async (slug, input) => {
+  try {
+    const { name, slug: inputSlug } = input;
+    console.log(slug, input);
+    const data = await Table.updateOne(
+      { slug: slug },
+      { name: name, slug: inputSlug, updatedAt: new Date() }
+    );
+    return data;
+  } catch (error) {
+    return error;
+  }
 };
