@@ -10,7 +10,6 @@ const port = 3001;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-
 app.use("/auth/admin/v1", AdminRouter);
 
 app.use(notFound);
@@ -23,5 +22,4 @@ function startServer() {
   });
 }
 
-
-startServer()
+startServer();
