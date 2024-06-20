@@ -1,7 +1,0 @@
-1. git checkout dev
-2. git checkout -b prajwol
-3. git commit -am "changes"
-4. Send PR through github
-5. Pr review from peers and me aswell
-6. Comment on PR
-Dev => prajwol, rajendra, aayush

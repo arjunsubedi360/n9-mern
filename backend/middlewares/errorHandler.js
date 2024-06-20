@@ -1,8 +1,5 @@
 import { HttpStatusEnum } from "../enums/status-enum.js";
 
 export function errorHandler(err, req, res, next) {
-  console.log(err);
-  res.status(HttpStatusEnum.BAD_REQUEST).json({
-    message: err.message || "Internal server error.",
-  });
+  res.status(err.code || HttpStatusEnum.INTERNAL_SERVER_ERROR).json(err?.message || "Something went wrong");
 }

@@ -13,7 +13,7 @@ export function responseData({
   response,
   statusCode = HttpStatusEnum.OK,
 }) {
-  response.status(statusCode).json({
+  response.status(statusCode).send({
     success: acknowledge,
     message,
     statusCode,

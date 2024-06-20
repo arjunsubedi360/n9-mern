@@ -13,11 +13,11 @@ app.use(express.json());
 
 app.use("/auth/admin/v1", AdminRouter);
 
-app.use(errorHandler);
 app.use(notFound);
+app.use(errorHandler);
 
 function startServer() {
-  // connectDb()
+  connectDb()
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
   });
