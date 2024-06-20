@@ -13,8 +13,9 @@ app.use(express.json());
 
 app.use("/auth/admin/v1", AdminRouter);
 
-app.use(errorHandler);
 app.use(notFound);
+app.use(errorHandler);
+
 
 function startServer() {
   connectDb()

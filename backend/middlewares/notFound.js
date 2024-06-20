@@ -1,3 +1,5 @@
+import { HttpStatusEnum } from "../enums/status-enum.js";
+
 export const notFound = (req, res) => {
-  res.status(400).json({ message: "Route does not exist" });
+  res.status(HttpStatusEnum.NOT_FOUND).json({ message: "Route does not exist" });
 };
