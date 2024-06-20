@@ -33,3 +33,14 @@ export const updateSingleTable = async (slug, input) => {
     return error;
   }
 };
+
+
+export const deleteSingleTable = async (slugValue) => {
+  try {
+    const data = await Table.deleteOne(slugValue);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+

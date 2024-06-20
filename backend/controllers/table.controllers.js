@@ -97,12 +97,6 @@ export const updateTable = async (request, response) => {
 
 export const deleteTable = async (request, response) => {
   const slugValue = request.params.slug;
-
-  const tableExists = await getSingleTable({ slug: slugValue });
-  if (!tableExists) {
-    throw new Error("Table does not exist");
-  }
-
   const deleteData = await deleteSingleTable(slugValue);
 
   responseData({
