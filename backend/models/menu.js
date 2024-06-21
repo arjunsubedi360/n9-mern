@@ -13,11 +13,10 @@ const menuSchema = new Schema(
             unique: true,
             required: true,
     },
+    
 },
     {
         timestamps: true,
-    }
-
-);
+    });
 
 export default mongoose.model("menu", menuSchema);
