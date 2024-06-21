@@ -3,6 +3,10 @@ export const lang = {
   GET: (title) => `${title || ""} fetched successfully.`,
   UPDATE: (title) => `${title || ""} updated successfully.`,
   LIST: (title) => `${title || ""} list successfully.`,
+<<<<<<< HEAD
+=======
+  DELETE: (title) => `${title || ""} deleted successfully.`,
+>>>>>>> 324f4fad88bc8af6f825e10d280719b3733081c2
 };
 
 export function responseData({
@@ -12,7 +16,11 @@ export function responseData({
   response,
   statusCode = HttpStatusEnum.OK,
 }) {
+<<<<<<< HEAD
   response.status(statusCode).json({
+=======
+  response.status(statusCode).send({
+>>>>>>> 324f4fad88bc8af6f825e10d280719b3733081c2
     success: acknowledge,
     message,
     statusCode,
