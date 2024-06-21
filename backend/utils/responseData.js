@@ -4,6 +4,7 @@ export const lang = {
   UPDATE: (title) => `${title || ""} updated successfully.`,
   LIST: (title) => `${title || ""} list successfully.`,
   DELETE: (title) => `${title || ""} deleted successfully.`,
+  LOGIN: "Login successfully"
 };
 
 export function responseData({
