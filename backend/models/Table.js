@@ -11,6 +11,11 @@ const tableSchema = new Schema(
       unique: true,
       required: true,
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'users',
+      required: true
+    }
   },
   {
     timestamps: true,
