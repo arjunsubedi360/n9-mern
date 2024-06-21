@@ -16,5 +16,6 @@ router.get("/:id", getCategory);
 router.put("/:id", updateCategory);
 router.delete("/:id", deleteCategory);
 
+router.post("/", createCategory);
 
 export default router;

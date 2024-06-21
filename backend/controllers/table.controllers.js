@@ -1,12 +1,12 @@
-import { request } from "express";
 import { HttpStatusEnum } from "../enums/status-enum.js";
 import {
   createSingleTable,
+  deleteSingleTable,
   getSingleTable,
-  updateSingleTable,
+  updateSingleTable
 } from "../services/index.js";
-import { slugify } from "../utils/slugify.js";
 import { lang, responseData } from "../utils/responseData.js";
+import { slugify } from "../utils/slugify.js";
 
 export const createTable = async (request, response) => {
   try {
@@ -94,3 +94,15 @@ export const updateTable = async (request, response) => {
     });
   }
 };
+
+export const deleteTable = async (request, response) => {
+  const slugValue = request.params.slug;
+  const deleteData = await deleteSingleTable(slugValue);
+
+  responseData({
+    data: deleteData,
+    message: lang.DELETE("Table"),
+    response,
+    statusCode: HttpStatusEnum.OK,
+  });
+}
