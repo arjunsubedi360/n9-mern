@@ -5,6 +5,7 @@ import {
     createSingleMenu,
     getSingleMenu,
     updateSingleMenu,
+    deleteSingleMenu
 } from "../services/menu.services.js";
 import { slugify } from "../utils/slugify.js";
 import { lang, responseData } from "../utils/responseData.js";
@@ -93,4 +94,16 @@ export const updateMenu = async (request, response) => {
             statusCode: HttpStatusEnum.BAD_REQUEST,     
         });
     }
+};
+
+export const deleteMenu = async (req, res) => {
+    const id = request.params.id;
+    const data = await deleteSingleMenu(id);
+    responseData({
+            data,
+            message: lang.DELETE("Category"),
+            statusCode: HttpStatusEnum.OK,
+            response,
+        });
+
 };

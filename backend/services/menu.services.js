@@ -1,9 +1,7 @@
 import Menu from "../models/menu.js";
 
 export const createSingleMenu = async (payload) => {
-    try{
-        console.log({payload});
-
+    try {
         const data = await Menu.create(payload);
         return data;
     } catch (error) {
@@ -11,9 +9,9 @@ export const createSingleMenu = async (payload) => {
     }
 };
 
-export const getSingleMenu = async ({slug}) => {
+export const getSingleMenu = async ({ slug }) => {
     try {
-        const data = await Menu.findOne({slug});
+        const data = await Menu.findOne({ slug });
         return data;
     } catch (error) {
         return overwriteMiddlewareResult;
@@ -22,11 +20,24 @@ export const getSingleMenu = async ({slug}) => {
 
 export const updateSingleMenu = async (slug, input) => {
     try {
-        const {name, slug: inputSlug} = input;
-        console.log(slug, input);
+        const { name, slug: inputSlug } = input;
         const data = await Menu.updateOne(
-            {slug: slug},
-            {name: name, slug: inputSlug, updatedAt: new DataTransfer() }
+            { slug: slug },
+            { name: name, slug: inputSlug, updatedAt: new DataTransfer() }
+        );
+        return data;
+
+    } catch (error) {
+        return error;
+    }
+};
+
+export const deleteSingleMenu = async (slug, input) => {
+    try {
+        const { name, slug: inputSlug } = input;
+        const data = await Menu.deleteOne(
+            { slug: slug },
+            { name: name, slug: inputSlug, updatedAt: new DataTransfer() }
         );
         return data;
 

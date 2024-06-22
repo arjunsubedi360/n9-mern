@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const menuSchema = new Schema(
     {
@@ -8,13 +8,21 @@ const menuSchema = new Schema(
             type: String,
             required: true,
         },
+        price: {
+            type: Number,
+            required: true
+        },
+        description: {
+            type: String
+        },
+        
         slug: {
             type: String,
             unique: true,
             required: true,
+        },
+
     },
-    
-},
     {
         timestamps: true,
     });
