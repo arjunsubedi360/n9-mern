@@ -29,16 +29,20 @@ app.get("/users/:username", (request, response) => {
   }
 });
 
+app.put("/users/:id", (req, res) => {
+  const { id } = req.params;
+  const input = req.body;
+
+
+  const updateUser = {
+    ...user,
+    ...input
+  };
+
+  res.status(201).json(updateUser);
+});
+
+app.delete("/auth/api/v1", UserRouter);
 app.listen(port, function () {
   console.log(`I am running at port ${port}`);
 });
-
-/* 
-Http method
-1. Get (single)    /users/:id
-2. Post            /users (Create new record)
-3. Put             /users/:id  body = {}
-4. Delete          /users/:id 
-5. Get (all data)  /users 
-6. Patch           /users/:id   status: active 
-*/
