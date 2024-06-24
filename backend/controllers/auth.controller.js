@@ -9,15 +9,19 @@ const login = async (request, response) => {
 
     const userExists = await get({ email });
 
-    console.log("userexists", userExists)
-    console.log("password match", userExists.password !== password);
-    console.log("password from user", userExists.password)
-    console.log("password", password);
     if (!userExists || userExists.password !== password) {
       throw new Error("Unauthorized");
     }
 
-    const token = jwt.sign({ user: userExists }, "thisismysecretkey");
+    console.log("userExists", userExists);
+    
+    const user = {
+      id: userExists.id,
+      email: userExists.email,
+      role: userExists.role
+    };
+    
+    const token = jwt.sign(user, "thisismysecretkey");
 
     responseData({
       data: { token: token },
