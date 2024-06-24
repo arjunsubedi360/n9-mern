@@ -1,7 +1,11 @@
 import express from "express";
-import { users } from "./models/users.js";
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import UserRouter from "./routes/users.route.js";
 
+dotenv.config();
+
+console.log(process.env.DB_URL)
 const app = express();
 const port = 4000;
 
@@ -24,5 +28,6 @@ app.put("/users/:id", (req, res)=> {
 
 app.delete("/auth/api/v1",UserRouter);
 app.listen(port, function () {
+  mongoose.connect(process.env.DB_URL)
   console.log(`I am running at port ${port}`);
 });
