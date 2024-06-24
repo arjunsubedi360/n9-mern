@@ -22,13 +22,7 @@ app.put("/users/:id", (req, res)=> {
   res.status(201).json(updateUser);
 });
 
-app.delete("/users/:id", (req, res)=> {
-  const { id } = req.params;
-
-  const user = users.filter((user)=> user.login !== id);
-
-  res.status(201).json(user);
-});
+app.delete("/auth/api/v1",UserRouter);
 app.listen(port, function () {
   console.log(`I am running at port ${port}`);
 });
