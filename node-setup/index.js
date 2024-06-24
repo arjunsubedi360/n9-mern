@@ -1,13 +1,13 @@
 import express from "express";
 import { users } from "./models/users.js";
-import { posts } from "./models/posts.js";
+import UserRouter from "./routes/users.route.js";
 
 const app = express();
 const port = 4000;
 
-app.get("/users", (request, response) => {
-  response.json(users);
-});
+app.use(express.json());
+
+app.use("/auth/api/v1", UserRouter);
 
 app.get("/users/:username", (request, response) => {
   try {
@@ -29,9 +29,9 @@ app.get("/users/:username", (request, response) => {
   }
 });
 
-app.listen(4000, function () {
-  console.log("I am running at port 4000")
-})
+app.listen(port, function () {
+  console.log(`I am running at port ${port}`);
+});
 
 /* 
 Http method

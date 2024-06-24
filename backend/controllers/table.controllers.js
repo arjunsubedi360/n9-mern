@@ -1,4 +1,3 @@
-import { request } from "express";
 import { HttpStatusEnum } from "../enums/status-enum.js";
 import { createSingleTable, getSingleTable } from "../services/index.js";
 import { slugify } from "../utils/slugify.js";
