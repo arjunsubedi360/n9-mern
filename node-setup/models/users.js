@@ -1,4 +1,4 @@
-const users = [
+export const users = [
   {
     login: "mojombo",
     id: 1,
@@ -682,4 +682,4 @@ const users = [
     updated_at: "2024-05-22T01:09:33Z",
   },
 ];
-export { users };
+
