@@ -1,0 +1,135 @@
+npm (Node Package Manager)
+npm is the default package manager for Node.js. It helps developers to install, share, and manage dependencies (libraries and frameworks) for their JavaScript projects. npm provides access to a vast repository of open-source packages.
+
+npm Commands
+Here are some essential npm commands:
+
+npm init: Initializes a new Node.js project and creates a package.json file.
+
+sh
+Copy code
+npm init
+or for a quick setup:
+
+sh
+Copy code
+npm init -y
+npm install (or npm i): Installs all dependencies listed in the package.json file.
+
+sh
+Copy code
+npm install
+npm install <package-name>: Installs a specific package and adds it to the dependencies in package.json.
+
+sh
+Copy code
+npm install express
+npm install <package-name> --save-dev: Installs a specific package and adds it to the devDependencies in package.json.
+
+sh
+Copy code
+npm install mocha --save-dev
+npm uninstall <package-name>: Removes a specific package and updates package.json.
+
+sh
+Copy code
+npm uninstall express
+npm update: Updates all packages to the latest version based on the versioning rules in package.json.
+
+sh
+Copy code
+npm update
+npm outdated: Lists all outdated packages.
+
+sh
+Copy code
+npm outdated
+npm run <script-name>: Runs a script defined in the scripts section of package.json.
+
+sh
+Copy code
+npm run test
+npm publish: Publishes a package to the npm registry.
+
+sh
+Copy code
+npm publish
+npm audit: Scans your project for vulnerabilities.
+
+sh
+Copy code
+npm audit
+package.json
+package.json is a configuration file for a Node.js project. It contains metadata about the project and lists the dependencies. Here are some key fields:
+
+name: The name of your project.
+version: The version of your project.
+description: A brief description of your project.
+main: The entry point of your application.
+scripts: Scripts to run various tasks (e.g., start, test).
+dependencies: Packages required for your application to run.
+devDependencies: Packages required only for development and testing.
+Example package.json:
+
+json
+Copy code
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "A sample Node.js project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.1"
+  }
+}
+package-lock.json
+package-lock.json is automatically generated when npm install is run. It records the exact versions of all installed packages and their dependencies. This file ensures that the same versions are installed on all environments, maintaining consistency.
+
+Versioning
+npm uses semantic versioning (semver) to manage package versions. Semantic versioning uses a three-part version number:
+
+Major: Indicates breaking changes.
+Minor: Indicates new features that are backward compatible.
+Patch: Indicates backward-compatible bug fixes.
+Version format:
+
+Copy code
+MAJOR.MINOR.PATCH
+Example:
+
+1.2.3:
+1: Major version
+2: Minor version
+3: Patch version
+Version Ranges in package.json
+Caret (^): Updates to the latest minor/patch version.
+
+json
+Copy code
+"express": "^4.17.1"
+Tilde (~): Updates to the latest patch version within the same minor version.
+
+json
+Copy code
+"express": "~4.17.1"
+Exact version: Installs the exact version specified.
+
+json
+Copy code
+"express": "4.17.1"
+Range: Allows specifying a range of versions.
+
+json
+Copy code
+"express": ">=4.17.0 <5.0.0"
+Teaching Tips
+Hands-on Practice: Encourage students to create their own Node.js projects and use npm commands.
+Exploration: Have students explore the npm registry to understand the variety of packages available.
+Version Management: Show practical examples of how versioning works and how to manage updates and dependencies.

@@ -1,0 +1,2 @@
+1. Create an object and provide details about a person.
+2. Create an array and provide information about fruits.
