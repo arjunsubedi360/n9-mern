@@ -1,12 +1,23 @@
 import User from "../models/User.js";
-import { users } from "../models/users.js";
 
-const getUser = async(id) => {
-  console.log("user service hit")
-  return await User.create({name: "Arjun"})
+const createUser = async (input) => {
+  console.log("user service hit", input);
+  return await User.create(input);
 };
 
-const deleteUser = (id)=> {
-  return users.filter((user)=> user.login !== id);
+const updateUser = async (id, input) => {
+  return await User.updateOne({ _id: id }, input);
 };
-export { getUser, deleteUser};
+
+const getUser = async (id) => {
+  return await User.findOne({ _id: id });
+};
+
+const getUsers = async () => {
+  return await User.find({});
+};
+
+const deleteUser = async (id) => {
+  return await User.deleteOne({ _id: id });
+};
+export { createUser, updateUser, getUser, getUsers, deleteUser };
