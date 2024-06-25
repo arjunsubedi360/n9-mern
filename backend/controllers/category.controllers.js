@@ -18,24 +18,15 @@ export const getCategory = async (request, response) => {
 };
 
 export const createCategory = async (request, response) => {
-  try {
-    const input = request.body;
+  const input = request.body;
 
-    const data = await createSingleCategory(input);
-    responseData({
-      data,
-      message: lang.CREATE("Category"),
-      statusCode: HttpStatusEnum.CREATED,
-      response,
-    });
-  } catch (error) {
-    responseData({
-      message: error.message,
-      response,
-      statusCode: HttpStatusEnum.BAD_REQUEST,
-      acknowledge: false,
-    });
-  }
+  const data = await createSingleCategory(input);
+  responseData({
+    data,
+    message: lang.CREATE("Category"),
+    statusCode: HttpStatusEnum.CREATED,
+    response,
+  });
 };
 
 export const updateCategory = async (request, response) => {

@@ -1,0 +1,41 @@
+import jwt from "jsonwebtoken";
+import { HttpStatusEnum } from "../enums/status-enum.js";
+import { get } from "../services/user.services.js";
+import { lang, responseData } from "../utils/responseData.js";
+
+const login = async (request, response) => {
+  try {
+    const { email, password } = request.body;
+
+    const userExists = await get({ email });
+
+    if (!userExists || userExists.password !== password) {
+      throw new Error("Unauthorized");
+    }
+
+    console.log("userExists", userExists);
+    
+    const user = {
+      id: userExists.id,
+      email: userExists.email,
+      role: userExists.role
+    };
+    
+    const token = jwt.sign(user, "thisismysecretkey");
+
+    responseData({
+      data: { token: token },
+      message: lang.LOGIN,
+      response,
+      statusCode: HttpStatusEnum.OK,
+    });
+  } catch (error) {
+    responseData({
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.UNAUTHORIZED,
+    });
+  }
+};
+
+export { login };
