@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createCategory,
   deleteCategory,
+  getCategories,
   getCategory,
   updateCategory,
 } from "../../../controllers/index.js"; // Importing from the index.js of controllers
@@ -21,6 +22,7 @@ router.post(
   exceptionHandler(createCategory)
 );
 router.get("/:id", getCategory);
+router.get("/", getCategories);
 router.put("/:id", updateCategory);
 router.delete("/:id", deleteCategory);
 

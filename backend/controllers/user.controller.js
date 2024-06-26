@@ -1,9 +1,14 @@
 import { HttpStatusEnum } from "../enums/status-enum.js";
-import { create, get,update,dlt } from "../services/user.services.js";
+import { create, getAll, update, dlt } from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
 
 const getUsers = async (request, response) => {
-  const data = await get();
+  const { limit } = request.query;
+  const pageLimit = Number(limit);
+  const pageMeta = {
+    limit: pageLimit,
+  };
+  const data = await getAll(pageMeta);
   responseData({
     data: data,
     message: lang.LIST("Users"),
@@ -35,7 +40,7 @@ const updateUser = async (request, response) => {
   try {
     const userId = request.params.id;
     const user = request.body;
-    const data = await update(userId,user);
+    const data = await update(userId, user);
     responseData({
       data: data,
       message: lang.CREATE("Update"),
@@ -49,7 +54,6 @@ const updateUser = async (request, response) => {
       statusCode: HttpStatusEnum.BAD_REQUEST,
       acknowledge: false,
     });
-
   }
 };
 const deleteUser = async (request, response) => {
@@ -71,9 +75,7 @@ const deleteUser = async (request, response) => {
       statusCode: HttpStatusEnum.BAD_REQUEST,
       acknowledge: false,
     });
-
   }
 };
 
-
-export { createUser, getUsers,updateUser,deleteUser }
+export { createUser, getUsers, updateUser, deleteUser };

@@ -29,6 +29,22 @@ async function get({ email }) {
     throw error;
   }
 }
+
+async function getAll(pageMeta) {
+  try {
+    const { limit } = pageMeta;
+    const users = await User.find({}).limit(limit || 10);
+    // .sort({})
+    // .limit(limit)
+    // .skip(skip);
+
+    return users;
+  } catch (error) {
+    console.error("Error retrieving User:", error.message);
+    throw error;
+  }
+}
+
 async function update(id, data) {
   try {
     const usrdata = data;
@@ -46,4 +62,4 @@ async function dlt(id) {
   }
 }
 
-export { create, get, update, dlt };
+export { create, get, getAll, update, dlt };
