@@ -16,8 +16,8 @@ const router = Router();
 
 router.post(
   "/",
-  authentication,
-  authorization,
+  authentication, //1st
+  authorization, //2nd
   validate(categorySchema),
   exceptionHandler(createCategory)
 );

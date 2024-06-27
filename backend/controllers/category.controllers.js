@@ -21,13 +21,13 @@ export const getCategory = async (request, response) => {
 };
 
 export const getCategories = async (request, response) => {
-  const { limit, skip } = request.query;
+  const { limit, page } = request.query;
   const pageLimit = Number(limit);
-  const pageSkip = Number(skip);
+  const pageSkip = Number(page);
 
   const pageMeta = {
     limit: pageLimit,
-    skip: pageSkip,
+    page: pageSkip || 1,
   };
 
   const data = await getAllCategories(pageMeta);
