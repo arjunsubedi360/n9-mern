@@ -1,5 +1,6 @@
 import express from "express";
 import AdminRouter from "./routes/v1/admins/index.js";
+
 import { notFound } from "./middlewares/notFound.js";
 import { connectDb } from "./db/index.js";
 
