@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { createUser } from "../../../controllers/index.js"; // Importing from the index.js of controllers
+import { createSingleUser } from "../../../controllers/index.js"; // Importing from the index.js of controllers
+import { validate } from "../../../middlewares/validate.js";
+import { createUser } from "../../../validations/user.validations.js";
 
 const router = Router();
 
-router.post("/", createUser);
-
-
+router.post("/", validate(createUser), createSingleUser);
 
 export default router;

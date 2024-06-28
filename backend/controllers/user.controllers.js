@@ -1,16 +1,52 @@
-import { HttpStatusEnum } from "../enums/http-status-enums.js";
-import { createSingleUser } from "../services/user.services.js";
+import { HttpStatusEnum } from "../enums/status.enum.js";
+import {
+  createUser,
+  getUser,
+  deleteUser,
+  getUsers,
+  updateUser,
+} from "../services/user.services.js";
+import { language } from "../utils/responseData.js";
 
-export const createUser = async (request, response) => {
+const createSingleUser = async (req, res) => {
   try {
-    const input = request.body;
+    const data = await createUser(req.body);
 
-    const data = await createSingleUser(input);
-
-    response.status(HttpStatusEnum.OK).json(data);
-
+    res.status(HttpStatusEnum.OK).json({data, message: language.CREATE("User")});
   } catch (error) {
-    console.log("error", error)
-    response.status(HttpStatusEnum.BAD_REQUEST).json(error);
+    res
+      .status(HttpStatusEnum.BAD_REQUEST)
+      .json({ success: false, message: error.message });
   }
+};
+const updateSingleUser = async (req, res) => {
+  const id = req.params.id;
+  const input = req.body;
+
+  const data = await updateUser(id, input);
+  res.status(HttpStatusEnum.OK).json(data);
+};
+const getSingleUser = async (req, res) => {
+  const id = req.params.id;
+  const data = await getUser(id);
+  res.status(HttpStatusEnum.OK).json(data);
+};
+
+const getUsersList = async (req, res) => {
+  const data = await getUsers();
+  res.status(HttpStatusEnum.OK).json(data);
+};
+
+const deleteSingleUser = async (req, res) => {
+  const { id } = req.params;
+  const data = await deleteUser(id);
+  res.status(HttpStatusEnum.OK).json(data);
+};
+
+export {
+  createSingleUser,
+  updateSingleUser,
+  getSingleUser,
+  deleteSingleUser,
+  getUsersList,
 };
