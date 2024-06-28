@@ -1,4 +1,4 @@
-import Joi from "joi";
+cimport Joi from "joi";
 import { UserStatusEnum } from "../enums";
 import { phoneSchema, stringSchema } from "./schemas";
 
