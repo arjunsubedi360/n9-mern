@@ -5,5 +5,7 @@ export const createUser = Joi.object({
   email: Joi.string().min(2).max(30).required().label("Email"),
   age: Joi.number().min(2).max(30).required().label("Age"),
   isMarried: Joi.boolean().default(false).label("Is married"),
+  password: Joi.string().min(2).max(50).required().label("Password"),
+  role: Joi.string().min(2).max(50).required().label("Role"),
 });
 
