@@ -6,7 +6,7 @@ const getSingleUser = (req, res) => {
   const data = getUser(id);
   res.status(HttpStatusEnum.OK).json(data);
 };
-const deleteSingleUser = (req, res)=> {
+const deleteSingleUser = (req, res)=> { 
   const { id } = req.params.id;
   const delData= deleteUser(id);
   res.status(HttpStatusEnum.OK).json(delData);}
