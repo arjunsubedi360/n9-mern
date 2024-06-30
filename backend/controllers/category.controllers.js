@@ -18,9 +18,10 @@ export const getCategory = async (request, response) => {
 };
 
 export const createCategory = async (request, response) => {
+  const { _id: userId } = request.user;
   const input = request.body;
 
-  const data = await createSingleCategory(input);
+  const data = await createSingleCategory({...input, createdBy: userId});
   responseData({
     data,
     message: lang.CREATE("Category"),

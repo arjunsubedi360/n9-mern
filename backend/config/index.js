@@ -7,3 +7,5 @@ export const dbPassword   = process.env.DB_PASSWORD;
 export const dbHost = process.env.DB_BASE;
 export const dbCluster = process.env.DB_CLUSTER;
 
+export const jwtSecretKey = process.env.JWT_SECRET;
+

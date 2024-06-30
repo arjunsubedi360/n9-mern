@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { HttpStatusEnum } from "../enums/status-enum.js";
 import { get } from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
+import { jwtSecretKey } from "../config/index.js";
 
 const login = async (request, response) => {
   try {
@@ -21,7 +22,7 @@ const login = async (request, response) => {
       role: userExists.role
     };
     
-    const token = jwt.sign(user, "thisismysecretkey");
+    const token = jwt.sign(user, jwtSecretKey);
 
     responseData({
       data: { token: token },

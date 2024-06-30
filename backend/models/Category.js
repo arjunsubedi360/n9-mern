@@ -6,6 +6,10 @@ const categorySchema = new Schema(
     name: {
       type: String,
       required: true
+    },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId, //object mongodbId
+      ref: 'users', //collection name /table name _id
     }
   },
   {

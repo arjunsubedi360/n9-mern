@@ -18,7 +18,7 @@ app.use("/auth/api/v1", UserRouter)
 app.use(errorHandler);
 
 function startServer() {
-  // connectDb()
+  connectDb()
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
   });
