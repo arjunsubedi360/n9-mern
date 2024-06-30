@@ -1,7 +1,8 @@
 import { Router } from "express";
 import {
   createCategory,
-  // deleteCategory,
+  deleteCategory,
+  getCategories,
   getCategory,
   updateCategory,
 } from "../../../controllers/index.js"; // Importing from the index.js of controllers
@@ -15,12 +16,13 @@ const router = Router();
 
 router.post(
   "/",
-  authentication,
-  authorization,
+  authentication, //1st
+  authorization, //2nd
   validate(categorySchema),
   exceptionHandler(createCategory)
 );
 router.get("/:id", getCategory);
+router.get("/", getCategories);
 router.put("/:id", updateCategory);
 // router.delete("/:id", deleteCategory);
 

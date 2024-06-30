@@ -1,6 +1,7 @@
 import {
   createSingleCategory,
   getSingleCategory,
+  getAllCategories,
   updateSingleCategory,
 } from "../services/index.js";
 import { lang, responseData } from "../utils/responseData.js";
@@ -17,11 +18,30 @@ export const getCategory = async (request, response) => {
   });
 };
 
+export const getCategories = async (request, response) => {
+  const { limit, page } = request.query;
+  const pageLimit = Number(limit);
+  const pageSkip = Number(page);
+
+  const pageMeta = {
+    limit: pageLimit,
+    page: pageSkip || 1,
+  };
+
+  const data = await getAllCategories(pageMeta);
+  responseData({
+    data,
+    message: lang.GET("Category"),
+    statusCode: HttpStatusEnum.OK,
+    response,
+  });
+};
+
 export const createCategory = async (request, response) => {
   const { _id: userId } = request.user;
   const input = request.body;
 
-  const data = await createSingleCategory({...input, createdBy: userId});
+  const data = await createSingleCategory({ ...input, createdBy: userId });
   responseData({
     data,
     message: lang.CREATE("Category"),

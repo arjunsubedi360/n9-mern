@@ -14,8 +14,6 @@ const login = async (request, response) => {
       throw new Error("Unauthorized");
     }
 
-    console.log("userExists", userExists);
-    
     const user = {
       id: userExists.id,
       email: userExists.email,
