@@ -1,0 +1,202 @@
+### **0-10 Minutes: Introduction to Components**
+
+**Explanation**:
+- **Components**: Building blocks of a React application. They allow you to split the UI into independent, reusable pieces.
+- **Types**: Function Components and Class Components.
+
+**Example**:
+- **Function Component**:
+  ```javascript
+
+#### **One-Hour Teaching Plan**
+
+**Objective**: By the end of the session, students will understand the difference between function and class components, how to organize component files, pass data via props, and compose components.
+  function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>;
+  }
+  ```
+- **Class Component**:
+  ```javascript
+  class Welcome extends React.Component {
+    render() {
+      return <h1>Hello, {this.props.name}</h1>;
+    }
+  }
+  ```
+
+**Discussion**: 
+- Simplicity of function components.
+- Use cases for class components (before hooks were introduced).
+
+---
+
+### **10-20 Minutes: Component Structure and File Organization**
+
+**Explanation**:
+- **Component Structure**: Best practices for organizing React components.
+- **File Organization**: Grouping by feature or function.
+
+**Example**:
+- **Project Structure**:
+  ```
+  src/
+  ├── components/
+  │   ├── Header.js
+  │   ├── Footer.js
+  │   └── Welcome.js
+  ├── App.js
+  └── index.js
+  ```
+
+**Activity**:
+- Create a simple project with the above structure.
+- Explain why this organization is beneficial.
+
+---
+
+### **20-40 Minutes: Props and Passing Data to Components**
+
+**Explanation**:
+- **Props**: Short for properties, used to pass data from parent to child components.
+- **Immutability**: Props are read-only.
+
+**Example**:
+- **Parent Component**:
+  ```javascript
+  function App() {
+    return (
+      <div>
+        <Welcome name="Alice" />
+        <Welcome name="Bob" />
+      </div>
+    );
+  }
+  ```
+- **Child Component**:
+  ```javascript
+  function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>;
+  }
+  ```
+
+**Activity**:
+- Modify the `Welcome` component to accept and display different greetings.
+
+---
+
+### **40-55 Minutes: Composing Components**
+
+**Explanation**:
+- **Composition**: Building complex UIs from simpler components.
+
+**Example**:
+- **Parent Component**:
+  ```javascript
+  function App() {
+    return (
+      <div>
+        <Header />
+        <Welcome name="Alice" />
+        <Footer />
+      </div>
+    );
+  }
+  ```
+- **Header Component**:
+  ```javascript
+  function Header() {
+    return <header><h1>Welcome to My App</h1></header>;
+  }
+  ```
+- **Footer Component**:
+  ```javascript
+  function Footer() {
+    return <footer><p>© 2024 My App</p></footer>;
+  }
+  ```
+
+**Activity**:
+- Have students create their own `Header` and `Footer` components and use them in the `App` component.
+
+---
+
+### **55-60 Minutes: Q&A and Recap**
+
+**Q&A**:
+- Address any questions or confusion about components, props, and composition.
+  
+**Recap**:
+- Summarize the key points:
+  - Differences between function and class components.
+  - Importance of organized component structure.
+  - How to pass and use props.
+  - Composing components to build complex UIs.
+
+**Homework**:
+- Create a small React app with at least three components, passing props to display dynamic data.
+
+---
+
+### Detailed Example for Practice
+
+**App.js**:
+```javascript
+import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Welcome from './components/Welcome';
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <Welcome name="Alice" />
+      <Welcome name="Bob" />
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
+```
+
+**Header.js**:
+```javascript
+import React from 'react';
+
+function Header() {
+  return (
+    <header>
+      <h1>Welcome to My App</h1>
+    </header>
+  );
+}
+
+export default Header;
+```
+
+**Footer.js**:
+```javascript
+import React from 'react';
+
+function Footer() {
+  return (
+    <footer>
+      <p>© 2024 My App</p>
+    </footer>
+  );
+}
+
+export default Footer;
+```
+
+**Welcome.js**:
+```javascript
+import React from 'react';
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+export default Welcome;
+```
