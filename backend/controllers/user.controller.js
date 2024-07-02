@@ -3,12 +3,18 @@ import { create, getAll, update, dlt } from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
 
 const getUsers = async (request, response) => {
-  const { limit } = request.query;
-  const pageLimit = Number(limit);
+  const { limit, skip, sort, search, ...filters } = request.query;
+  const pageLimit = Number(limit) || 10;
+  const pageSkip = Number(skip) || 0;
+  const sortOptions = sort ? JSON.parse(sort) : {};
+
   const pageMeta = {
     limit: pageLimit,
+    skip: pageSkip,
+    sort: sortOptions,
   };
-  const data = await getAll(pageMeta);
+
+  const data = await getAll(pageMeta, filters, search);
   responseData({
     data: data,
     message: lang.LIST("Users"),

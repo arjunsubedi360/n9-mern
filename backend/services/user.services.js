@@ -30,13 +30,23 @@ async function get({ email }) {
   }
 }
 
-async function getAll(pageMeta) {
+async function getAll(pageMeta, filters = {}, search = "") {
   try {
-    const { limit } = pageMeta;
-    const users = await User.find({}).limit(limit || 10);
-    // .sort({})
-    // .limit(limit)
-    // .skip(skip);
+    const { limit = 10, skip = 0, sort = {} } = pageMeta;
+
+    const query = {};
+
+    //Filter
+    Object.keys(filters).forEach((key) => {
+      query[key] = filters[key];
+    });
+
+    if (search) {
+      const searchRegex = new RegExp(search, "i");
+      query.$or = [{ name: searchRegex }, {email: searchRegex}];
+    }
+
+    const users = await User.find(query).sort(sort).limit(limit).skip(skip);
 
     return users;
   } catch (error) {
