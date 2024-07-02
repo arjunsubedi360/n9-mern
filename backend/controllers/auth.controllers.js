@@ -2,12 +2,14 @@ import jwt from "jsonwebtoken";
 import { HttpStatusEnum } from "../enums/status.enum.js";
 import { language } from "../utils/responseData.js";
 import { jwtSecretKey } from "../config/index.js";
+import { getUserByEmail } from "../services/user.services.js";
 
 const login = async (req, res) => {
   try {
     const { email, password: inputPassword } = req.body;
     const userExists = await getUserByEmail(email);
-    if (!userExists && inputPassword !== userExists.password) {
+    console.log("userExists", userExists);
+    if (!userExists && inputPassword !== userExists?.password) {
       throw new Error("Email/Password does not match");
     }
 

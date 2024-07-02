@@ -19,7 +19,7 @@ export const authentication = async (request, response, next) => {
     }
 
     const decoded = jwt.verify(token, jwtSecretKey);
-    const { id } = decoded;
+    const { _id: id } = decoded;
 
     const user = await getUser(id);
 
@@ -36,8 +36,8 @@ export const authentication = async (request, response, next) => {
 
     request.user = {
       _id: user._id,
-      role: user.role,
-      email: user.email,
+      role: user?.role,
+      email: user?.email,
     }; //req. user ko information bind
     next();
   } catch (error) {

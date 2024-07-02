@@ -20,13 +20,16 @@ const getUsers = async (pageMeta) => {
   const { skip, limit } = pageMeta;
   const totalCount = await User.countDocuments();
 
-  const data = await User.find({}).skip(skip).limit(limit);
+  const data = await User.find({}) /// {name: "arjun subedi"
+    .skip(skip || 0)
+    .limit(limit || 10)
+    .sort({ updatedAt: "descending" }); // {asc, ascending, 1 } {-1, desc, descending}
 
   return {
     data,
     pagination: {
       totalCount,
-      hasNextPage: (skip + limit) < totalCount,
+      hasNextPage: skip + limit < totalCount,
     },
   };
 };
