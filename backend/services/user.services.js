@@ -16,11 +16,29 @@ const getUserByEmail = async (email) => {
   return await User.findOne({ email: email });
 };
 
-const getUsers = async () => {
-  return await User.find({});
+const getUsers = async (pageMeta) => {
+  const { skip, limit } = pageMeta;
+  const totalCount = await User.countDocuments();
+
+  const data = await User.find({}).skip(skip).limit(limit);
+
+  return {
+    data,
+    pagination: {
+      totalCount,
+      hasNextPage: (skip + limit) < totalCount,
+    },
+  };
 };
 
 const deleteUser = async (id) => {
   return await User.deleteOne({ _id: id });
 };
-export { createUser, updateUser, getUser, getUsers, deleteUser, getUserByEmail };
+export {
+  createUser,
+  updateUser,
+  getUser,
+  getUsers,
+  deleteUser,
+  getUserByEmail,
+};

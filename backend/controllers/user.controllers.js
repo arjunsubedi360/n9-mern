@@ -12,7 +12,9 @@ const createSingleUser = async (req, res) => {
   try {
     const data = await createUser(req.body);
 
-    res.status(HttpStatusEnum.OK).json({data, message: language.CREATE("User")});
+    res
+      .status(HttpStatusEnum.OK)
+      .json({ data, message: language.CREATE("User") });
   } catch (error) {
     res
       .status(HttpStatusEnum.BAD_REQUEST)
@@ -33,7 +35,15 @@ const getSingleUser = async (req, res) => {
 };
 
 const getUsersList = async (req, res) => {
-  const data = await getUsers();
+  const { skip, limit } = req.query;
+  const skipNum = Number(skip);
+  const limitNum = Number(limit);
+
+  const pageMeta = {
+    skip: skipNum,
+    limit: limitNum
+  };
+  const data = await getUsers(pageMeta);
   res.status(HttpStatusEnum.OK).json(data);
 };
 
