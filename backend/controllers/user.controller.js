@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import { HttpStatusEnum } from "../enums/status-enum.js";
 import { create, getAll, update, dlt } from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
@@ -25,8 +26,12 @@ const getUsers = async (request, response) => {
 
 const createUser = async (request, response) => {
   try {
-    const user = request.body;
-    const data = await create(user);
+    const input = request.body;
+    const salt = bcrypt.genSaltSync(10);
+    console.log("salt", salt);
+    const hash = bcrypt.hashSync(input.password, salt);
+    console.log("hash", hash)
+    const data = await create({ ...input, password: hash });
     responseData({
       data: data,
       message: lang.CREATE("User"),

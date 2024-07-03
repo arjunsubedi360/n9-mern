@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import { HttpStatusEnum } from "../enums/status-enum.js";
 import { get } from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
@@ -10,16 +11,20 @@ const login = async (request, response) => {
 
     const userExists = await get({ email });
 
-    if (!userExists || userExists.password !== password) {
-      throw new Error("Unauthorized");
+    if (!userExists) {
+      throw new Error("User does not exist");
+    }
+
+    if (!bcrypt.compareSync(password, userExists?.password)) {
+      throw new Error("Email/Password does not match");
     }
 
     const user = {
       id: userExists.id,
       email: userExists.email,
-      role: userExists.role
+      role: userExists.role,
     };
-    
+
     const token = jwt.sign(user, jwtSecretKey);
 
     responseData({

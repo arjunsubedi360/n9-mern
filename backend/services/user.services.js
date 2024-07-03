@@ -1,15 +1,14 @@
 import User from "../models/User.js";
 async function create(data) {
-  const { name, email, role } = data;
+  const { name, email, role, password } = data;
   try {
-    const saveUser = User.create({
+    return User.create({
       name,
       email,
       role,
+      password
     });
-    if (saveUser) {
-      return saveUser;
-    }
+   
   } catch (error) {
     console.error("Error creating Users:", error.message);
     throw error;
