@@ -9,19 +9,28 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: true, //unique 
+      unique: true, //unique
       minLength: [2, "Email should have minimum 2 character"], //character wise
       maxLength: [30, "Email should have maximum 30 character"],
     },
     age: {
       type: Number,
       min: [18, "Age should be more than 18"], //number wise
-      max: [60, "You are very old man. Sorry"]
+      max: [60, "You are very old man. Sorry"],
     },
     isMarried: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
+    role: {
+      type: String,
+      required: true,
+      default: "user",
+    },
+    password: {
+      type: String,
+      required: true, // required
+    },
   },
   {
     timestamps: true,
