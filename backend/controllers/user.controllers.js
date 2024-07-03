@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import { HttpStatusEnum } from "../enums/status.enum.js";
 import {
   createUser,
@@ -10,7 +11,10 @@ import { language } from "../utils/responseData.js";
 
 const createSingleUser = async (req, res) => {
   try {
-    const data = await createUser(req.body);
+    const input = req.body;
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(input.password, salt);
+    const data = await createUser({ ...input, password: hash });
 
     res
       .status(HttpStatusEnum.OK)
@@ -41,7 +45,7 @@ const getUsersList = async (req, res) => {
 
   const pageMeta = {
     skip: skipNum,
-    limit: limitNum
+    limit: limitNum,
   };
   const data = await getUsers(pageMeta);
   res.status(HttpStatusEnum.OK).json(data);

@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 
 const createUser = async (input) => {
+  console.log("input", input);
   return await User.create(input);
 };
 
