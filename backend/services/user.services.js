@@ -1,6 +1,15 @@
 import User from "../models/User.js";
+import bcrypt from "bcryptjs";
+
 
 const createUser = async (input) => {
+<<<<<<< HEAD
+  var salt= bcrypt.genSaltSync(5);
+  var hash = bcrypt.hashSync(input.password,salt);
+  input.password = hash;
+=======
+  console.log("input", input);
+>>>>>>> 513909a46d2feb926ac53cf3e2a6d2f8fefe2403
   return await User.create(input);
 };
 
