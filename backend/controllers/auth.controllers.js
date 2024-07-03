@@ -3,13 +3,14 @@ import { HttpStatusEnum } from "../enums/status.enum.js";
 import { language } from "../utils/responseData.js";
 import { jwtSecretKey } from "../config/index.js";
 import { getUserByEmail } from "../services/user.services.js";
+import bcrypt from "bcryptjs";
 
 const login = async (req, res) => {
   try {
     const { email, password: inputPassword } = req.body;
     const userExists = await getUserByEmail(email);
     console.log("userExists", userExists);
-    if (!userExists && inputPassword !== userExists?.password) {
+    if (!userExists && !bcrypt.compareSync(inputPassword,userExists.hash)) {
       throw new Error("Email/Password does not match");
     }
 
