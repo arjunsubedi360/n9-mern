@@ -11,3 +11,4 @@ const password = encodeURIComponent(dbPassword);
     console.log("Error connecting db")
   }
 }
+
