@@ -9,8 +9,13 @@ const login = async (req, res) => {
   try {
     const { email, password: inputPassword } = req.body;
     const userExists = await getUserByEmail(email);
-    console.log("userExists", userExists);
-    if (!userExists && !bcrypt.compareSync(inputPassword,userExists.hash)) {
+    if (!userExists) {
+      throw new Error("You are not registered");
+    }
+    if (
+      userExists.email !== email ||
+      !bcrypt.compareSync(inputPassword, userExists.password)
+    ) {
       throw new Error("Email/Password does not match");
     }
 
@@ -25,6 +30,7 @@ const login = async (req, res) => {
 
     res.status(HttpStatusEnum.OK).json({ token, message: language.LOGIN });
   } catch (error) {
+    console.log("error", error);
     res
       .status(HttpStatusEnum.BAD_REQUEST)
       .json({ success: false, message: error.message });
