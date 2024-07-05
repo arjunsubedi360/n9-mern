@@ -1,19 +1,30 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
-function Chat({ name, image }) {
-  console.log("props", name);
+export default function Example() {
+  // Declare a new state variable, which we'll call "count"
+  // const [count, setCount] = useState(0);
+
+  // return (
+  //   <div>
+  //     <p>You clicked {count} times</p>
+  //     <button onClick={() => setCount(count + 1)}>Click me</button>
+  //     <button onClick={() => setCount(0)}>Reset</button>
+  //   </div>
+  // );
+
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prevSeconds) => prevSeconds + 1);
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []); // Empty dependency array ensures this runs only on mount and unmount
+
   return (
     <div>
-      <h4>{name}</h4>
-      <img
-        src={
-          image ||
-          "data:image/jpeg;base64,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"
-        }
-        alt="Profile"
-      />
+      <p>Seconds elapsed: {seconds}</p>
     </div>
   );
 }
-
-export default Chat;
