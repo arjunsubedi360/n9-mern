@@ -1,18 +1,25 @@
-import express, { request, response } from "express";
-import { users } from "./models/user";
+import express from "express";
+import AdminRouter from "./routes/v1/admins/index.js";
+import UserRouter from "./routes/v1/users/index.js";
+
+import { connectDb } from "./db/index.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
+
 const app = express();
-const port = 4000;
+const port = 3001;
 
-app.get("/user", (request, response) => {
-  console.log(users);
-  response.json(users);
-});
-app.get("/users/:id", (request, response) => {
-  const id = request.params.id;
-  const user = users.filter((user) => user.login == id);
-  response.json(users);
-});
+app.use(express.json());
 
-app.listen(port, function () {
-  console.log(`hello world i am port ${port}`);
-});
+app.use("/auth/admin/v1", AdminRouter);
+app.use("/auth/api/v1", UserRouter);
+
+app.use(errorHandler);
+
+function startServer() {
+  connectDb();
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+  });
+}
+
+startServer();
