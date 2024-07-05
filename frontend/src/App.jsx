@@ -1,11 +1,14 @@
-import "./App.css";
-import Product from "./Product";
+import React from "react";
+import SearchForm from "./SearchForm";
+// import Form from "./Items";
 
-export default function App() {
-
+function App() {
   return (
-    <>
-      <Product/>
-    </>
+    <div>
+      <SearchForm />
+      {/* <Form/> */}
+    </div>
   );
 }
+
+export default App;
