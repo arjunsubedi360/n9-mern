@@ -10,13 +10,7 @@ const login = async (req, res) => {
   try {
     const { email, password: inputPassword } = req.body;
     const userExists = await getUserByEmail(email);
-<<<<<<< HEAD
-    console.log("userExists", userExists);
-    if (!userExists && !bcrypt.compareSync(inputPassword,userExists.hash)) {
-=======
-
     if (!userExists && !bcrypt.compareSync(inputPassword, userExists.password)) {
->>>>>>> 513909a46d2feb926ac53cf3e2a6d2f8fefe2403
       throw new Error("Email/Password does not match");
     }
 
