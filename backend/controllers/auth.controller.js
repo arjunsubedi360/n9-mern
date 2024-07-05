@@ -11,11 +11,14 @@ const login = async (request, response) => {
 
     const userExists = await get({ email });
 
-    if (!userExists) {
-      throw new Error("User does not exist");
+    if (!userExists) { //status cha vane check inactive
+      throw new Error("You are not registered in our system");
     }
 
-    if (!bcrypt.compareSync(password, userExists?.password)) {
+    if (
+      userExists.email !== email ||
+      !bcrypt.compareSync(password, userExists?.password)
+    ) {
       throw new Error("Email/Password does not match");
     }
 
