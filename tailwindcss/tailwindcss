@@ -1,0 +1,119 @@
+### Text and Font Utilities
+- **Text Color**: `text-{color}`
+  ```html
+  <p class="text-red-500">This is red text.</p>
+  ```
+- **Font Size**: `text-{size}`
+  ```html
+  <p class="text-lg">This is large text.</p>
+  ```
+- **Font Weight**: `font-{weight}`
+  ```html
+  <p class="font-bold">This is bold text.</p>
+  ```
+- **Text Alignment**: `text-{alignment}`
+  ```html
+  <p class="text-center">This text is centered.</p>
+  ```
+
+### Background Utilities
+- **Background Color**: `bg-{color}`
+  ```html
+  <div class="bg-blue-500">This has a blue background.</div>
+  ```
+
+### Spacing Utilities
+- **Margin**: `m-{size}`, `mt-{size}`, `mr-{size}`, `mb-{size}`, `ml-{size}`, `mx-{size}`, `my-{size}`
+  ```html
+  <div class="m-4">This has margin 4 on all sides.</div>
+  ```
+- **Padding**: `p-{size}`, `pt-{size}`, `pr-{size}`, `pb-{size}`, `pl-{size}`, `px-{size}`, `py-{size}`
+  ```html
+  <div class="p-4">This has padding 4 on all sides.</div>
+  ```
+
+### Flexbox Utilities
+- **Display Flex**: `flex`
+  ```html
+  <div class="flex">This is a flex container.</div>
+  ```
+- **Justify Content**: `justify-{alignment}`
+  ```html
+  <div class="flex justify-center">Content is centered.</div>
+  ```
+- **Align Items**: `items-{alignment}`
+  ```html
+  <div class="flex items-center">Items are centered vertically.</div>
+  ```
+
+### Grid Utilities
+- **Display Grid**: `grid`
+  ```html
+  <div class="grid">This is a grid container.</div>
+  ```
+- **Grid Columns**: `grid-cols-{number}`
+  ```html
+  <div class="grid grid-cols-3">This has 3 columns.</div>
+  ```
+
+### Border Utilities
+- **Border Width**: `border`, `border-{side}-{width}`
+  ```html
+  <div class="border">This has a border.</div>
+  <div class="border-t-4">This has a top border with width 4.</div>
+  ```
+- **Border Color**: `border-{color}`
+  ```html
+  <div class="border border-red-500">This has a red border.</div>
+  ```
+
+### Rounded Corners
+- **Border Radius**: `rounded-{size}`
+  ```html
+  <div class="rounded-full">This has fully rounded corners.</div>
+  ```
+
+### Shadow Utilities
+- **Box Shadow**: `shadow-{size}`
+  ```html
+  <div class="shadow-lg">This has a large shadow.</div>
+  ```
+
+### Width and Height
+- **Width**: `w-{size}`
+  ```html
+  <div class="w-1/2">This has a width of 50%.</div>
+  ```
+- **Height**: `h-{size}`
+  ```html
+  <div class="h-64">This has a height of 16rem (64 * 0.25rem).</div>
+  ```
+
+### Example Component Using Tailwind CSS
+
+Here's a complete example incorporating some of these utilities:
+
+```jsx
+import React from 'react';
+import './index.css';
+
+export default function App() {
+  return (
+    <div className="p-6 bg-gray-100 min-h-screen flex items-center justify-center">
+      <div className="bg-white p-8 rounded-lg shadow-md">
+        <h1 className="text-3xl font-bold underline text-red-500 mb-4">
+          Hello world!
+        </h1>
+        <p className="text-gray-700">
+          This is a simple example demonstrating some common Tailwind CSS utilities.
+        </p>
+        <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
+          Click Me
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+This example demonstrates the use of background color, padding, text styles, margins, rounded corners, and shadows. Tailwind CSS makes it easy to apply styles directly within your HTML using these utility classes.
