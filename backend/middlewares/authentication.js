@@ -38,7 +38,7 @@ export const authentication = async (request, response, next) => {
       _id: user._id,
       role: user?.role,
       email: user?.email,
-    }; //req. user ko information bind
+    }; //req.user ko information bind (Now we can get this information by req.user)
     next();
   } catch (error) {
     console.log("error", error);
