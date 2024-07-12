@@ -34,7 +34,7 @@ export const authentication = async (request, response, next) => {
     //   return response.status(403).json({ message: "User not active" });
     // }
 
-    request.user = {
+    request.user = { //request is object request.user = {id: 1} 
       _id: user._id,
       role: user?.role,
       email: user?.email,
