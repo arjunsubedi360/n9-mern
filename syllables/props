@@ -8,8 +8,6 @@
 - **Function Component**:
   ```javascript
 
-#### **One-Hour Teaching Plan**
-
 **Objective**: By the end of the session, students will understand the difference between function and class components, how to organize component files, pass data via props, and compose components.
   function Welcome(props) {
     return <h1>Hello, {props.name}</h1>;
