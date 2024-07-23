@@ -5,6 +5,8 @@ import LoadingBar from "../components/LoadingBar";
 const Home = lazy(() => import("../components/Home"));
 const About = lazy(() => import("../components/About"));
 const Contact = lazy(() => import("../components/Contact"));
+const Service = lazy(() => import("../components/Service"));
+
 
 const AppRoutes = () => {
  
@@ -14,6 +16,7 @@ const AppRoutes = () => {
         <Route exact path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/services" element={<Service />} />
       </Routes>
     </Suspense>
   );
