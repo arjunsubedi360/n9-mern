@@ -29,6 +29,11 @@ function Navbar() {
               Contact
             </Link>
           </li>
+          <li className="ml-5">
+            <Link to="/register" className="custom-nav-link">
+              Register
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
