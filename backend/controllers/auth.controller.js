@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { HttpStatusEnum } from "../enums/status-enum.js";
-import { get } from "../services/user.services.js";
+import { create, get } from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
 import { jwtSecretKey } from "../config/index.js";
 
@@ -11,7 +11,8 @@ const login = async (request, response) => {
 
     const userExists = await get({ email });
 
-    if (!userExists) { //status cha vane check inactive
+    if (!userExists) {
+      //status cha vane check inactive
       throw new Error("You are not registered in our system");
     }
 
@@ -24,6 +25,7 @@ const login = async (request, response) => {
 
     const user = {
       id: userExists.id,
+      name: userExists.name,
       email: userExists.email,
       role: userExists.role,
     };
@@ -45,4 +47,26 @@ const login = async (request, response) => {
   }
 };
 
-export { login };
+const register = async (request, response) => {
+  try {
+    const input = request.body;
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(input.password, salt);
+    const data = await create({ ...input, password: hash });
+    responseData({
+      data: data,
+      message: lang.CREATE("User"),
+      response,
+      statusCode: HttpStatusEnum.CREATED,
+    });
+  } catch (error) {
+    responseData({
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.BAD_REQUEST,
+      acknowledge: false,
+    });
+  }
+};
+
+export { login, register };

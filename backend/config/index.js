@@ -9,3 +9,6 @@ export const dbCluster = process.env.DB_CLUSTER;
 
 export const jwtSecretKey = process.env.JWT_SECRET;
 
+export const port = process.env.PORT;
+
+
