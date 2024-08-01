@@ -1,10 +1,10 @@
 import "./App.css";
-import SideBarManagement from "./component/SideBarManagement";
-import NavigationManagement from "./component/NavigationManagement";
-import TodaysMoney from "./component/TodaysMoney";
-import TodaysUser from "./component/TodaysUser";
-import TodaysClient from "./component/TodaysClient";
-import TodaysSale from "./component/TodaysSale";
+import SideBarManagement from "./components/SideBarManagement";
+import NavigationManagement from "./components/NavigationManagement";
+import TodaysMoney from "./components/TodaysMoney";
+import TodaysUser from "./components/TodaysUser";
+import TodaysClient from "./components/TodaysClient";
+import TodaysSale from "./components/TodaysSale";
 
 function App() {
   return (
