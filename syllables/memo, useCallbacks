@@ -1,0 +1,69 @@
+### 1. `React.memo`
+
+Purpose:
+- `React.memo` is a higher-order component that memoizes the rendered output of a functional component. This means that the component will only re-render if its props change.
+
+How It Works:
+- When a component is wrapped in `React.memo`, React will compare the previous props and the new props. If they are the same, the component will not re-render.
+
+In the Example:
+- `Search` component is wrapped in `React.memo`. This ensures that `Search` only re-renders when its props change.
+```jsx
+const Search = memo(({ onSearch }) => {
+  // Component code
+});
+```
+
+Observation:
+- Even if the parent component (`ParentComponent`) re-renders (e.g., when the `count` state changes), `Search` will not re-render unless the `onSearch` prop changes.
+
+### 2. `useCallback`
+
+Purpose:
+- `useCallback` is a hook that returns a memoized version of the callback function that only changes if one of the dependencies has changed. This is useful for passing stable function references to child components.
+
+How It Works:
+- You pass a function and an array of dependencies to `useCallback`. The hook returns a memoized version of the function that only changes if one of the dependencies changes.
+
+In the Example:
+- `handleSearch` is wrapped in `useCallback` to ensure it maintains the same reference across renders unless its dependencies change.
+```jsx
+const handleSearch = useCallback((searchTerm) => {
+  setQuery(searchTerm);
+}, []);
+```
+
+Observation:
+- The `handleSearch` function reference does not change on each render of `ParentComponent`. This is crucial because `Search` receives `handleSearch` as a prop. If `handleSearch` changes, `Search` would re-render even if `React.memo` is used.
+
+### Step-by-Step Explanation:
+
+1. Initial Render:
+   - `ParentComponent` renders for the first time, creating `handleSearch` and passing it to `Search`.
+   - `Search` renders for the first time and logs "Search component rendered".
+
+2. Typing in Search Input:
+   - When the input in `Search` changes, `handleChange` is called, updating the input state and calling `onSearch` (which is `handleSearch`).
+   - `handleSearch` updates the `query` state in `ParentComponent`, causing it to re-render.
+   - Since `handleSearch` is memoized with `useCallback`, the reference to `handleSearch` does not change.
+   - `Search` does not re-render because its props (`onSearch`) did not change (thanks to `React.memo`).
+
+3. Clicking Increment Button:
+   - Clicking the button increments the `count` state in `ParentComponent`, causing it to re-render.
+   - The `query` state and `handleSearch` function reference remain unchanged.
+   - `Search` does not re-render because its props (`onSearch`) did not change (thanks to `React.memo`).
+
+### Why This Matters:
+
+- Performance Optimization:
+  - By using `React.memo`, you prevent unnecessary re-renders of the `Search` component when its props haven't changed.
+  - Using `useCallback` ensures that the function reference passed to `Search` remains stable, preventing `React.memo` from being invalidated due to a new function reference on each render.
+
+- Efficiency:
+  - These techniques together help in creating efficient, performant React applications by minimizing unnecessary renders and re-computations.
+
+### Key Takeaways for Students:
+
+- `React.memo` is used to memoize functional components, preventing re-renders unless props change.
+- `useCallback` is used to memoize callback functions, ensuring stable function references between renders.
+- Using both together can optimize performance in React applications by minimizing unnecessary re-renders.
