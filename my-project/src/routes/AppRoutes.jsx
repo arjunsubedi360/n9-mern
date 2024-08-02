@@ -15,7 +15,7 @@ const Profile = lazy(() => import("../components/Profile"));
 
 const AppRoutes = () => {
   const { authState } = useContext(AuthContext);
-
+  const isAuth = authState.isAuthenticated;
   return (
     <Suspense fallback={<LoadingBar />}>
       <Routes>
@@ -24,7 +24,15 @@ const AppRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/services" element={<Service />} />
+        <Route
+          path="/services"
+          element={
+            <PrivateRoute isAuthenticated={isAuth}>
+              <Service />
+            </PrivateRoute>
+          }
+        />
+
         <Route path="/register" element={<Register />} />
 
         {/* Private routes */}

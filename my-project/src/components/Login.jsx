@@ -18,6 +18,8 @@ const Login = () => {
         { email, password }
       );
       if (response.data.success) {
+        console.log("🚀 ~ handleSubmit ~ response.data:", response.data)
+        
         const token = response.data.data.token;
         localStorage.setItem("token", token);
         const decodedToken = jwtDecode(token); // Decode JWT token

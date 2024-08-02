@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import HomeIcons from "../components/icons/HomeIcons";
 
 function Navbar() {
   return (
     <nav className="bg-primary p-2.5">
       <div className="flex justify-between items-center">
         <div className="text-white text-xl font-bold">
-          <Link to="/">Logo</Link>
+          <Link to="/">
+            <HomeIcons height={50} width={50} />
+          </Link>
         </div>
         <ul className="flex list-none">
           <li className="ml-5">
