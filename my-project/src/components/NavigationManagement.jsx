@@ -1,7 +1,7 @@
 import React from "react";
-import Search from "./navbar/Search";
-import BreadCrumps from "./navbar/BreadCrumps";
-import Setting from "./navbar/Setting";
+import Search from "./Search";
+import BreadCrumps from "./BreadCrumps";
+import Setting from "./Setting";
 import NotificationIcon from "./icons/NotificationIcon";
 
 function NavigationManagement() {
