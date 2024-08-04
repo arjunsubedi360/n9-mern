@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { Formik } from "formik";
@@ -10,13 +9,12 @@ import Loader from "./Custom/Loader";
 import Toast from "./Custom/Toast";
 import { loginValidation } from "../validations/login";
 
-
-
 const Login = () => {
   const { setAuthState } = useContext(AuthContext);
   const navigate = useNavigate();
   const { login, loading, error } = useAuth();
   const [success, setSuccess] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const handleFormSubmit = async (values, setSubmitting) => {
     try {
@@ -30,10 +28,13 @@ const Login = () => {
           user: decodedToken,
           isAuthenticated: true,
         });
-        setSuccess(true); // Set success to true if login is successful
-        navigate("/");
+        setSuccess(true);
+        setShowToast(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
       } else {
-        console.error(data.message);
+        console.error("Error:", data.message);
       }
     } catch (error) {
       console.error("Login failed", error);
@@ -42,16 +43,20 @@ const Login = () => {
     }
   };
 
+  const handleClose = () => {
+    setShowToast(false);
+    setSuccess(false);
+  };
+
   if (loading) {
     return <Loader />;
   }
 
-  if (success) {
-    return <Toast message={"Login successful"} />;
-  }
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      {success && showToast && (
+        <Toast message={"Login successful"} handleClose={handleClose} />
+      )}
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded shadow-md">
         <h2 className="text-2xl font-bold text-center">Login</h2>
         <Formik
