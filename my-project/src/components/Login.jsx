@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import * as yup from "yup";
+import React, { useContext, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { Formik } from "formik";
@@ -8,39 +8,29 @@ import { AuthContext } from "../context/AuthContext";
 import useAuth from "../hooks/apis/useAuth";
 import Loader from "./Custom/Loader";
 import Toast from "./Custom/Toast";
+import { loginValidation } from "../validations/login";
 
-const loginValidation = yup.object({
-  email: yup
-    .string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  password: yup.string().required("Password is required"),
-});
+
 
 const Login = () => {
   const { setAuthState } = useContext(AuthContext);
   const navigate = useNavigate();
   const { login, loading, error } = useAuth();
   const [success, setSuccess] = useState(false);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    if (data) setSuccess(true);
-  }, [data]);
 
   const handleFormSubmit = async (values, setSubmitting) => {
     try {
-      const data = await login(values.email, values.password); //
-      setData(data);
+      const data = await login(values.email, values.password);
       if (data.success) {
         const token = data.data.token;
         localStorage.setItem("token", token);
-        const decodedToken = jwtDecode(token); // Decode JWT token
+        const decodedToken = jwtDecode(token);
         setAuthState({
           token,
           user: decodedToken,
           isAuthenticated: true,
         });
+        setSuccess(true); // Set success to true if login is successful
         navigate("/");
       } else {
         console.error(data.message);
@@ -56,10 +46,8 @@ const Login = () => {
     return <Loader />;
   }
 
-  console.log("sucess", success);
   if (success) {
-    console.log("Login success tost");
-    return <Toast message={"Login successfully"} />;
+    return <Toast message={"Login successful"} />;
   }
 
   return (
@@ -69,8 +57,7 @@ const Login = () => {
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={loginValidation}
-          onSubmit={async (values, { setSubmitting }) => {
-            console.log("values", values);
+          onSubmit={(values, { setSubmitting }) => {
             handleFormSubmit(values, setSubmitting);
           }}
         >
