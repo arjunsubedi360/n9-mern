@@ -12,7 +12,7 @@ function NavigationManagement() {
         <div className="flex items-center">
           <Search />
           <Setting />
-         <a href="#">  <NotificationIcon /></a>        
+         <a href="#">  <NotificationIcon/></a>        
         </div>
       </div>
     </>
