@@ -9,8 +9,6 @@ const Search = memo(({ onSearch }) => {
     onSearch(value);
   };
 
-  console.log('Search component rendered');
-
   return (
     <div className="mb-4">
       <input
@@ -18,7 +16,7 @@ const Search = memo(({ onSearch }) => {
         value={input}
         onChange={handleChange}
         placeholder="Search..."
-        className="border border-gray-300 rounded-md p-2 w-full"
+        className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
       />
     </div>
   );

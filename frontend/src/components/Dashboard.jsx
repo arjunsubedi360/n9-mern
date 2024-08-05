@@ -7,9 +7,8 @@ import Footer from "./Footer";
 const Dashboard = () => {
   return (
     <>
-      <div className="min-h-screen bg-gray-50/50">
-        <div className="p-4 xl:ml-80">
-          <Navbar />
+      <div className="bg-gray-50/50">
+          {/* <Navbar /> */}
           <div className="mt-12">
             <StatCards />
             <ProjectsTable />
@@ -18,7 +17,6 @@ const Dashboard = () => {
             <Footer />
           </div>
         </div>
-      </div>
     </>
   );
 };
