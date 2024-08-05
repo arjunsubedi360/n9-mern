@@ -1,14 +1,24 @@
+import { sendMail } from "../helper/sendEmail.js";
 import User from "../models/User.js";
 async function create(data) {
   const { name, email, role, password } = data;
   try {
-    return User.create({
+    const data = await User.create({
       name,
       email,
       role,
-      password
+      password,
     });
-   
+    sendMail({
+      to: email,
+      subject: "Account created",
+      html: `<b>Your account has been created successfully.
+      Your email is ${email} <br>
+      Your password is ${password}
+      To verify your account click the <a href="frontendcode">link</a> 
+      </b>`,
+    });
+    return data;
   } catch (error) {
     console.error("Error creating Users:", error.message);
     throw error;
@@ -42,7 +52,7 @@ async function getAll(pageMeta, filters = {}, search = "") {
 
     if (search) {
       const searchRegex = new RegExp(search, "i");
-      query.$or = [{ name: searchRegex }, {email: searchRegex}];
+      query.$or = [{ name: searchRegex }, { email: searchRegex }];
     }
 
     const users = await User.find(query).sort(sort).limit(limit).skip(skip);
