@@ -1,3 +1,4 @@
+import { accountCreatedTemplate } from "../emailTemplates/accountCreated.js";
 import { sendMail } from "../helper/sendEmail.js";
 import User from "../models/User.js";
 async function create(data) {
@@ -12,11 +13,7 @@ async function create(data) {
     sendMail({
       to: email,
       subject: "Account created",
-      html: `<b>Your account has been created successfully.
-      Your email is ${email} <br>
-      Your password is ${password}
-      To verify your account click the <a href="frontendcode">link</a> 
-      </b>`,
+      html: accountCreatedTemplate(name, email),
     });
     return data;
   } catch (error) {
