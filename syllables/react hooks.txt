@@ -1,0 +1,215 @@
+### 1. `useState`
+**Why use it?**
+- `useState` is used to add state to functional components. It allows you to store and update values that can change over time in your component.
+
+**Example:**
+```jsx
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+**Why use it?**
+- We use `useState` to manage and display the count state which increments each time the button is clicked.
+
+### 2. `useEffect`
+**Why use it?**
+- `useEffect` is used to perform side effects in functional components. This includes fetching data, directly updating the DOM, and setting up subscriptions.
+
+**Example:**
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function DataFetcher() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then(response => response.json())
+      .then(data => setData(data));
+  }, []);
+
+  return (
+    <div>
+      {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : 'Loading...'}
+    </div>
+  );
+}
+```
+**Why use it?**
+- We use `useEffect` to fetch data when the component mounts and update the component state with the fetched data.
+
+### 3. `useRef`
+**Why use it?**
+- `useRef` is used to persist values between renders without causing re-renders. It is often used to reference DOM elements directly.
+
+**Example:**
+```jsx
+import React, { useRef } from 'react';
+
+function VideoPlayer() {
+  const videoRef = useRef(null);
+
+  const playVideo = () => {
+    videoRef.current.play();
+  };
+
+  const pauseVideo = () => {
+    videoRef.current.pause();
+  };
+
+  return (
+    <div>
+      <video
+        ref={videoRef}
+        width="600"
+        controls
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+      >
+        Your browser does not support the video tag.
+      </video>
+      <div>
+        <button onClick={playVideo}>Play</button>
+        <button onClick={pauseVideo}>Pause</button>
+      </div>
+    </div>
+  );
+}
+
+export default VideoPlayer;
+
+```
+**Why use it?**
+- We use `useRef` to directly interact with the input element, allowing us to focus it programmatically.
+
+### 4. `useMemo`
+**Why use it?**
+- `useMemo` is used to memoize expensive calculations so that they are only recomputed when necessary, improving performance.
+
+**Example:**
+```jsx
+import React, { useState, useMemo } from 'react';
+
+function ExpensiveCalculation({ num }) {
+  const computeFactorial = (n) => {
+    console.log('Computing factorial...');
+    return n <= 0 ? 1 : n * computeFactorial(n - 1);
+  };
+
+  const factorial = useMemo(() => computeFactorial(num), [num]);
+
+  return (
+    <div>
+      <p>Factorial of {num} is {factorial}</p>
+    </div>
+  );
+}
+```
+**Why use it?**
+- We use `useMemo` to avoid recalculating the factorial every time the component re-renders, unless the `num` prop changes.
+
+### 5. `useCallback`
+**Why use it?**
+- `useCallback` is used to memoize callback functions so that they are not recreated on every render, which can be useful when passing callbacks to child components to avoid unnecessary re-renders.
+
+**Example:**
+```jsx
+import React, { useState, useCallback } from 'react';
+
+function Child({ onClick }) {
+  console.log('Child rendered');
+  return <button onClick={onClick}>Click me</button>;
+}
+
+function Parent() {
+  const [count, setCount] = useState(0);
+
+  const increment = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <Child onClick={increment} />
+    </div>
+  );
+}
+```
+**Why use it?**
+- We use `useCallback` to ensure the `increment` function is not recreated on each render, which prevents unnecessary re-renders of the `Child` component.
+
+### 6. `useContext`
+**Why use it?**
+- `useContext` is used to consume context values directly, allowing you to pass data through the component tree without having to pass props down manually at every level.
+
+**Example:**
+```jsx
+import React, { useContext } from 'react';
+
+const ThemeContext = React.createContext('light');
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+
+  return <button style={{ background: theme === 'dark' ? '#333' : '#FFF' }}>Theme is {theme}</button>;
+}
+
+function App() {
+  return (
+    <ThemeContext.Provider value="dark">
+      <ThemedButton />
+    </ThemeContext.Provider>
+  );
+}
+```
+**Why use it?**
+- We use `useContext` to access the theme value without having to pass it explicitly through props.
+
+### 7. `useReducer`
+**Why use it?**
+- `useReducer` is used for more complex state management, especially when the state logic involves multiple sub-values or when the next state depends on the previous one.
+
+**Example:**
+```jsx
+import React, { useReducer } from 'react';
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </div>
+  );
+}
+```
+**Why use it?**
+- We use `useReducer` for state logic that involves multiple actions and more complex state transitions, providing a more predictable and maintainable state management pattern.
+
+These examples and explanations should give you a solid understanding of why and how to use these React hooks in your components.
