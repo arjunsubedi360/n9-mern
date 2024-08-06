@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { LoginPath } from "../path";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ const Register = () => {
         { name, email, password, role }
       );
       if (response.data.success) {
-        navigate("/login");
+        navigate(LoginPath);
       } else {
         console.error(response.data.message);
       }

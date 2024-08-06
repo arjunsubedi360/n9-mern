@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TableHeader from "../Custom/Table/Headers";
 import { headers } from "./constants/variables";
 import { users as data } from "../../dummyData/users";
 import Search from "../Search";
 
-const UserManagementList = () => {
+const UserManagementList = async() => {
+  // useEffect(()=> {
+  //   const response = await axis
+  // },[])
   return (
     <div className="p-4">
       {/* Flex container for title and search input */}

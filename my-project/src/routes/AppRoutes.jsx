@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import LoadingBar from "../components/LoadingBar";
 import PrivateRoute from "./PrivateRoute";
 import { AuthContext } from "../context/AuthContext";
+import { LoginPath } from "../path";
 
 // Lazy load components
 const Home = lazy(() => import("../components/Home"));
@@ -23,7 +24,8 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
+        <Route path={LoginPath} element={<Login />} />
+        <Route path="/product/edit/:id" element={<ForgotPassword />} />
         <Route
           path="/services"
           element={
