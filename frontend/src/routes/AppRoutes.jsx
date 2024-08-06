@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../components/Home";
 import Contact from "../components/Contact";
 import Login from "../components/Login";
-import Loading from "../components/Loading";
+import LoadingBar from "../components/LoaderBar.jsx";
 
 const About = lazy(() => import("../components/About.jsx"));
 const Service = lazy(() => import("../components/Service.jsx"));
@@ -11,7 +11,7 @@ const Service = lazy(() => import("../components/Service.jsx"));
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<LoadingBar />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

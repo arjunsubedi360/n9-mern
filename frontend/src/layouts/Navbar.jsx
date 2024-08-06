@@ -30,6 +30,11 @@ function Navbar() {
               Contact
             </Link>
           </li>
+          <li className="ml-5">
+            <Link to="/login" className="custom-nav-link">
+              Login
+            </Link>
+          </li>
           <li className="ml-5 relative">
             <div className="relative">
               <button className="custom-nav-link">Profile</button>
