@@ -11,9 +11,18 @@ const useUserManagement = (pageMeta) => {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const response = await axiosInstance.get('/auth/admin/v1/users', { params: pageMeta });
+        const params = {
+          ...pageMeta,
+          limit: Number(pageMeta.limit), // Convert limit to a number
+        };
+        const response = await axiosInstance.get('/auth/admin/v1/users', { params });
+        
         setData(response.data.data);
-        setPagination(response.data.pagination);
+        
+        setPagination({
+          ...response.data.pagination,
+          limit: Number(response.data.pagination.limit), // Convert limit to a number
+        });
       } catch (err) {
         setError(err.message);
       } finally {

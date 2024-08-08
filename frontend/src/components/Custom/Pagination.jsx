@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Pagination = ({ pagination, onPageChange, onRowsPerPageChange }) => {
-  const { total, hasNextPage, currentPage, totalPages } = pagination;
+  const { total, hasNextPage, currentPage, totalPages, limit } = pagination;
+
+  // State to keep track of rows per page
+  const [rowsPerPage, setRowsPerPage] = useState(limit || 10);
+
+  // Update rowsPerPage when it changes from the parent component
+  useEffect(() => {
+    setRowsPerPage(limit || 10);
+  }, [limit]);
 
   const handlePageChange = (page) => {
     onPageChange(page);
   };
 
   const handleRowsPerPageChange = (event) => {
-    onRowsPerPageChange(parseInt(event.target.value, 10));
+    const newRowsPerPage = parseInt(event.target.value, 10);
+    setRowsPerPage(newRowsPerPage);
+    onRowsPerPageChange(newRowsPerPage);
   };
 
   const pages = [];
@@ -20,7 +30,11 @@ const Pagination = ({ pagination, onPageChange, onRowsPerPageChange }) => {
     <div className="flex justify-between items-center mt-4">
       <div className="flex items-center space-x-2">
         <span className="text-sm">Show:</span>
-        <select onChange={handleRowsPerPageChange} className="border border-gray-300 rounded-md">
+        <select
+          value={rowsPerPage}
+          onChange={handleRowsPerPageChange}
+          className="border border-gray-300 rounded-md"
+        >
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={15}>15</option>

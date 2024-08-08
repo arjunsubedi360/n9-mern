@@ -22,7 +22,10 @@ const getUsers = async (request, response) => {
   const { data, pagination } = await getAll(pageMeta);
   responseData({
     data: data,
-    pagination: pagination,
+    pagination: {
+      ...pagination,
+      limit: limit
+    },
     message: lang.LIST("Users"),
     response,
     statusCode: HttpStatusEnum.OK,
