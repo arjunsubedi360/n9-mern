@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 function SigninIcon() {
   return (
-   <>
-         <svg
+    <>
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
@@ -16,8 +16,8 @@ function SigninIcon() {
           clipRule="evenodd"
         />
       </svg>
-   </>
-  )
+    </>
+  );
 }
 
-export default SigninIcon
+export default SigninIcon;

@@ -1,5 +1,5 @@
 import React from "react";
-import UserIcon from "./icons/UserIcon";
+import UserIcon from "../icons/UserIcon";
 
 function TodaysUser() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileIcon from "../icons/ProfileIcon";
+import ProfileIcon from "../../icons/ProfileIcon";
 
 function ProfileManagement() {
   return (

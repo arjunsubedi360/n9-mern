@@ -1,5 +1,5 @@
 import React from "react";
-import SignupIcon from "../icons/SignupIcon";
+import SignupIcon from "../../icons/SignupIcon";
 
 function SignupManagement() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import MoneyIcon from "./icons/MoneyIcon";
+import MoneyIcon from "../icons/MoneyIcon";
 
 function TodaysMoney() {
   return (

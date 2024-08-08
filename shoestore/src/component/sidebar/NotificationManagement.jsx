@@ -1,5 +1,5 @@
 import React from "react";
-import NotificationIcon from "../icons/NotificationIcon.jsx";
+import NotificationIcon from "../../icons/NotificationIcon.jsx";
 
 function NotificationManagement() {
   return (

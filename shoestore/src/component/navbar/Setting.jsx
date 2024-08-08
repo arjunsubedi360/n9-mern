@@ -1,5 +1,5 @@
 import React from "react";
-import SettingIcon from "../icons/SettingIcon";
+import SettingIcon from "../../icons/SettingIcon";
 
 function Setting() {
   return (

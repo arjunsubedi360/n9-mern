@@ -1,5 +1,5 @@
 import React from "react";
-import SalesBarIcon from "./icons/SalesBarIcon";
+import SalesBarIcon from "../icons/SalesBarIcon";
 
 function TodaysSale() {
   return (

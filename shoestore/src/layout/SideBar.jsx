@@ -1,13 +1,12 @@
 import React from "react";
+import DashboardManagement from "../component/sidebar/DashboardManagement";
+import ProfileManagement from "../component/sidebar/ProfileManagement";
+import TableManagement from "../component/sidebar/TableManagement";
+import SigninManagement from "../component/sidebar/SigninManagement";
+import SignupManagement from "../component/sidebar/SignupManagement";
+import NotificationManagement from "../component/sidebar/NotificationManagement";
 
-import DashboardManagement from "./sidebar/DashboardManagement.jsx";
-import ProfileManagement from "./sidebar/ProfileManagement.jsx";
-import TableManagement from "./sidebar/TableManagement.jsx";
-import NotificationManagement from "./sidebar/NotificationManagement.jsx";
-import SigninManagement from "./sidebar/SigninManagement.jsx";
-import SignupManagement from "./sidebar/SignupManagement.jsx";
-
-function SideBarManagement() {
+function SideBar() {
   return (
     <>
       <aside className="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0">
@@ -50,4 +49,4 @@ function SideBarManagement() {
   );
 }
 
-export default SideBarManagement;
+export default SideBar;
