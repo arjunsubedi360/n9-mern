@@ -11,11 +11,13 @@ import DeleteIcon from "../Custom/DeleteIcon";
 import Loader from "../Custom/Loader";
 import ModalOverlay from "../Custom/ModalOverlay";
 import ConfirmDeleteModal from "../Custom/ConfirmDeleteModal";
+import Pagination from "../Custom/Pagination"; // Import Pagination component
 
 const UserManagementList = () => {
   const navigate = useNavigate();
-  const { data, loading, error } = useUserManagement();
-  const { deleteUser, loading: deleteLoading, error: deleteError, success: deleteSuccess } = useDeleteUser();
+  const [pageMeta, setPageMeta] = useState({ limit: 10, page: 1, sort: {} });
+  const { data, loading, error, pagination } = useUserManagement(pageMeta);
+  const { deleteUser, loading: deleteLoading, error: deleteError } = useDeleteUser();
   const [showLoader, setShowLoader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
@@ -41,7 +43,6 @@ const UserManagementList = () => {
     if (selectedUserId) {
       await deleteUser(selectedUserId);
       if (!deleteError) {
-        // Refresh the user list or perform any other actions
         setIsModalOpen(false);
         window.location.reload(); // Refresh to get the updated list
       }
@@ -51,6 +52,14 @@ const UserManagementList = () => {
   const handleDeleteCancel = () => {
     setIsModalOpen(false);
     setSelectedUserId(null);
+  };
+
+  const handlePageChange = (page) => {
+    setPageMeta((prev) => ({ ...prev, page }));
+  };
+
+  const handleRowsPerPageChange = (limit) => {
+    setPageMeta((prev) => ({ ...prev, limit, page: 1 }));
   };
 
   if (showLoader) {
@@ -98,6 +107,13 @@ const UserManagementList = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Add Pagination */}
+      <Pagination
+        pagination={pagination}
+        onPageChange={handlePageChange}
+        onRowsPerPageChange={handleRowsPerPageChange}
+      />
 
       <ModalOverlay isOpen={isModalOpen} onRequestClose={handleDeleteCancel}>
         <ConfirmDeleteModal onClose={handleDeleteCancel} onConfirm={handleDeleteConfirm} />

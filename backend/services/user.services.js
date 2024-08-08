@@ -52,28 +52,47 @@ async function get({ email }) {
 
 async function getAll(pageMeta, filters = {}, search = "") {
   try {
-    const { limit = 10, skip = 0, sort = {} } = pageMeta;
-
+    const { limit = 10, page = 1, sort = {} } = pageMeta;
+    
+    const skip = (page - 1) * limit;
     const query = {};
-
-    //Filter
+    
+    // Apply filters
     Object.keys(filters).forEach((key) => {
       query[key] = filters[key];
     });
 
+    // Apply search
     if (search) {
       const searchRegex = new RegExp(search, "i");
       query.$or = [{ name: searchRegex }, { email: searchRegex }];
     }
 
-    const users = await User.find(query).sort(sort).limit(limit).skip(skip);
+    // Get total count of documents matching the query
+    const total = await User.countDocuments(query);
+    const hasNextPage = page * limit < total;
 
-    return users;
+    // Fetch paginated data
+    const users = await User.find(query)
+      .sort(sort)
+      .limit(limit)
+      .skip(skip);
+
+    return {
+      data: users,
+      pagination: {
+        total,
+        hasNextPage,
+        currentPage: page,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
   } catch (error) {
     console.error("Error retrieving User:", error.message);
     throw error;
   }
 }
+
 
 async function update(id, data) {
   try {

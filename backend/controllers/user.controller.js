@@ -1,23 +1,28 @@
 import bcrypt from "bcryptjs";
 import { HttpStatusEnum } from "../enums/status-enum.js";
-import { create, getAll, update, dlt, getSingleUser } from "../services/user.services.js";
+import {
+  create,
+  getAll,
+  update,
+  dlt,
+  getSingleUser,
+} from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
 
 const getUsers = async (request, response) => {
-  const { limit, skip, sort, search, ...filters } = request.query;
-  const pageLimit = Number(limit) || 10;
-  const pageSkip = Number(skip) || 0;
-  const sortOptions = sort ? JSON.parse(sort) : {};
+  const { limit, page } = request.query;
+  const pageLimit = Number(limit);
+  const pageSkip = Number(page);
 
   const pageMeta = {
     limit: pageLimit,
-    skip: pageSkip,
-    sort: sortOptions,
+    page: pageSkip || 1,
   };
 
-  const data = await getAll(pageMeta, filters, search);
+  const { data, pagination } = await getAll(pageMeta);
   responseData({
     data: data,
+    pagination: pagination,
     message: lang.LIST("Users"),
     response,
     statusCode: HttpStatusEnum.OK,
@@ -35,7 +40,6 @@ const getUser = async (request, response) => {
     statusCode: HttpStatusEnum.OK,
   });
 };
-
 
 const createUser = async (request, response) => {
   try {
@@ -100,4 +104,4 @@ const deleteUser = async (request, response) => {
   }
 };
 
-export { createUser, getUsers, getUser,  updateUser, deleteUser };
+export { createUser, getUsers, getUser, updateUser, deleteUser };

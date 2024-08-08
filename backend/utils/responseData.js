@@ -4,12 +4,13 @@ export const lang = {
   UPDATE: (title) => `${title || ""} updated successfully.`,
   LIST: (title) => `${title || ""} list successfully.`,
   DELETE: (title) => `${title || ""} deleted successfully.`,
-  LOGIN: "Login successfully"
+  LOGIN: "Login successfully",
 };
 
 export function responseData({
   acknowledge = true,
   data = null,
+  pagination = null,
   message = "",
   response,
   statusCode = HttpStatusEnum.OK,
@@ -19,5 +20,6 @@ export function responseData({
     message,
     statusCode,
     ...(data && { data }),
+    ...(pagination && { pagination }),
   });
 }

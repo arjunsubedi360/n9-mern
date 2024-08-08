@@ -1,30 +1,30 @@
-import { useState, useEffect } from "react";
-import axiosInstance from "../../../api/axiosConfig";
+import { useState, useEffect } from 'react';
+import axiosInstance from '../../../api/axiosConfig';
 
-const useUserManagement = () => {
+const useUserManagement = (pageMeta) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [pagination, setPagination] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUsers = async () => {
       setLoading(true);
-      setError(null);
-
       try {
-        const response = await axiosInstance.get("/auth/admin/v1/users");
+        const response = await axiosInstance.get('/auth/admin/v1/users', { params: pageMeta });
         setData(response.data.data);
+        setPagination(response.data.pagination);
       } catch (err) {
-        setError(err.response?.data?.message || "Fetching users failed");
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
-  }, []);
+    fetchUsers();
+  }, [pageMeta]);
 
-  return { data, loading, error };
+  return { data, loading, error, pagination };
 };
 
 export default useUserManagement;

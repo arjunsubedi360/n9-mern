@@ -30,9 +30,10 @@ export const getCategories = async (request, response) => {
     page: pageSkip || 1,
   };
 
-  const data = await getAllCategories(pageMeta);
+  const { data, pagination } = await getAllCategories(pageMeta);
   responseData({
     data,
+    pagination,
     message: lang.GET("Category"),
     statusCode: HttpStatusEnum.OK,
     response,
