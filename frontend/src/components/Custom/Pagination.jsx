@@ -29,11 +29,11 @@ const Pagination = ({ pagination, onPageChange, onRowsPerPageChange }) => {
   return (
     <div className="flex justify-between items-center mt-4">
       <div className="flex items-center space-x-2">
-        <span className="text-sm">Show:</span>
+        <span className="text-sm font-medium text-gray-700">Show:</span>
         <select
           value={rowsPerPage}
           onChange={handleRowsPerPageChange}
-          className="border border-gray-300 rounded-md"
+          className="border border-gray-300 rounded-md py-1 px-2 text-sm"
         >
           <option value={5}>5</option>
           <option value={10}>10</option>
@@ -41,7 +41,12 @@ const Pagination = ({ pagination, onPageChange, onRowsPerPageChange }) => {
         </select>
       </div>
 
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
+          <span className="text-sm font-medium text-gray-700">Total:</span>
+          <span className="text-sm font-bold text-gray-900">{total}</span>
+        </div>
+
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
