@@ -17,5 +17,9 @@ export const dbName = validateEnv("DB_NAME");
 export const dbPassword = validateEnv('DB_PASSWORD');
 export const dbUserName = validateEnv('DB_USERNAME');
 
+
 // //JWT
 export const jwtSecretKey = validateEnv("JWT_SECRET");
+
+//SMPT
+export const smptPassword = validateEnv('SMPT_PASSWORD');

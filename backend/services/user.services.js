@@ -1,12 +1,20 @@
+import { accountCreatedTemplate } from "../emailTemplates/accountCreated.js";
+import { sendMail } from "../helpers/sendEmail.js";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 
-
 const createUser = async (input) => {
-  const salt= bcrypt.genSaltSync(10);
-  const hash = bcrypt.hashSync(input.password,salt);
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(input.password, salt);
   input.password = hash;
-  return await User.create(input);
+  const user = await User.create(input);
+  const emailContent = accountCreatedTemplate(input.name, input.email);
+  sendMail({
+    to: input.email,
+    subject: "Account Created Successfully",
+    html: emailContent,
+  });
+  return user;
 };
 
 const updateUser = async (id, input) => {
