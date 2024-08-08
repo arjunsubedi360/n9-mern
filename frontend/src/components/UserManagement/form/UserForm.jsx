@@ -4,11 +4,16 @@ import ErrorMessage from "../../Custom/ErrorMessage";
 import { createUser } from "../../../validations/usermanagement.validation";
 import { roles, statuses } from "../constants/variables";
 
-const UserForm = ({ initialValues, onSubmit, formTitle, submitButtonText }) => {
+const UserForm = ({ initialValues, onSubmit, formTitle, submitButtonText, loading, error }) => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-start justify-center p-4">
       <div className="w-full max-w-8xl p-12 bg-white rounded shadow-md">
         <h2 className="text-3xl font-bold text-center mb-8">{formTitle}</h2>
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-800 rounded">
+            {error}
+          </div>
+        )}
         <Formik
           initialValues={initialValues}
           validationSchema={createUser}
@@ -111,10 +116,10 @@ const UserForm = ({ initialValues, onSubmit, formTitle, submitButtonText }) => {
               <div>
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || loading}
                   className="w-full px-6 py-3 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  {submitButtonText}
+                  {loading ? "Submitting..." : submitButtonText}
                 </button>
               </div>
             </form>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axiosInstance from "../../api/axiosConfig";
+import axiosInstance from "../../../api/axiosConfig";
 
 const useCreateUser = () => {
   const [loading, setLoading] = useState(false);

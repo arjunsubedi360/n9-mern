@@ -45,7 +45,8 @@ const createUser = async (request, response) => {
   try {
     const input = request.body;
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(input.password, salt);
+    const password = input.password ?? "Password@1";
+    const hash = bcrypt.hashSync(password, salt);
     const data = await create({ ...input, password: hash });
     responseData({
       data: data,

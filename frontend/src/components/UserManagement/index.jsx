@@ -12,6 +12,13 @@ import Loader from "../Custom/Loader";
 import ModalOverlay from "../Custom/ModalOverlay";
 import ConfirmDeleteModal from "../Custom/ConfirmDeleteModal";
 import Pagination from "../Custom/Pagination"; // Import Pagination component
+import capitalizeFirstLetter from "../../utils/firstLetterCapital";
+
+const statusColors = {
+  active: "bg-green-500 text-white",
+  inactive: "bg-red-500 text-white",
+  pending: "bg-yellow-500 text-black",
+};
 
 const UserManagementList = () => {
   const navigate = useNavigate();
@@ -97,6 +104,13 @@ const UserManagementList = () => {
                 <td className="px-6 py-4">{user?.email}</td>
                 <td className="px-6 py-4">{user?.role}</td>
                 <td className="px-6 py-4">{user?.phoneNumber || "N/A"}</td>
+                <td className="px-6 py-4">
+                  <span
+                    className={`inline-flex items-center px-3 py-1 text-sm font-medium rounded-full ${statusColors[user?.status] || 'bg-gray-300 text-black'}`}
+                  >
+                    {capitalizeFirstLetter(user?.status) || "Unknown"}
+                  </span>
+                </td>
                 <td className="flex items-center px-6 py-4 space-x-3">
                   <ViewIcon to={`/users/${user._id}`} />
                   <EditIcon to={`/users/edit/${user._id}`} />

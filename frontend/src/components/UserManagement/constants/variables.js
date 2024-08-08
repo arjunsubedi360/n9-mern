@@ -3,6 +3,7 @@ export const headers = [
   { label: "Email", key: "email" },
   { label: "Role", key: "role" },
   { label: "Phone Number", key: "phoneNumber" },
+  { label: "Status", key: "status" },
   { label: "Action", key: "action"}
 ];
 
