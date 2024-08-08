@@ -42,7 +42,6 @@ function Sidebar({ isOpen, toggleSidebar }) {
             icon={UserManagementIcon}
             label="User Management"
             isOpen={isOpen}
-            active
           />
           <SidebarItem
             to="/table"

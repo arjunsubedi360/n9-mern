@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { Formik } from "formik";
 
@@ -9,6 +9,7 @@ import Loader from "./Custom/Loader";
 import Toast from "./Custom/Toast";
 import { loginValidation } from "../validations/login";
 
+const [example, setExample] = useState();
 const Login = () => {
   const { setAuthState } = useContext(AuthContext);
   const navigate = useNavigate();

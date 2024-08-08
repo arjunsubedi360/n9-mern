@@ -7,7 +7,7 @@ import Layout from "../layouts/Layout";
 
 const Register = lazy(() => import("../components/Register"));
 const Dashboard = lazy(() => import("../components/Dashboard"));
-const UserManagement = lazy(() => import("../components/UserManagement/index"));
+const UserManagement = lazy(() => import("../components/UserManagement"));
 const Table = lazy(() => import("../components/ProjectsTable"));
 
 const AppRoutes = () => {
