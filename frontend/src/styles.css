@@ -46,5 +46,17 @@
   height: 6px !important;
 }
 
+/* LoaderIcon.css */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
+.animate-spin {
+  animation: spin 1.5s linear infinite;
+}
 
+.animate-spin-circle {
+  animation: spin 1.5s linear infinite;
+  transform-origin: center;
+}

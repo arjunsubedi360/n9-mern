@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { HttpStatusEnum } from "../enums/status-enum.js";
-import { create, getAll, update, dlt } from "../services/user.services.js";
+import { create, getAll, update, dlt, getSingleUser } from "../services/user.services.js";
 import { lang, responseData } from "../utils/responseData.js";
 
 const getUsers = async (request, response) => {
@@ -23,6 +23,19 @@ const getUsers = async (request, response) => {
     statusCode: HttpStatusEnum.OK,
   });
 };
+
+const getUser = async (request, response) => {
+  const { id } = request.params;
+
+  const data = await getSingleUser(id);
+  responseData({
+    data: data,
+    message: lang.LIST("Users"),
+    response,
+    statusCode: HttpStatusEnum.OK,
+  });
+};
+
 
 const createUser = async (request, response) => {
   try {
@@ -87,4 +100,4 @@ const deleteUser = async (request, response) => {
   }
 };
 
-export { createUser, getUsers, updateUser, deleteUser };
+export { createUser, getUsers, getUser,  updateUser, deleteUser };

@@ -5,3 +5,14 @@ export const headers = [
   { label: "Phone Number", key: "phoneNumber" },
   { label: "Action", key: "action"}
 ];
+
+export const roles = [
+  { label: "Admin", value: "admin" },
+  { label: "User", value: "user" },
+];
+
+export const statuses = [
+  { label: "Pending", value: "pending" },
+  { label: "Active", value: "active" },
+  { label: "Inactive", value: "inactive" },
+];

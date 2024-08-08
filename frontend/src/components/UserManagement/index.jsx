@@ -1,33 +1,76 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TableHeader from "../Custom/Table/Headers";
 import { headers } from "./constants/variables";
 import Search from "../Search";
-import useUserManagement from "../../hooks/apis/useUserManagement";
+import useUserManagement from "../../hooks/apis/users/useUserManagement";
+import useDeleteUser from "../../hooks/apis/users/useDeleteUser"; // Import the delete hook
+import ViewIcon from "../Custom/ViewIcon";
+import EditIcon from "../Custom/EditIcon";
+import DeleteIcon from "../Custom/DeleteIcon";
+import Loader from "../Custom/Loader";
+import ModalOverlay from "../Custom/ModalOverlay";
+import ConfirmDeleteModal from "../Custom/ConfirmDeleteModal";
 
 const UserManagementList = () => {
+  const navigate = useNavigate();
   const { data, loading, error } = useUserManagement();
-  const [users, setUsers] = useState([]);
+  const { deleteUser, loading: deleteLoading, error: deleteError, success: deleteSuccess } = useDeleteUser();
+  const [showLoader, setShowLoader] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
   useEffect(() => {
-    if (data.length > 0) setUsers(data);
-  }, [data]);
+    let timer;
+    if (loading || deleteLoading) {
+      setShowLoader(true);
+      timer = setTimeout(() => setShowLoader(false), 500);
+    } else {
+      timer = setTimeout(() => setShowLoader(false), 500);
+    }
 
-  if (loading) {
-    return <div>Loading...</div>; // Show loading indicator
+    return () => clearTimeout(timer);
+  }, [loading, deleteLoading]);
+
+  const handleDeleteClick = (userId) => {
+    setSelectedUserId(userId);
+    setIsModalOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (selectedUserId) {
+      await deleteUser(selectedUserId);
+      if (!deleteError) {
+        // Refresh the user list or perform any other actions
+        setIsModalOpen(false);
+        window.location.reload(); // Refresh to get the updated list
+      }
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setIsModalOpen(false);
+    setSelectedUserId(null);
+  };
+
+  if (showLoader) {
+    return <Loader />;
   }
 
-  if (error) {
-    return <div>Error: {error}</div>; // Show error message
+  if (error || deleteError) {
+    return <div>Error: {error || deleteError}</div>;
   }
 
   return (
     <div className="p-4">
-      {/* Flex container for title and search input */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
         <div className="flex items-center">
-          <Search className="mr-4" /> {/* Add margin-right to Search */}
-          <button className="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+          <Search className="mr-4" />
+          <button
+            onClick={() => navigate("/users/add")}
+            className="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          >
             Add User
           </button>
         </div>
@@ -36,7 +79,7 @@ const UserManagementList = () => {
         <table className="w-full text-sm text-left text-gray-900 bg-white">
           <TableHeader headers={headers} />
           <tbody>
-            {users.map((user, index) => (
+            {data.map((user, index) => (
               <tr
                 key={index}
                 className="bg-white border-b border-gray-200 hover:bg-gray-50"
@@ -45,25 +88,20 @@ const UserManagementList = () => {
                 <td className="px-6 py-4">{user?.email}</td>
                 <td className="px-6 py-4">{user?.role}</td>
                 <td className="px-6 py-4">{user?.phoneNumber || "N/A"}</td>
-                <td className="flex items-center px-6 py-4">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 hover:underline"
-                  >
-                    Edit
-                  </a>
-                  <a
-                    href="#"
-                    className="font-medium text-red-600 hover:underline ml-3"
-                  >
-                    Remove
-                  </a>
+                <td className="flex items-center px-6 py-4 space-x-3">
+                  <ViewIcon to={`/users/${user._id}`} />
+                  <EditIcon to={`/users/edit/${user._id}`} />
+                  <DeleteIcon onClick={() => handleDeleteClick(user._id)} />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      <ModalOverlay isOpen={isModalOpen} onRequestClose={handleDeleteCancel}>
+        <ConfirmDeleteModal onClose={handleDeleteCancel} onConfirm={handleDeleteConfirm} />
+      </ModalOverlay>
     </div>
   );
 };

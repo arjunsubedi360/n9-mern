@@ -8,6 +8,11 @@ import Layout from "../layouts/Layout";
 const Register = lazy(() => import("../components/Register"));
 const Dashboard = lazy(() => import("../components/Dashboard"));
 const UserManagement = lazy(() => import("../components/UserManagement"));
+const AddUserManagement = lazy(() => import("../components/UserManagement/form/AddUser"));
+const EditUserManagement = lazy(() => import("../components/UserManagement/form/EditUser"));
+const ViewUserManagement = lazy(() => import("../components/UserManagement/view"));
+
+
 const Table = lazy(() => import("../components/ProjectsTable"));
 
 const AppRoutes = () => {
@@ -19,6 +24,9 @@ const AppRoutes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/user-list" element={<UserManagement />} />
+        <Route path="/users/add" element={<AddUserManagement />} />
+        <Route path="/users/edit/:id" element={<EditUserManagement />} />
+        <Route path="/users/:id" element={<ViewUserManagement />} />
         <Route path="/table" element={<Table />} />
         </Route>
         {/* <Route path="/profile" element={<Profile />} /> */}

@@ -22,6 +22,20 @@ async function create(data) {
   }
 }
 
+async function getSingleUser(id) {
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      console.log("User not found");
+      return null;
+    }
+    return user;
+  } catch (error) {
+    console.error("Error retrieving User:", error.message);
+    throw error;
+  }
+}
+
 async function get({ email }) {
   try {
     const user = await User.findOne({ email: email });
@@ -71,11 +85,10 @@ async function update(id, data) {
 }
 async function dlt(id) {
   try {
-    const usrid = id;
-    return await User.deleteOne({ id });
+    return await User.deleteOne({ _id: id });
   } catch (error) {
     throw error;
   }
 }
 
-export { create, get, getAll, update, dlt };
+export { create, get, getSingleUser, getAll, update, dlt };

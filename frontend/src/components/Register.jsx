@@ -2,16 +2,6 @@ import React from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-const loginValidation = yup.object({
-  email: yup
-    .string()
-    .nullable()
-    .email()
-    .label("Email")
-    .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
-  password: yup.string().required(),
-});
-
 const Login = () => (
   <div>
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

@@ -4,26 +4,15 @@ import ErrorMessage from "../../Custom/ErrorMessage";
 import { createUser } from "../../../validations/usermanagement.validation";
 import { roles, statuses } from "../constants/variables";
 
-const AddUserManagement = () => {
+const UserForm = ({ initialValues, onSubmit, formTitle, submitButtonText }) => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-start justify-center p-4">
       <div className="w-full max-w-8xl p-12 bg-white rounded shadow-md">
-        <h2 className="text-3xl font-bold text-center mb-8">Add User</h2>
+        <h2 className="text-3xl font-bold text-center mb-8">{formTitle}</h2>
         <Formik
-          initialValues={{
-            name: "",
-            email: "",
-            role: "",
-            status: "",
-          }}
+          initialValues={initialValues}
           validationSchema={createUser}
-          onSubmit={(values, { setSubmitting }) => {
-            console.log("values", values);
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
-          }}
+          onSubmit={onSubmit}
         >
           {({
             values,
@@ -125,7 +114,7 @@ const AddUserManagement = () => {
                   disabled={isSubmitting}
                   className="w-full px-6 py-3 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Add User
+                  {submitButtonText}
                 </button>
               </div>
             </form>
@@ -136,4 +125,4 @@ const AddUserManagement = () => {
   );
 };
 
-export default AddUserManagement;
+export default UserForm;
