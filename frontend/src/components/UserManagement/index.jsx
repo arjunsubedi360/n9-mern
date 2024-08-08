@@ -102,7 +102,7 @@ const UserManagementList = () => {
               >
                 <td className="px-6 py-4">{user?.name}</td>
                 <td className="px-6 py-4">{user?.email}</td>
-                <td className="px-6 py-4">{user?.role}</td>
+                <td className="px-6 py-4">{capitalizeFirstLetter(user?.role)}</td>
                 <td className="px-6 py-4">{user?.phoneNumber || "N/A"}</td>
                 <td className="px-6 py-4">
                   <span
