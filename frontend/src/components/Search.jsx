@@ -10,7 +10,7 @@ const Search = memo(({ onSearch }) => {
   };
 
   return (
-    <div className="mb-4">
+    <div className="flex items-center">
       <input
         type="text"
         value={input}

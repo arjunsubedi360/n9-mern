@@ -25,10 +25,12 @@ const UserManagementList = () => {
       {/* Flex container for title and search input */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
-        <Search />
-        <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-          Add User
-        </button>
+        <div className="flex items-center">
+          <Search className="mr-4" /> {/* Add margin-right to Search */}
+          <button className="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+            Add User
+          </button>
+        </div>
       </div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left text-gray-900 bg-white">
@@ -42,7 +44,7 @@ const UserManagementList = () => {
                 <td className="px-6 py-4">{user?.name}</td>
                 <td className="px-6 py-4">{user?.email}</td>
                 <td className="px-6 py-4">{user?.role}</td>
-                <td className="px-6 py-4">{user?.phoneNumber || 'N/A'}</td>
+                <td className="px-6 py-4">{user?.phoneNumber || "N/A"}</td>
                 <td className="flex items-center px-6 py-4">
                   <a
                     href="#"
