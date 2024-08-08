@@ -6,13 +6,14 @@ export const language = {
 };
 
 export function responseData({
+  success = true,
   data = null,
   message = "",
   response,
   statusCode = HttpStatusEnum.OK,
 }) {
   response.status(statusCode).json({
-    success: true,
+    success: success,
     message,
     statusCode,
     ...(data && { data }),

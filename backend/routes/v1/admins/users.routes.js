@@ -10,8 +10,8 @@ const router = Router();
 router.post(
   "/",
   validate(createUser),
-  authentication,
-  authorization,
+  // authentication,
+  // authorization,
   createSingleUser
 );
 

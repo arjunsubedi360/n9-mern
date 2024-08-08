@@ -7,24 +7,31 @@ import {
   getUsers,
   updateUser,
 } from "../services/user.services.js";
-import { language } from "../utils/responseData.js";
+import { language, responseData } from "../utils/responseData.js";
 
-const createSingleUser = async (req, res) => {
+const createSingleUser = async (request, response) => {
   try {
-    const input = req.body;
+    const input = request.body;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(input.password, salt);
     const data = await createUser({ ...input, password: hash });
-
-    res
-      .status(HttpStatusEnum.OK)
-      .json({ data, message: language.CREATE("User") });
+    
+    responseData({
+      data: data,
+      message: language.CREATE("User"),
+      response,
+      statusCode: HttpStatusEnum.CREATED,
+    });
   } catch (error) {
-    res
-      .status(HttpStatusEnum.BAD_REQUEST)
-      .json({ success: false, message: error.message });
+    responseData({
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.BAD_REQUEST,
+      success: false,
+    });
   }
 };
+
 const updateSingleUser = async (req, res) => {
   const id = req.params.id;
   const input = req.body;

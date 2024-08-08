@@ -45,7 +45,7 @@ export const accountCreatedTemplate = (name, email) => {
                 <h1>Welcome to Our Service!</h1>
             </div>
             <div class="content">
-                <p>Hello ${name},</p>
+                <p><b>Hello ${name},</b></p>
                 <p>Thank you for creating an account with us! We are excited to have you on board.</p>
                 <p>Your registered email address is: <strong>${email}</strong></p>
                 <p>If you have any questions or need assistance, feel free to contact our support team.</p>

@@ -1,28 +1,29 @@
-import { object, string } from "yup";
-import React from "react";
+import React, { useContext } from "react";
 import { Formik } from "formik";
-import axios from "axios";
+import { loginValidation } from "../validations/login.validations";
+import axiosInstance from "../api/axiosConofig";
+import { AuthContext } from "../context/AuthContext";
 
+//We want to user is authenticated or not
+
+/* 
+1. We need to store login token and validate user authentication
+2. Then we need store token in local storage (If page is refresh still use will be loggedin)
+*/
 const Login = () => {
-  const userSchema = object({
-    email: string().email().required().label("Email"),
-    password: string().required().label("Password"),
-  });
+  const { setAuthState } = useContext(AuthContext);
   const handleSubmitForm = async (values) => {
-    const result = await axios.post(
-      "http://localhost:3001/auth/api/v1/users/login",
-      {
-        email: values.email,
-        password: values.password,
-      }
-    );
+    const result = await axiosInstance.post("/auth/api/v1/users/login", {
+      email: values.email,
+      password: values.password,
+    });
     console.log(result.response.data);
   };
   return (
     <div>
       <Formik
         initialValues={{ email: "", password: "" }}
-        validationSchema={userSchema}
+        validationSchema={loginValidation}
         onSubmit={(values, { setSubmitting }) => {
           handleSubmitForm(values);
         }}
