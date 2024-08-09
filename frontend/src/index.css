@@ -1,0 +1,11 @@
+@import url('../src/styles/styles.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .custom-nav-link {
+    @apply text-white text-base hover:text-orange-500;
+  }
+}

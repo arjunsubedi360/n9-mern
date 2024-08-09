@@ -1,0 +1,20 @@
+
+:root{
+    --background-color: #EEEAE2;
+    --text:  #edf2fc;
+    --hover: rgb(135, 133, 146);
+    --hover-text: rgb(19, 4, 4);
+    --button: #061f16;
+    --button-text: #FFFFFF;
+    --icon-color: rgb(255, 255, 255);
+    --background: black;
+}
+
+body{
+   background-color: var(--background-color);
+   margin: 0px 100px 0px 100px;
+}
+
+.svg{
+    color: white;
+}
