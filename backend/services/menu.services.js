@@ -10,9 +10,13 @@ export const createSingleMenu = async (input) => {
   return data;
 };
 export const updateSingleMenu = async ({ id, input }) => {
-  return await Category.updateOne({ _id: id }, input);
+  return await Menu.updateOne({ _id: id }, input);
 };
 
 export const deleteSingleMenu = async (id) => {
-  return await Category.deleteOne({ _id: id });
+  return await Menu.deleteOne({ _id: id });
+};
+
+export const getMenuList = async () => {
+  return await Menu.find({});
 };

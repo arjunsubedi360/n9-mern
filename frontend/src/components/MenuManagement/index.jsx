@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TableHeader from "../Custom/Table/Headers";
 import { headers } from "./constants/variables";
 import Search from "../Search";
-import useUserManagement from "../../hooks/apis/users/useUserManagement";
+import useMenuManagement from "../../hooks/apis/menus/useMenuManagement";
 import useDeleteUser from "../../hooks/apis/users/useDeleteUser"; // Import the delete hook
 import ViewIcon from "../Custom/ViewIcon";
 import EditIcon from "../Custom/EditIcon";
@@ -20,13 +20,17 @@ const statusColors = {
   pending: "bg-yellow-500 text-black",
 };
 
-const UserManagementList = () => {
+const MenuManagementList = () => {
   const navigate = useNavigate();
   //pagination
   const [pageMeta, setPageMeta] = useState({ limit: 10, page: 1, sort: {} });
-  const { data, loading, error, pagination } = useUserManagement(pageMeta);
+  const { data, loading, error } = useMenuManagement();
 
-  const { deleteUser, loading: deleteLoading, error: deleteError } = useDeleteUser();
+  const {
+    deleteUser,
+    loading: deleteLoading,
+    error: deleteError,
+  } = useDeleteUser();
   const [showLoader, setShowLoader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
@@ -68,7 +72,6 @@ const UserManagementList = () => {
     setPageMeta((prev) => ({ ...prev, page }));
   };
 
-
   //pagination
   const handleRowsPerPageChange = (limit) => {
     setPageMeta((prev) => ({ ...prev, limit, page: 1 }));
@@ -85,14 +88,14 @@ const UserManagementList = () => {
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Menu Management</h1>
         <div className="flex items-center">
           <Search className="mr-4" />
           <button
             onClick={() => navigate("/users/add")}
             className="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
-            Add User
+            Add Menu
           </button>
         </div>
       </div>
@@ -100,26 +103,24 @@ const UserManagementList = () => {
         <table className="w-full text-sm text-left text-gray-900 bg-white">
           <TableHeader headers={headers} />
           <tbody>
-            {data.map((user, index) => (
+            {data.map((menu, index) => (
               <tr
                 key={index}
                 className="bg-white border-b border-gray-200 hover:bg-gray-50"
               >
-                <td className="px-6 py-4">{user?.name || "N/A"}</td>
-                <td className="px-6 py-4">{user?.email}</td>
-                <td className="px-6 py-4">{capitalizeFirstLetter(user?.role)}</td>
-                <td className="px-6 py-4">{user?.phoneNumber || "N/A"}</td>
+                <td className="px-6 py-4">{menu?.name || "N/A"}</td>
                 <td className="px-6 py-4">
-                  <span
-                    className={`inline-flex items-center px-3 py-1 text-sm font-medium rounded-full ${statusColors[user?.status] || 'bg-gray-300 text-black'}`}
-                  >
-                    {capitalizeFirstLetter(user?.status) || "Unknown"}
-                  </span>
+                  {" "}
+                  <img
+                    className="w-10 h-10 rounded-full"
+                    src={menu.image}
+                    alt="Jese image"
+                  />
                 </td>
                 <td className="flex items-center px-6 py-4 space-x-3">
-                  <ViewIcon to={`/users/${user._id}`} />
-                  <EditIcon to={`/users/edit/${user._id}`} />
-                  <DeleteIcon onClick={() => handleDeleteClick(user._id)} />
+                  <ViewIcon to={`/users/${menu._id}`} />
+                  <EditIcon to={`/users/edit/${menu._id}`} />
+                  <DeleteIcon onClick={() => handleDeleteClick(menu._id)} />
                 </td>
               </tr>
             ))}
@@ -127,18 +128,14 @@ const UserManagementList = () => {
         </table>
       </div>
 
-      {/* Add Pagination */}
-      <Pagination
-        pagination={pagination}
-        onPageChange={handlePageChange}
-        onRowsPerPageChange={handleRowsPerPageChange}
-      />
-
       <ModalOverlay isOpen={isModalOpen} onRequestClose={handleDeleteCancel}>
-        <ConfirmDeleteModal onClose={handleDeleteCancel} onConfirm={handleDeleteConfirm} />
+        <ConfirmDeleteModal
+          onClose={handleDeleteCancel}
+          onConfirm={handleDeleteConfirm}
+        />
       </ModalOverlay>
     </div>
   );
 };
 
-export default UserManagementList;
+export default MenuManagementList;

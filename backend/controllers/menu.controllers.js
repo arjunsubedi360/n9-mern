@@ -1,6 +1,33 @@
 import { HttpStatusEnum } from "../enums/status-enum.js";
-import { createSingleMenu, deleteSingleMenu, getSingleMenu, updateSingleMenu } from "../services/menu.services.js";
+import {
+  createSingleMenu,
+  deleteSingleMenu,
+  getSingleMenu,
+  updateSingleMenu,
+  getMenuList,
+} from "../services/menu.services.js";
 import { lang, responseData } from "../utils/responseData.js";
+
+export const getMenus = async (request, response) => {
+  try {
+    const data = await getMenuList();
+
+    console.log("data", data)
+    responseData({
+      data,
+      acknowledge: true,
+      message: lang.LIST("Menu"),
+      response,
+    });
+  } catch (error) {
+    responseData({
+      acknowledge: false,
+      message: lang.ERROR,
+      response,
+      statuscode: HttpStatusEnum.BAD_REQUEST,
+    });
+  }
+};
 
 export const getMenu = async (request, response) => {
   try {
@@ -15,7 +42,6 @@ export const getMenu = async (request, response) => {
     });
   }
 };
-
 export const createMenu = async (request, response) => {
   try {
     const input = request.body;

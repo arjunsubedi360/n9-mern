@@ -23,7 +23,7 @@ export const sendMail = async ({ to, subject, text, html }) => {
   try {
     // Set up email data
     const mailOptions = {
-      from: '"Your Name" <mailtoarjunsubedi@gmail.com>', // sender address
+      from: '"Mero Order" <mailtoarjunsubedi@gmail.com>', // sender address
       to, // recipient address
       subject, // Subject line
       text, // plain text body

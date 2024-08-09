@@ -12,7 +12,11 @@ const AddUserManagement = lazy(() => import("../components/UserManagement/form/A
 const EditUserManagement = lazy(() => import("../components/UserManagement/form/EditUser"));
 const ViewUserManagement = lazy(() => import("../components/UserManagement/view"));
 
+//Menus
+const MenuManagementList = lazy(() => import("../components/MenuManagement"));
 
+
+//CRUDL
 const Table = lazy(() => import("../components/ProjectsTable"));
 
 const AppRoutes = () => {
@@ -27,6 +31,9 @@ const AppRoutes = () => {
         <Route path="/users/add" element={<AddUserManagement />} />
         <Route path="/users/edit/:id" element={<EditUserManagement />} />
         <Route path="/users/:id" element={<ViewUserManagement />} />
+
+        {/* Menus path */}
+        <Route path="/menus" element={<MenuManagementList />} />
         <Route path="/table" element={<Table />} />
         </Route>
         {/* <Route path="/profile" element={<Profile />} /> */}
