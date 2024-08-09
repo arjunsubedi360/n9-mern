@@ -5,7 +5,6 @@ import { language, responseData } from "../utils/responseData.js";
 import { jwtSecretKey } from "../config/index.js";
 import { getUserByEmail } from "../services/user.services.js";
 
-console.log("jwtSecretKey", jwtSecretKey);
 const login = async (request, response) => {
   try {
     const { email, password } = request.body;
@@ -18,6 +17,7 @@ const login = async (request, response) => {
       //status cha vane check inactive
       throw new Error("You are not registered in our system");
     }
+
 
     if (
       userExists.email !== email ||

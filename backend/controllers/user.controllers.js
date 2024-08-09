@@ -6,14 +6,14 @@ import {
   deleteUser,
   getUsers,
   updateUser,
+  deleteUsers
 } from "../services/user.services.js";
 import { language, responseData } from "../utils/responseData.js";
 
 const createSingleUser = async (request, response) => {
   try {
     const input = request.body;
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(input.password, salt);
+    const hash = bcrypt.hashSync(input.password, 10);
     const data = await createUser({ ...input, password: hash });
     
     responseData({
@@ -64,10 +64,16 @@ const deleteSingleUser = async (req, res) => {
   res.status(HttpStatusEnum.OK).json(data);
 };
 
+const deleteAllUsers = async (req, res) => {
+  const data = await deleteUsers();
+  res.status(HttpStatusEnum.OK).json(data);
+};
+
 export {
   createSingleUser,
   updateSingleUser,
   getSingleUser,
   deleteSingleUser,
   getUsersList,
+  deleteAllUsers
 };
