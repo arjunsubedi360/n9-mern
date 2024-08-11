@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import DashboardIcon from "./icons/DashboardIcon";
 import UserManagementIcon from "./icons/UserManagementIcon";
+import MenuManagementIcon from "./icons/MenuManagementIcon";
 import NotificationIcon from "./icons/NotificationIcon";
 import TableIcon from "./icons/TableIcon";
 import ProfileIcon from "./icons/ProfileIcon";
@@ -45,7 +46,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
           />
           <SidebarItem
             to="/menus/list"
-            icon={UserManagementIcon}
+            icon={MenuManagementIcon}
             label="Menu Management"
             isOpen={isOpen}
           />
