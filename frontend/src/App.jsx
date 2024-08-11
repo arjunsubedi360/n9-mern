@@ -1,4 +1,5 @@
 import React from 'react';
+import { Router } from 'react-router-dom';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
 import Navbar from './layouts/Navbar';

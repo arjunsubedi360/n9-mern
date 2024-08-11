@@ -11,7 +11,7 @@ function Footer() {
             <i className="fa-brands fa-facebook" />
           </a>
           <a href="#">
-          <InstagramIcon/>
+            <InstagramIcon />
           </a>
         </div>
         <div className="customer-care">

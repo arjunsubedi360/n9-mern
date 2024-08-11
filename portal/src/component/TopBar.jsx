@@ -1,5 +1,6 @@
 import React from "react";
 import MobileIcon from "../icons/MobileIcon";
+import { Link } from "react-router-dom";
 
 function TopBar() {
   return (
@@ -13,7 +14,9 @@ function TopBar() {
         </div>
         <div id="top-right">
           <i className="fa-regular fa-user" />
-          <a href="#">Login</a> |<a href="#">Sign up</a>
+          <Link to="/signin">Login</Link>
+          
+          |<a href="#">Sign up</a>
           <a href="#">
             <i className="fa-solid fa-cart-plus" />
           </a>
