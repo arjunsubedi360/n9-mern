@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DashboardIcon from "./icons/DashboardIcon";
 import UserManagementIcon from "./icons/UserManagementIcon";
@@ -13,6 +13,12 @@ import LogoIcon from "./icons/LogoIcon";
 import MenuIcon from "./icons/MenuIcon";
 
 function Sidebar({ isOpen, toggleSidebar }) {
+  const [activeItem, setActiveItem] = useState("/dashboard");
+
+  const handleClick = (path) => {
+    setActiveItem(path);
+  };
+
   return (
     <aside
       className={`bg-gradient-to-br from-gray-800 to-gray-900 fixed inset-y-0 z-40 my-4 ml-4 h-[calc(100vh-32px)] rounded-xl transition-transform duration-300 ${
@@ -21,7 +27,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
     >
       <div className="relative border-b border-white/20 flex justify-between items-center px-4 py-6">
         <Link to="#" className="flex items-center gap-4">
-        <LogoIcon className={`h-6 w-auto ${isOpen ? "block" : "hidden"}`} /> 
+          <LogoIcon className={`h-6 w-auto ${isOpen ? "block" : "hidden"}`} /> 
         </Link>
         <button
           onClick={toggleSidebar}
@@ -37,30 +43,40 @@ function Sidebar({ isOpen, toggleSidebar }) {
             icon={DashboardIcon}
             label="Dashboard"
             isOpen={isOpen}
+            active={activeItem === "/dashboard"}
+            onClick={() => handleClick("/dashboard")}
           />
           <SidebarItem
             to="/user-list"
             icon={UserManagementIcon}
             label="User Management"
             isOpen={isOpen}
+            active={activeItem === "/user-list"}
+            onClick={() => handleClick("/user-list")}
           />
           <SidebarItem
             to="/menus/list"
             icon={MenuManagementIcon}
             label="Menu Management"
             isOpen={isOpen}
+            active={activeItem === "/menus/list"}
+            onClick={() => handleClick("/menus/list")}
           />
           <SidebarItem
             to="/table"
             icon={TableIcon}
             label="Tables"
             isOpen={isOpen}
+            active={activeItem === "/table"}
+            onClick={() => handleClick("/table")}
           />
           <SidebarItem
             to="#"
             icon={NotificationIcon}
             label="Notifications"
             isOpen={isOpen}
+            active={activeItem === "#"}
+            onClick={() => handleClick("#")}
           />
         </SidebarSection>
         <SidebarSection title={"Auth"}>
@@ -69,12 +85,16 @@ function Sidebar({ isOpen, toggleSidebar }) {
             icon={ProfileIcon}
             label="Sign In"
             isOpen={isOpen}
+            active={activeItem === "#"}
+            onClick={() => handleClick("#")}
           />
           <SidebarItem
             to="#"
             icon={SignUpIcon}
             label="Sign Up"
             isOpen={isOpen}
+            active={activeItem === "#"}
+            onClick={() => handleClick("#")}
           />
         </SidebarSection>
       </div>
