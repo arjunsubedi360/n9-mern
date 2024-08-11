@@ -5,14 +5,15 @@ import { headers } from "./constants/variables";
 import Search from "../Search";
 import useUserManagement from "../../hooks/apis/users/useUserManagement";
 import useDeleteUser from "../../hooks/apis/users/useDeleteUser"; // Import the delete hook
-import ViewIcon from "../Custom/ViewIcon";
-import EditIcon from "../Custom/EditIcon";
-import DeleteIcon from "../Custom/DeleteIcon";
 import Loader from "../Custom/Loader";
 import ModalOverlay from "../Custom/ModalOverlay";
 import ConfirmDeleteModal from "../Custom/ConfirmDeleteModal";
 import Pagination from "../Custom/Pagination"; // Import Pagination component
 import capitalizeFirstLetter from "../../utils/firstLetterCapital";
+import ViewIcon from "../icons/ViewIcon";
+import EditIcon from "../icons/EditIcon";
+import DeleteIcon from "../icons/DeleteIcon";
+import { path } from "../../path";
 
 const statusColors = {
   active: "bg-green-500 text-white",
@@ -117,7 +118,7 @@ const UserManagementList = () => {
                   </span>
                 </td>
                 <td className="flex items-center px-6 py-4 space-x-3">
-                  <ViewIcon to={`/users/${user._id}`} />
+                  <ViewIcon to={path.VIEW('users', user._id)} />
                   <EditIcon to={`/users/edit/${user._id}`} />
                   <DeleteIcon onClick={() => handleDeleteClick(user._id)} />
                 </td>
@@ -135,7 +136,7 @@ const UserManagementList = () => {
       />
 
       <ModalOverlay isOpen={isModalOpen} onRequestClose={handleDeleteCancel}>
-        <ConfirmDeleteModal onClose={handleDeleteCancel} onConfirm={handleDeleteConfirm} />
+        <ConfirmDeleteModal onClose={handleDeleteCancel} onConfirm={handleDeleteConfirm} title={"user"} />
       </ModalOverlay>
     </div>
   );

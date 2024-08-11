@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoadingBar from "../components/LoadingBar";
 import Layout from "../layouts/Layout";
+import { UserManagementAddPath } from "../path";
 // import Profile from "../components/Profile";
 
 
@@ -14,6 +15,12 @@ const ViewUserManagement = lazy(() => import("../components/UserManagement/view"
 
 //Menus
 const MenuManagementList = lazy(() => import("../components/MenuManagement"));
+const AddMenuManagement = lazy(() => import("../components/MenuManagement/form/AddMenu"));
+const EditMenuManagement = lazy(() => import("../components/MenuManagement/form/EditMenu"));
+const ViewMenuManagement = lazy(() => import("../components/MenuManagement/view"));
+
+
+
 
 
 //CRUDL
@@ -28,12 +35,16 @@ const AppRoutes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/user-list" element={<UserManagement />} />
-        <Route path="/users/add" element={<AddUserManagement />} />
+        <Route path={UserManagementAddPath} element={<AddUserManagement />} />
         <Route path="/users/edit/:id" element={<EditUserManagement />} />
         <Route path="/users/:id" element={<ViewUserManagement />} />
 
         {/* Menus path */}
-        <Route path="/menus" element={<MenuManagementList />} />
+        <Route path="/menus/list" element={<MenuManagementList />} />
+        <Route path={"/menus/add"} element={<AddMenuManagement />} />
+        <Route path={"/menus/edit/:id"} element={<EditMenuManagement />} />
+        <Route path={"/menus/view/:id"} element={<ViewMenuManagement />} />
+
         <Route path="/table" element={<Table />} />
         </Route>
         {/* <Route path="/profile" element={<Profile />} /> */}

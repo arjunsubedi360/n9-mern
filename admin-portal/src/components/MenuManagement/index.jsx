@@ -3,37 +3,29 @@ import { useNavigate } from "react-router-dom";
 import TableHeader from "../Custom/Table/Headers";
 import { headers } from "./constants/variables";
 import Search from "../Search";
-import useMenuManagement from "../../hooks/apis/menus/useMenuManagement";
-import useDeleteUser from "../../hooks/apis/users/useDeleteUser"; // Import the delete hook
-import ViewIcon from "../Custom/ViewIcon";
-import EditIcon from "../Custom/EditIcon";
-import DeleteIcon from "../Custom/DeleteIcon";
+import useMenuList from "../../hooks/apis/menus/useMenuList";
+import useDeleteMenu from "../../hooks/apis/menus/useDeleteMenu"; // Import the delete hook
 import Loader from "../Custom/Loader";
 import ModalOverlay from "../Custom/ModalOverlay";
 import ConfirmDeleteModal from "../Custom/ConfirmDeleteModal";
-import Pagination from "../Custom/Pagination"; // Import Pagination component
-import capitalizeFirstLetter from "../../utils/firstLetterCapital";
-
-const statusColors = {
-  active: "bg-green-500 text-white",
-  inactive: "bg-red-500 text-white",
-  pending: "bg-yellow-500 text-black",
-};
+import ViewIcon from "../icons/ViewIcon";
+import EditIcon from "../icons/EditIcon";
+import DeleteIcon from "../icons/DeleteIcon";
+import { path } from "../../path";
 
 const MenuManagementList = () => {
   const navigate = useNavigate();
-  //pagination
-  const [pageMeta, setPageMeta] = useState({ limit: 10, page: 1, sort: {} });
-  const { data, loading, error } = useMenuManagement();
+
+  const { data, loading, error } = useMenuList();
 
   const {
-    deleteUser,
+    deleteItem,
     loading: deleteLoading,
     error: deleteError,
-  } = useDeleteUser();
+  } = useDeleteMenu();
   const [showLoader, setShowLoader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     let timer;
@@ -47,14 +39,14 @@ const MenuManagementList = () => {
     return () => clearTimeout(timer);
   }, [loading, deleteLoading]);
 
-  const handleDeleteClick = (userId) => {
-    setSelectedUserId(userId);
+  const handleDeleteClick = (id) => {
+    setSelectedId(id);
     setIsModalOpen(true);
   };
 
   const handleDeleteConfirm = async () => {
-    if (selectedUserId) {
-      await deleteUser(selectedUserId);
+    if (selectedId) {
+      await deleteItem(selectedId);
       if (!deleteError) {
         setIsModalOpen(false);
         window.location.reload(); // Refresh to get the updated list
@@ -64,17 +56,7 @@ const MenuManagementList = () => {
 
   const handleDeleteCancel = () => {
     setIsModalOpen(false);
-    setSelectedUserId(null);
-  };
-
-  //pagination
-  const handlePageChange = (page) => {
-    setPageMeta((prev) => ({ ...prev, page }));
-  };
-
-  //pagination
-  const handleRowsPerPageChange = (limit) => {
-    setPageMeta((prev) => ({ ...prev, limit, page: 1 }));
+    setSelectedId(null);
   };
 
   if (showLoader) {
@@ -92,7 +74,7 @@ const MenuManagementList = () => {
         <div className="flex items-center">
           <Search className="mr-4" />
           <button
-            onClick={() => navigate("/users/add")}
+            onClick={() => navigate(path.ADD("menus"))}
             className="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
             Add Menu
@@ -118,8 +100,8 @@ const MenuManagementList = () => {
                   />
                 </td>
                 <td className="flex items-center px-6 py-4 space-x-3">
-                  <ViewIcon to={`/users/${menu._id}`} />
-                  <EditIcon to={`/users/edit/${menu._id}`} />
+                  <ViewIcon to={path.VIEW("menus", menu._id)} />
+                  <EditIcon to={`/menus/edit/${menu._id}`} />
                   <DeleteIcon onClick={() => handleDeleteClick(menu._id)} />
                 </td>
               </tr>
@@ -130,6 +112,7 @@ const MenuManagementList = () => {
 
       <ModalOverlay isOpen={isModalOpen} onRequestClose={handleDeleteCancel}>
         <ConfirmDeleteModal
+          title={"menu"}
           onClose={handleDeleteCancel}
           onConfirm={handleDeleteConfirm}
         />

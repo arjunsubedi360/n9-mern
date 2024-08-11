@@ -12,7 +12,6 @@ export const getMenus = async (request, response) => {
   try {
     const data = await getMenuList();
 
-    console.log("data", data)
     responseData({
       data,
       acknowledge: true,
@@ -33,6 +32,12 @@ export const getMenu = async (request, response) => {
   try {
     const id = request.params.id;
     const data = await getSingleMenu(id);
+    responseData({
+      data,
+      acknowledge: true,
+      message: lang.GET("Menu"),
+      response,
+    });
   } catch (error) {
     responseData({
       acknowledge: false,
@@ -48,8 +53,9 @@ export const createMenu = async (request, response) => {
     const data = await createSingleMenu(input);
 
     responseData({
+      data: data,
       acknowledge: true,
-      message: lang.ERROR,
+      message: lang.CREATE("Menu"),
       response,
       statuscode: HttpStatusEnum.CREATED,
     });
@@ -100,7 +106,7 @@ export const deleteMenu = async (request, response) => {
   const data = await deleteSingleMenu(id);
   responseData({
     data,
-    message: lang.DELETE("Category"),
+    message: lang.DELETE("Menu"),
     statusCode: HttpStatusEnum.OK,
     response,
   });

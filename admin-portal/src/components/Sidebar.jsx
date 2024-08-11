@@ -44,7 +44,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
             isOpen={isOpen}
           />
           <SidebarItem
-            to="/menus"
+            to="/menus/list"
             icon={UserManagementIcon}
             label="Menu Management"
             isOpen={isOpen}

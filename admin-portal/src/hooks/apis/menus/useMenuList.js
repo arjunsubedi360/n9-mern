@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../../../api/axiosConfig";
 
-const useMenuManagement = (pageMeta) => {
+const useMenuList = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,9 +20,9 @@ const useMenuManagement = (pageMeta) => {
     };
 
     fetchMenus();
-  }, [pageMeta]);
+  }, []);
 
   return { data, loading, error };
 };
 
-export default useMenuManagement;
+export default useMenuList;
