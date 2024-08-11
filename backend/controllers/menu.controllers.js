@@ -73,21 +73,20 @@ export const updateMenu = async (request, response) => {
     let data;
     const id = request.params.id;
     const input = request.body;
+    const menuExists = await getSingleMenu(id);
 
-    const categoryExists = await getSingleMenu({ id });
-
-    if (!categoryExists) {
-      throw new Error("Category does not exist.");
+    if (!menuExists) {
+      throw new Error("Menu does not exist.");
     }
-    data = await updateSingleMenu({ id, input });
+    data = await updateSingleMenu(id, input);
 
     if (data.modifiedCount === 1) {
-      data = await getSingleMenu({ id });
+      data = await getSingleMenu(id);
     }
 
     responseData({
       data,
-      message: lang.UPDATE("Category"),
+      message: lang.UPDATE("Menu"),
       statusCode: HttpStatusEnum.CREATED,
       response,
     });

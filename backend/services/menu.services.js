@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Menu from "../models/Menu.js";
 
 export const getSingleMenu = async (id) => {
@@ -9,7 +10,7 @@ export const createSingleMenu = async (input) => {
   const data = await Menu.create(input);
   return data;
 };
-export const updateSingleMenu = async ({ id, input }) => {
+export const updateSingleMenu = async (id, input) => {
   return await Menu.updateOne({ _id: id }, input);
 };
 

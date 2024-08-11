@@ -94,10 +94,9 @@ async function getAll(pageMeta, filters = {}, search = "") {
 }
 
 
-async function update(id, data) {
+async function update(id, input) {
   try {
-    const usrdata = data;
-    return await User.updateOne({ _id: id }, data);
+    return await User.updateOne({ _id: id }, input);
   } catch (error) {
     throw error;
   }
