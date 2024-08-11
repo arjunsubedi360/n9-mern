@@ -115,5 +115,3 @@ export default function App() {
   );
 }
 ```
-
-This example demonstrates the use of background color, padding, text styles, margins, rounded corners, and shadows. Tailwind CSS makes it easy to apply styles directly within your HTML using these utility classes.
