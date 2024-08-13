@@ -1,4 +1,0 @@
-npm init => (to initialize node)
-npm install (npm i) => npm package install
-node -v (node version) => find node version
-npm uninstall => remove node package
