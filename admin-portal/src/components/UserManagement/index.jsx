@@ -135,7 +135,7 @@ const UserManagementList = () => {
       />
 
       <ModalOverlay isOpen={isModalOpen} onRequestClose={handleDeleteCancel}>
-        <ConfirmDeleteModal onClose={handleDeleteCancel} onConfirm={handleDeleteConfirm} />
+        <ConfirmDeleteModal onClose={handleDeleteCancel} onConfirm={handleDeleteConfirm} title="user" />
       </ModalOverlay>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../../../api/axiosConfig";
 
-const useMenuManagement = (pageMeta) => {
+const useCategoryList = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ const useMenuManagement = (pageMeta) => {
     const fetchMenus = async () => {
       setLoading(true);
       try {
-        const response = await axiosInstance.get("/auth/admin/v1/menus");
+        const response = await axiosInstance.get("/auth/admin/v1/categories");
         setData(response.data.data);
       } catch (err) {
         setError(err.message);
@@ -20,9 +20,9 @@ const useMenuManagement = (pageMeta) => {
     };
 
     fetchMenus();
-  }, [pageMeta]);
+  }, []);
 
   return { data, loading, error };
 };
 
-export default useMenuManagement;
+export default useCategoryList;

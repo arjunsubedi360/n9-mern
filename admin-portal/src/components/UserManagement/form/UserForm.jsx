@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import ErrorMessage from "../../Custom/ErrorMessage";
-import { createUser } from "../../../validations/usermanagement.validation";
+import { createUser } from "../../../validations/userManagenent.validation";
 import { roles, statuses } from "../constants/variables";
 
 const UserForm = ({ initialValues, onSubmit, formTitle, submitButtonText, loading, error }) => {

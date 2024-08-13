@@ -1,6 +1,7 @@
 export const headers = [
     { label: "Name", key: "name" },
-    { label: "Image", key: "image" },
+    { label: "Slug", key: "slug" },
+    { label: "Create At", key: "createdAt" },
     { label: "Action", key: "action"}
   ];
   

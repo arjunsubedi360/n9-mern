@@ -3,37 +3,33 @@ import { useNavigate } from "react-router-dom";
 import TableHeader from "../Custom/Table/Headers";
 import { headers } from "./constants/variables";
 import Search from "../Search";
-import useMenuManagement from "../../hooks/apis/menus/useMenuManagement";
-import useDeleteUser from "../../hooks/apis/users/useDeleteUser"; // Import the delete hook
+
+//hooks
+import useCategoryList from "../../hooks/apis/category/useCategoryList";
+import useDeleteCategory from "../../hooks/apis/category/useDeleteCategory";
+
 import ViewIcon from "../Custom/ViewIcon";
 import EditIcon from "../Custom/EditIcon";
 import DeleteIcon from "../Custom/DeleteIcon";
 import Loader from "../Custom/Loader";
 import ModalOverlay from "../Custom/ModalOverlay";
 import ConfirmDeleteModal from "../Custom/ConfirmDeleteModal";
-import Pagination from "../Custom/Pagination"; // Import Pagination component
-import capitalizeFirstLetter from "../../utils/firstLetterCapital";
+import { CategoryManagementAddPath } from "../../path";
 
-const statusColors = {
-  active: "bg-green-500 text-white",
-  inactive: "bg-red-500 text-white",
-  pending: "bg-yellow-500 text-black",
-};
-
-const MenuManagementList = () => {
+const CategoryManagementList = () => {
   const navigate = useNavigate();
-  //pagination
-  const [pageMeta, setPageMeta] = useState({ limit: 10, page: 1, sort: {} });
-  const { data, loading, error } = useMenuManagement();
+
+  const { data, loading, error } = useCategoryList();
 
   const {
-    deleteUser,
+    deleteCategory,
     loading: deleteLoading,
     error: deleteError,
-  } = useDeleteUser();
+  } = useDeleteCategory();
+
   const [showLoader, setShowLoader] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     let timer;
@@ -47,14 +43,14 @@ const MenuManagementList = () => {
     return () => clearTimeout(timer);
   }, [loading, deleteLoading]);
 
-  const handleDeleteClick = (userId) => {
-    setSelectedUserId(userId);
+  const handleDeleteClick = (id) => {
+    setSelectedId(id);
     setIsModalOpen(true);
   };
 
   const handleDeleteConfirm = async () => {
-    if (selectedUserId) {
-      await deleteUser(selectedUserId);
+    if (selectedId) {
+      await deleteCategory(selectedId);
       if (!deleteError) {
         setIsModalOpen(false);
         window.location.reload(); // Refresh to get the updated list
@@ -64,7 +60,7 @@ const MenuManagementList = () => {
 
   const handleDeleteCancel = () => {
     setIsModalOpen(false);
-    setSelectedUserId(null);
+    setSelectedId(null);
   };
 
   //pagination
@@ -88,14 +84,16 @@ const MenuManagementList = () => {
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl font-bold text-gray-900">Menu Management</h1>
+        <h1 className="text-3xl font-bold text-gray-900">
+          Category Management
+        </h1>
         <div className="flex items-center">
           <Search className="mr-4" />
           <button
-            onClick={() => navigate("/users/add")}
+            onClick={() => navigate(CategoryManagementAddPath)}
             className="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
-            Add Menu
+            Add Category
           </button>
         </div>
       </div>
@@ -103,24 +101,18 @@ const MenuManagementList = () => {
         <table className="w-full text-sm text-left text-gray-900 bg-white">
           <TableHeader headers={headers} />
           <tbody>
-            {data.map((menu, index) => (
+            {data.map((category, index) => (
               <tr
                 key={index}
                 className="bg-white border-b border-gray-200 hover:bg-gray-50"
               >
-                <td className="px-6 py-4">{menu?.name || "N/A"}</td>
-                <td className="px-6 py-4">
-                  {" "}
-                  <img
-                    className="w-10 h-10 rounded-full"
-                    src={menu.image}
-                    alt="Jese image"
-                  />
-                </td>
+                <td className="px-6 py-4">{category?.name || "N/A"}</td>
+                <td className="px-6 py-4">{category?.slug || "N/A"}</td>
+                <td className="px-6 py-4">{category?.createdAt || "N/A"}</td>
                 <td className="flex items-center px-6 py-4 space-x-3">
-                  <ViewIcon to={`/users/${menu._id}`} />
-                  <EditIcon to={`/users/edit/${menu._id}`} />
-                  <DeleteIcon onClick={() => handleDeleteClick(menu._id)} />
+                  <ViewIcon to={`/category/${category._id}`} />
+                  <EditIcon to={`/category/edit/${category._id}`} />
+                  <DeleteIcon onClick={() => handleDeleteClick(category._id)} />
                 </td>
               </tr>
             ))}
@@ -132,10 +124,11 @@ const MenuManagementList = () => {
         <ConfirmDeleteModal
           onClose={handleDeleteCancel}
           onConfirm={handleDeleteConfirm}
+          title="category"
         />
       </ModalOverlay>
     </div>
   );
 };
 
-export default MenuManagementList;
+export default CategoryManagementList;

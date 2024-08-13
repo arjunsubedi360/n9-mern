@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoadingBar from "../components/LoadingBar";
 import Layout from "../layouts/Layout";
+import { CategoryManagementAddPath, CategoryManagementListPath } from "../path";
 // import Profile from "../components/Profile";
 
 
@@ -12,8 +13,11 @@ const AddUserManagement = lazy(() => import("../components/UserManagement/form/A
 const EditUserManagement = lazy(() => import("../components/UserManagement/form/EditUser"));
 const ViewUserManagement = lazy(() => import("../components/UserManagement/view"));
 
-//Menus
-const MenuManagementList = lazy(() => import("../components/MenuManagement"));
+
+//Category
+const CategoryManagementList = lazy(() => import("../components/CategoryManagement"));
+const AddCategoryManagement = lazy(() => import("../components/CategoryManagement/form/AddCategory"));
+
 
 
 //CRUDL
@@ -32,8 +36,10 @@ const AppRoutes = () => {
         <Route path="/users/edit/:id" element={<EditUserManagement />} />
         <Route path="/users/:id" element={<ViewUserManagement />} />
 
-        {/* Menus path */}
-        <Route path="/menus" element={<MenuManagementList />} />
+        {/* Category path */}
+        <Route path={CategoryManagementListPath} element={<CategoryManagementList />} />
+        <Route path={CategoryManagementAddPath} element={<AddCategoryManagement />} />
+
         <Route path="/table" element={<Table />} />
         </Route>
         {/* <Route path="/profile" element={<Profile />} /> */}
