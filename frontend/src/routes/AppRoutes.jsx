@@ -6,11 +6,8 @@ import Login from "../components/Login";
 import LoadingBar from "../components/LoaderBar.jsx";
 import Register from "../components/Register.jsx";
 
-
-
 const About = lazy(() => import("../components/About.jsx"));
 const Service = lazy(() => import("../components/Service.jsx"));
-
 
 const AppRoutes = () => {
   return (
