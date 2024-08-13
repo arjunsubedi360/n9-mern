@@ -6,25 +6,32 @@ import {
   deleteUser,
   getUsers,
   updateUser,
+  deleteUsers
 } from "../services/user.services.js";
-import { language } from "../utils/responseData.js";
+import { language, responseData } from "../utils/responseData.js";
 
-const createSingleUser = async (req, res) => {
+const createSingleUser = async (request, response) => {
   try {
-    const input = req.body;
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(input.password, salt);
+    const input = request.body;
+    const hash = bcrypt.hashSync(input.password, 10);
     const data = await createUser({ ...input, password: hash });
-
-    res
-      .status(HttpStatusEnum.OK)
-      .json({ data, message: language.CREATE("User") });
+    
+    responseData({
+      data: data,
+      message: language.CREATE("User"),
+      response,
+      statusCode: HttpStatusEnum.CREATED,
+    });
   } catch (error) {
-    res
-      .status(HttpStatusEnum.BAD_REQUEST)
-      .json({ success: false, message: error.message });
+    responseData({
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.BAD_REQUEST,
+      success: false,
+    });
   }
 };
+
 const updateSingleUser = async (req, res) => {
   const id = req.params.id;
   const input = req.body;
@@ -57,10 +64,16 @@ const deleteSingleUser = async (req, res) => {
   res.status(HttpStatusEnum.OK).json(data);
 };
 
+const deleteAllUsers = async (req, res) => {
+  const data = await deleteUsers();
+  res.status(HttpStatusEnum.OK).json(data);
+};
+
 export {
   createSingleUser,
   updateSingleUser,
   getSingleUser,
   deleteSingleUser,
   getUsersList,
+  deleteAllUsers
 };
