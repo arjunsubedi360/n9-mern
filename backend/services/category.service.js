@@ -8,4 +8,13 @@ const createCategory = async (input) => {
   });
   //https://mongoosejs.com/docs/populate.html
 };
-export { createCategory };
+
+const deleteCategory = async (id) => {
+  return Category.deleteOne({_id: id});
+};
+
+
+const getCategories = async (id) => {
+  return Category.find({});
+};
+export { createCategory, deleteCategory, getCategories };

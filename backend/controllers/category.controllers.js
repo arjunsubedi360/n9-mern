@@ -1,27 +1,77 @@
 import { HttpStatusEnum } from "../enums/status.enum.js";
-import { language } from "../utils/responseData.js";
-import { createCategory } from "../services/category.service.js";
+import { language, responseData } from "../utils/responseData.js";
+import { createCategory, deleteCategory, getCategories } from "../services/category.service.js";
 import { slugify } from "../utils/slugify.js";
 
 const createSingleCategory = async (request, response) => {
   try {
-    console.log("req.body", request.body);
     const input = request.body;
     const name = request.body.name;
-    console.log("request.user", request.user);
-    const { _id: userId } = request.user;
+    // const { _id: userId } = request.user;
     const slug = slugify(name);
 
-    const data = await createCategory({ ...input, slug , createdBy: userId});
+    const data = await createCategory({ ...input, slug });
 
-    response
-      .status(HttpStatusEnum.OK)
-      .json({ data, message: language.CREATE("Category") });
+    responseData({
+      success: true,
+      data,
+      message: language.CREATE("Category"),
+      response,
+      statusCode: HttpStatusEnum.CREATED,
+    });
   } catch (error) {
-    response
-      .status(HttpStatusEnum.BAD_REQUEST)
-      .json({ success: false, message: error.message });
+    responseData({
+      success: false,
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.BAD_REQUEST,
+    });
   }
 };
 
-export { createSingleCategory };
+const deleteSingleCategory = async (request, response) => {
+  try {
+    const id = request?.params?.id;
+    //TODO:: getCategory and if not exist throw category does not exist
+    const data = await deleteCategory(id);
+
+    responseData({
+      success: true,
+      data,
+      message: language.DELETE("Category"),
+      response,
+      statusCode: HttpStatusEnum.OK,
+    });
+  } catch (error) {
+    responseData({
+      success: false,
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.BAD_REQUEST,
+    });
+  }
+};
+
+
+const getCategoryList = async (request, response) => {
+  try {
+    const data = await getCategories({});
+
+    responseData({
+      success: true,
+      data,
+      message: language.LIST("Category"),
+      response,
+      statusCode: HttpStatusEnum.OK,
+    });
+  } catch (error) {
+    responseData({
+      success: false,
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.BAD_REQUEST,
+    });
+  }
+};
+
+export { createSingleCategory, deleteSingleCategory, getCategoryList };

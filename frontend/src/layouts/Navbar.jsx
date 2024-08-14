@@ -60,13 +60,20 @@ function Navbar() {
                 {isProfileOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
                     <div className="py-2">
-                      <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
                         Profile
                       </Link>
                       <button
                         onClick={() => {
-                          localStorage.removeItem('token');
-                          setAuthState({ token: null, user: null, isAuthenticated: false });
+                          localStorage.removeItem("token");
+                          setAuthState({
+                            token: null,
+                            user: null,
+                            isAuthenticated: false,
+                          });
                           setIsProfileOpen(false);
                         }}
                         className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
