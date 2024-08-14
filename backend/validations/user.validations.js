@@ -8,4 +8,3 @@ export const createUser = Joi.object({
   password: Joi.string().min(2).max(50).required().label("Password"),
   role: Joi.string().min(2).max(50).required().label("Role"),
 });
-
