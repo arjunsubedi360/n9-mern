@@ -1,7 +1,8 @@
-export const registerUserTemplate = (name, email, isEmailVerified,isStatusPending, verifyEmailToken) => {
-    return 
-    if(isEmailVerified = false && isStatusPending){
-    `
+export const registerUserTemplate = (
+  name,
+  email,
+) => {
+  `
       <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -61,5 +62,4 @@ export const registerUserTemplate = (name, email, isEmailVerified,isStatusPendin
       </body>
       </html>
       `;
-    };
-  };
+};

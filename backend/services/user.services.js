@@ -13,14 +13,14 @@ const createUser = async (input) => {
   });
   return user;
 };
-const registerUser = async (input) =>{
-  const user = await User.create(input);
-  const emailContent = registerUserTemplate(input.name, input.email);
+const registerUser = async (input) => {
+  const { name, email } = await User.create(input);
+  const emailContent = registerUserTemplate(name, email);
   sendMail({
-    to: input.email,
+    to: email,
     subject: "Account Registered Successfully",
     html: emailContent,
-  })
+  });
 };
 const updateUser = async (id, input) => {
   return await User.updateOne({ _id: id }, input);
@@ -68,5 +68,5 @@ export {
   getUsers,
   deleteUser,
   getUserByEmail,
-  deleteUsers
+  deleteUsers,
 };

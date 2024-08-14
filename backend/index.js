@@ -13,8 +13,8 @@ const port = 3001;
 app.use(express.json());
 app.use(cors());
 app.use(morgan('tiny'));
-app.use("/auth/admin/v1", AdminRouter);
-app.use("/auth/api/v1", UserRouter);
+app.use("/admin/v1", AdminRouter);
+app.use("/api/v1", UserRouter);
 
 app.use(errorHandler);
 
