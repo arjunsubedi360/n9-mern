@@ -85,7 +85,7 @@ const MenuManagementList = () => {
         <table className="w-full text-sm text-left text-gray-900 bg-white">
           <TableHeader headers={headers} />
           <tbody>
-            {data.map((menu, index) => (
+            {data?.map((menu, index) => (
               <tr
                 key={index}
                 className="bg-white border-b border-gray-200 hover:bg-gray-50"
