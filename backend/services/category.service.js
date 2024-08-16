@@ -17,4 +17,9 @@ const deleteCategory = async (id) => {
 const getCategories = async (id) => {
   return Category.find({});
 };
-export { createCategory, deleteCategory, getCategories };
+
+const getCategory = async (id) => {
+  return Category.findOne({_id: id});
+};
+
+export { createCategory, deleteCategory, getCategories, getCategory };

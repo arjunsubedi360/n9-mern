@@ -110,8 +110,8 @@ const CategoryManagementList = () => {
                 <td className="px-6 py-4">{category?.slug || "N/A"}</td>
                 <td className="px-6 py-4">{category?.createdAt || "N/A"}</td>
                 <td className="flex items-center px-6 py-4 space-x-3">
-                  <ViewIcon to={`/category/${category._id}`} />
-                  <EditIcon to={`/category/edit/${category._id}`} />
+                  <ViewIcon to={`/categories/${category._id}`} />
+                  <EditIcon to={`/categories/edit/${category._id}`} />
                   <DeleteIcon onClick={() => handleDeleteClick(category._id)} />
                 </td>
               </tr>

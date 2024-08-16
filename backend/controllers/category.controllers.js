@@ -1,6 +1,6 @@
 import { HttpStatusEnum } from "../enums/status.enum.js";
 import { language, responseData } from "../utils/responseData.js";
-import { createCategory, deleteCategory, getCategories } from "../services/category.service.js";
+import { createCategory, deleteCategory, getCategories, getCategory } from "../services/category.service.js";
 import { slugify } from "../utils/slugify.js";
 
 const createSingleCategory = async (request, response) => {
@@ -74,4 +74,25 @@ const getCategoryList = async (request, response) => {
   }
 };
 
-export { createSingleCategory, deleteSingleCategory, getCategoryList };
+const getSingleCategory = async (request, response) => {
+  try {
+    const id = request.params.id
+    const data = await getCategory(id);
+
+    responseData({
+      success: true,
+      data,
+      message: language.GET("Category"),
+      response,
+      statusCode: HttpStatusEnum.OK,
+    });
+  } catch (error) {
+    responseData({
+      success: false,
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.BAD_REQUEST,
+    });
+  }
+};
+export { createSingleCategory, deleteSingleCategory, getCategoryList, getSingleCategory };

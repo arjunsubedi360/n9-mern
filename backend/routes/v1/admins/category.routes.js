@@ -3,7 +3,7 @@ import { validate } from "../../../middlewares/validate.js";
 import { createUser } from "../../../validations/user.validations.js";
 import { authentication } from "../../../middlewares/authentication.js";
 import { authorization } from "../../../middlewares/authorization.js";
-import { createSingleCategory, deleteSingleCategory, getCategoryList } from "../../../controllers/category.controllers.js";
+import { createSingleCategory, deleteSingleCategory, getCategoryList, getSingleCategory } from "../../../controllers/category.controllers.js";
 
 const router = Router();
 
@@ -25,5 +25,10 @@ router.delete(
 router.get(
   "/",
   getCategoryList
+);
+
+router.get(
+  "/:id",
+  getSingleCategory
 );
 export default router;
