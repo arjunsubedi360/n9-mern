@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { HttpStatusEnum } from "../enums/status.enum.js";
 import {
+  registerUser,
   createUser,
   getUser,
   deleteUser,
@@ -9,6 +10,28 @@ import {
   deleteUsers
 } from "../services/user.services.js";
 import { language, responseData } from "../utils/responseData.js";
+
+// Register Single User
+const registerSingleUser = async (req, res) =>{
+  try {
+    const input = req.body;
+    const hash = bcrypt.hashSync(input.password, 10);
+    const data = await registerUser({...input, password:hash});
+    responseData({
+      data: data,
+      message: language.CREATE("User"),
+      response,
+      statusCode: HttpStatusEnum.CREATED,
+    });
+  } catch (error) {
+    responseData({
+      message: error.message,
+      response,
+      statusCode: HttpStatusEnum.BAD_REQUEST,
+      success: false,
+    });
+  }
+}
 
 const createSingleUser = async (request, response) => {
   try {
@@ -70,6 +93,7 @@ const deleteAllUsers = async (req, res) => {
 };
 
 export {
+  registerSingleUser,
   createSingleUser,
   updateSingleUser,
   getSingleUser,

@@ -26,8 +26,8 @@ const AppRoutes = () => {
           path="/services"
           element={
             <>
-              <PrivateRoute isAuthenticated={isAuth}> 
-                <Service/>
+              <PrivateRoute isAuthenticated={isAuth}>
+                <Service />
               </PrivateRoute>
             </>
           }

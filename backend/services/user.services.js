@@ -1,4 +1,5 @@
 import { accountCreatedTemplate } from "../emailTemplates/accountCreated.js";
+import { registerUserTemplate } from "../emailTemplates/registerUser.js";
 import { sendMail } from "../helpers/sendEmail.js";
 import User from "../models/User.js";
 
@@ -12,7 +13,15 @@ const createUser = async (input) => {
   });
   return user;
 };
-
+const registerUser = async (input) => {
+  const { name, email } = await User.create(input);
+  const emailContent = registerUserTemplate(name, email);
+  sendMail({
+    to: email,
+    subject: "Account Registered Successfully",
+    html: emailContent,
+  });
+};
 const updateUser = async (id, input) => {
   return await User.updateOne({ _id: id }, input);
 };
@@ -52,11 +61,12 @@ const deleteUsers = async () => {
 };
 
 export {
+  registerUser,
   createUser,
   updateUser,
   getUser,
   getUsers,
   deleteUser,
   getUserByEmail,
-  deleteUsers
+  deleteUsers,
 };
